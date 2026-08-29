@@ -24,3 +24,9 @@ export {
   type SafeFetchInit,
   SsrfError,
 } from "./ssrf";
+export {
+  TENANT_HOSTS,
+  allTenantHosts,
+  knownTenantHost,
+  tenantOrigins,
+} from "./tenant-hosts";

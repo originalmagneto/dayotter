@@ -29,6 +29,36 @@ function walk(dir: string, out: string[] = []): string[] {
   return out;
 }
 
+describe("template placeholders are not stranded in plain strings", () => {
+  it('finds no "${...}" outside a template literal', () => {
+    // How the favicon and both booking marks broke: a bulk rename wrote
+    // `icon: "${TENANT.icon}"` and `src="${tenant.icon}"` with double quotes
+    // where backticks or JSX braces belonged, so the browser was asked for a
+    // file literally named ${tenant.icon}. It typechecks, it lints, and it
+    // renders - the attribute is just wrong. Nothing else catches this shape.
+    //
+    // Lines inside a template literal are skipped - there `href="${url}"` is
+    // correct and common. Parity carries that across a multi-line template.
+    const offenders: string[] = [];
+    for (const root of ROOTS) {
+      for (const file of walk(root)) {
+        let inTemplate = false;
+        for (const [i, line] of readFileSync(file, "utf8").split("\n").entries()) {
+          const ticks = (line.match(/`/g) ?? []).length;
+          // A line carrying a backtick is opening, closing or holding a template
+          // literal, where a quoted placeholder is correct. Skipping those costs
+          // nothing: every real instance of this bug was on a line with none.
+          if (!inTemplate && ticks === 0 && /"\$\{[^"]*\}"/.test(line)) {
+            offenders.push(`${relative(WEB, file)}:${i + 1}: ${line.trim()}`);
+          }
+          if (ticks % 2 === 1) inTemplate = !inTemplate;
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+});
+
 describe("brand names are not hardcoded in shared UI", () => {
   it("finds no firm name written as a literal", () => {
     const offenders: string[] = [];

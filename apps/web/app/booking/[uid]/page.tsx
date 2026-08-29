@@ -196,7 +196,7 @@ export default async function BookingPage({ params }: { params: Promise<{ uid: s
       <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
         <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
           <img
-            src="${tenant.icon}"
+            src={tenant.icon}
             alt=""
             width={21}
             height={21}

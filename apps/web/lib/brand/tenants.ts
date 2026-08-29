@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { TENANT_HOSTS, knownTenantHost } from "@dayotter/core";
 /**
  * Tenant identities for a shared codebase.
  *
@@ -23,6 +24,10 @@ export interface Tenant {
   /**
    * Hostnames this firm answers on. One deployment serves all three, so the
    * request's Host is what decides the identity - not a build-time flag.
+   *
+   * Sourced from `TENANT_HOSTS` in @dayotter/core rather than written here:
+   * packages/auth needs the same list (to trust each firm's origin and to scope
+   * sign-up), and cannot import from the web app. One list, two readers.
    */
   domains: readonly string[];
   /** Which lockup `<BrandLockup>` draws. */
@@ -60,7 +65,7 @@ export const TENANTS: Record<string, Tenant> = {
   skallars: {
     name: "SKALLARS Law",
     organizationSlug: "skallars",
-    domains: ["cal.skallars.com"],
+    domains: TENANT_HOSTS.skallars ?? [],
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
     mark: "skallars",
@@ -72,7 +77,7 @@ export const TENANTS: Record<string, Tenant> = {
   hitl: {
     name: "Human in the Loop",
     organizationSlug: "hitl",
-    domains: ["cal.humanintheloop.sk", "localhost:3000"],
+    domains: TENANT_HOSTS.hitl ?? [],
     icon: "/brand/hitl-icon.svg",
     tagline: "Book a slot.",
     email: "marian.cuprik@icloud.com",
@@ -84,7 +89,7 @@ export const TENANTS: Record<string, Tenant> = {
   lawoss: {
     name: "LAWOSS",
     organizationSlug: "lawoss",
-    domains: ["cal.lawoss.app"],
+    domains: TENANT_HOSTS.lawoss ?? [],
     tagline: "Book a slot.",
     email: "majo@lawoss.app",
     mark: "wordmark",
@@ -120,17 +125,8 @@ export function tenantIdFromHost(host: string | null | undefined): string {
  * Deliberately stricter than `tenantIdFromHost`, which falls back to a default
  * so a page always renders. This one answers a different question - "may we
  * send somebody to this host" - where a fallback would be an open redirect.
- * Exact match only, on the full host or the host without its port.
  */
-export function knownHost(host: string | null | undefined): string | null {
-  if (!host) return null;
-  const full = host.toLowerCase().trim();
-  const bare = full.split(":")[0] ?? full;
-  for (const tenant of Object.values(TENANTS)) {
-    if (tenant.domains.some((d) => d === full || d === bare)) return full;
-  }
-  return null;
-}
+export const knownHost = knownTenantHost;
 
 export function tenantFromHost(host: string | null | undefined): Tenant {
   return TENANTS[tenantIdFromHost(host)] ?? TENANTS[FALLBACK_TENANT_ID]!;

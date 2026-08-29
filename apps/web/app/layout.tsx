@@ -1,8 +1,7 @@
 import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { TenantProvider } from "@/lib/brand/context";
-import { getTenant, getTenantId } from "@/lib/brand/server";
-import { BRAND } from "@/lib/marketing";
+import { getOrigin, getTenant, getTenantId } from "@/lib/brand/server";
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Inter, Playfair_Display } from "next/font/google";
@@ -42,9 +41,12 @@ export async function generateMetadata(): Promise<Metadata> {
   // Per request, not per build: one deployment answers on three domains and the
   // title, description and icon all have to follow the Host.
   const tenant = await getTenant();
+  // Not BRAND.url: that is APP_URL, which names one firm out of three, so every
+  // canonical and og:url on the other two pointed at somebody else's domain.
+  const origin = await getOrigin();
   const description = `Book a time with ${tenant.name}. Pick a slot that suits you - no back-and-forth, confirmation by email.`;
   return {
-    metadataBase: new URL(BRAND.url),
+    metadataBase: new URL(origin),
     title: {
       default: `${tenant.name} - booking`,
       template: `%s - ${tenant.name}`,
@@ -52,24 +54,23 @@ export async function generateMetadata(): Promise<Metadata> {
     description: description,
     applicationName: tenant.name,
     keywords: [tenant.name, "booking", "konzultácia", "rezervácia termínu", "appointment"],
-    authors: [{ name: tenant.name, url: BRAND.url }],
+    authors: [{ name: tenant.name, url: origin }],
     creator: tenant.name,
     publisher: tenant.name,
     alternates: { canonical: "/" },
-    icons: { icon: "${TENANT.icon}", apple: "${TENANT.icon}" },
+    icons: { icon: tenant.icon, apple: tenant.icon },
     openGraph: {
       type: "website",
       siteName: tenant.name,
       title: `${tenant.name} - booking`,
       description: description,
-      url: BRAND.url,
+      url: origin,
       locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
       title: `${tenant.name} - booking`,
       description: description,
-      creator: "@dayotter",
     },
     robots: {
       index: true,

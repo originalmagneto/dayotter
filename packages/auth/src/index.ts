@@ -1,4 +1,5 @@
 import { expo } from "@better-auth/expo";
+import { tenantOrigins } from "@dayotter/core";
 import { eq, getDb, schema } from "@dayotter/db";
 import { sendEmail } from "@dayotter/emails";
 import { sendTextSms, twilioConfigured } from "@dayotter/notifications";
@@ -138,9 +139,18 @@ export const auth = betterAuth({
       generateId: false,
     },
   },
-  // Trust the mobile app's deep-link scheme so the Expo OAuth callback is
-  // allowed (native Google sign-in redirects to dayotter://).
-  trustedOrigins: ["dayotter://"],
+  /**
+   * Which origins may post to the auth endpoints.
+   *
+   * Better Auth trusts its own `baseURL` and refuses everything else with
+   * "Invalid origin" - and `baseURL` is one value for a stack that answers on
+   * three domains. Without the firms' own origins here, sign-up and sign-in
+   * work on whichever domain APP_URL names and are refused on the other two.
+   *
+   * `dayotter://` is the mobile app's deep-link scheme, for the Expo OAuth
+   * callback (native Google sign-in redirects there).
+   */
+  trustedOrigins: [...tenantOrigins(), "dayotter://"],
   // `expo` bridges OAuth back to the native app; `bearer` enables token auth for
   // native mobile clients; `nextCookies` must be last so cookies are set
   // correctly from server actions.
