@@ -2,6 +2,7 @@ import { HostAvatar } from "@/components/host-avatar";
 import { Card } from "@/components/ui/card";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS } from "@/lib/booking/event-type-input";
+import { BRAND } from "@/lib/marketing";
 import { and, asc, eq, getDb, schema } from "@dayotter/db";
 import { ArrowRight, Clock } from "lucide-react";
 import Link from "next/link";
@@ -91,7 +92,7 @@ export default async function PublicProfilePage({
             className="absolute -left-[3px] -top-[3px] max-w-none"
           />
         </span>
-        Powered by <span className="text-[var(--color-muted)]">SKALLARS Law</span>
+        Powered by <span className="text-[var(--color-muted)]">{BRAND.name}</span>
       </p>
     </main>
   );

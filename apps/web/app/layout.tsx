@@ -4,7 +4,7 @@ import { TENANT, TENANT_ID } from "@/lib/brand/tenants";
 import { BRAND } from "@/lib/marketing";
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans, Inter, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -18,6 +18,17 @@ import "./globals.css";
 // the tenant's CSS block points --font-sans at the right one - a few unused KB
 // against a second build pipeline per firm.
 const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-sans",
+  display: "swap",
+});
+const playfair = Playfair_Display({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-playfair",
+  display: "swap",
+});
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Variable.woff2",
@@ -26,18 +37,17 @@ const generalSans = localFont({
   display: "swap",
 });
 
-const DESCRIPTION =
-  "Book a time with SKALLARS Law. Pick a slot that suits you - no back-and-forth, confirmation by email.";
+const DESCRIPTION = `Book a time with ${BRAND.name}. Pick a slot that suits you - no back-and-forth, confirmation by email.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BRAND.url),
   title: {
-    default: "SKALLARS Law - booking",
-    template: "%s - SKALLARS Law",
+    default: `${BRAND.name} - booking`,
+    template: `%s - ${BRAND.name}`,
   },
   description: DESCRIPTION,
   applicationName: BRAND.name,
-  keywords: ["SKALLARS", "advokátska kancelária", "booking", "konzultácia", "rezervácia termínu"],
+  keywords: [BRAND.name, "booking", "konzultácia", "rezervácia termínu", "appointment"],
   authors: [{ name: BRAND.name, url: BRAND.url }],
   creator: BRAND.name,
   publisher: BRAND.name,
@@ -46,14 +56,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: BRAND.name,
-    title: "SKALLARS Law - the AI-native, open-source scheduling platform",
+    title: `${BRAND.name} - booking`,
     description: DESCRIPTION,
     url: BRAND.url,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SKALLARS Law - the AI-native, open-source scheduling platform",
+    title: `${BRAND.name} - booking`,
     description: DESCRIPTION,
     creator: "@dayotter",
   },
@@ -65,13 +75,15 @@ export const metadata: Metadata = {
 };
 
 // Set the theme class before first paint to avoid a flash of the wrong theme.
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
+// The tenant's default is baked in: LAWOSS is a dark-first identity, and
+// defaulting it to light would flash the wrong world before the toggle runs.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'${TENANT.defaultTheme}';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${generalSans.variable} ${inter.variable} ${GeistMono.variable}`}
+      className={`${generalSans.variable} ${inter.variable} ${plexSans.variable} ${playfair.variable} ${GeistMono.variable}`}
       // Selects the tenant's palette block in globals.css. An attribute rather
       // than an inline style because inline styles cannot carry a light and a
       // dark palette at the same time.

@@ -195,13 +195,66 @@
   --color-success: #38f8b8;
 }
 
-/* LAWOSS - placeholder until the firm's design system lands. Deliberately its
-   own hue so a misrouted deployment is obvious rather than silently plausible. */
+/*
+ * LAWOSS - taken from lawoss.app: brass on deep navy, parchment text, a Playfair
+ * display face over IBM Plex Sans. Dark-first, so its light block is the
+ * derived one rather than the other way round.
+ */
 :root[data-tenant="lawoss"] {
-  --color-brand: #1d4ed8;
-  --color-accent: #1d4ed8;
-  --color-accent-hover: #1a43ba;
-  --color-accent-soft: #e0e8fb;
+  --color-bg: #f4f1ea;
+  --color-surface: #ffffff;
+  --color-surface-2: #e9e4da;
+  --color-elevated: #ffffff;
+  --color-border: #ddd6c8;
+  --color-border-strong: #c7bda9;
+  --color-text: #10171f;
+  --color-muted: #4a5560;
+  --color-faint: #75808c;
+  --color-brand: #8a6a1f;
+  --color-accent: #8a6a1f;
+  --color-accent-hover: #6f5518;
+  --color-accent-fg: #ffffff;
+  --color-accent-soft: #f0e7d2;
+  --color-mint: #0a6e56;
+  --color-amber: #94560c;
+  --color-coral: #b03e28;
+  --color-sky: #1d4ed8;
+  --color-danger: #b51b3e;
+  --color-danger-soft: #fbeaee;
+  --color-success: #0a6e56;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --shadow-card: 0 1px 2px rgba(16, 23, 31, 0.05), 0 2px 6px rgba(16, 23, 31, 0.06);
+  --shadow-raise: 0 8px 24px rgba(16, 23, 31, 0.1);
+  --shadow-pop: 0 24px 60px -12px rgba(16, 23, 31, 0.2);
+  --shadow-float: 0 40px 80px -24px rgba(10, 14, 20, 0.32);
+}
+
+:root[data-tenant="lawoss"].dark {
+  --color-bg: #0a0e14;
+  --color-surface: #10171f;
+  --color-surface-2: #141c26;
+  --color-elevated: #141c26;
+  --color-border: #222c38;
+  --color-border-strong: #33404f;
+  --color-text: #e9e4da;
+  --color-muted: #a8b0ba;
+  --color-faint: #8b95a2;
+  --color-brand: #c9a24a;
+  --color-accent: #c9a24a;
+  --color-accent-hover: #e3c46e;
+  /* White on the brass reads 2.40 - the dark ground is the only legible
+     foreground on a filled gold button. */
+  --color-accent-fg: #0a0e14;
+  --color-accent-soft: rgba(201, 162, 74, 0.16);
+  --color-mint: #38f8b8;
+  --color-amber: #f0ad4e;
+  --color-coral: #ff8266;
+  --color-sky: #60a5fa;
+  --color-danger: #fb7185;
+  --color-danger-soft: rgba(251, 113, 133, 0.12);
+  --color-success: #38f8b8;
 }
 
 @layer base {
