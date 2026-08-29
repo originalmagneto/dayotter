@@ -20,13 +20,6 @@ export default function GlobalError({ reset }: { error: Error; reset: () => void
           padding: 24,
         }}
       >
-        <img
-          src="/brand/illustrations/otter-focus.png"
-          alt=""
-          width={176}
-          height={176}
-          style={{ marginBottom: 24 }}
-        />
         <h1 style={{ fontSize: 30, margin: 0, fontWeight: 700 }}>Something washed out.</h1>
         <p style={{ color: "#6b6678", maxWidth: 360, marginTop: 10, lineHeight: 1.5 }}>
           A problem broke the whole page. Reload to get the otter back.

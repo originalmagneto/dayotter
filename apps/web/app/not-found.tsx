@@ -4,11 +4,6 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[var(--color-bg)] px-6 text-center">
-      <img
-        src="/brand/illustrations/otter-relax.png"
-        alt=""
-        className="mb-8 h-44 w-44 object-contain sm:h-52 sm:w-52"
-      />
       <p className="eyebrow">404</p>
       <h1 className="font-display mt-2 text-4xl tracking-tight sm:text-5xl">
         This page drifted off.

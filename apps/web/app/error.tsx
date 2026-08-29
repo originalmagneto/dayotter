@@ -17,11 +17,6 @@ export default function ErrorBoundary({
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[var(--color-bg)] px-6 text-center">
-      <img
-        src="/brand/illustrations/otter-focus.png"
-        alt=""
-        className="mb-8 h-44 w-44 object-contain sm:h-52 sm:w-52"
-      />
       <h1 className="font-display text-4xl tracking-tight sm:text-5xl">Something slipped.</h1>
       <p className="mt-3 max-w-sm leading-relaxed text-[var(--color-muted)]">
         An unexpected error washed up. The otter's on it - try again in a moment.

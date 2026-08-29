@@ -1,6 +1,7 @@
 "use client";
 
 import { AiAssistant } from "@/components/ai-assistant";
+import { BrandMark } from "@/components/brand-mark";
 import { OtterVoice } from "@/components/otter-voice";
 import type { Locale } from "@/lib/i18n";
 import { tOtter } from "@/lib/i18n/otter";
@@ -45,11 +46,7 @@ export function OtterLauncher() {
           className="group fixed bottom-24 right-4 z-40 flex items-center gap-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] py-1.5 pl-1.5 pr-2.5 shadow-[var(--shadow-raise)] transition-transform hover:-translate-y-0.5 lg:bottom-6 lg:right-6"
         >
           <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full ring-2 ring-[var(--color-accent)]">
-            <img
-              src="/brand/illustrations/otter-focus.png"
-              alt=""
-              className="h-full w-full object-cover"
-            />
+            <BrandMark size={22} className="text-[var(--color-accent)]" />
             <span className="absolute inset-0 animate-ping rounded-full ring-2 ring-[var(--color-accent)] opacity-20" />
           </span>
           <span className="pr-1 text-sm font-medium text-[var(--color-text)]">

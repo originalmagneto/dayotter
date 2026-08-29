@@ -2,28 +2,28 @@
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BellRing, CalendarCheck, Link2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 const SLIDES = [
   {
-    img: "/brand/illustrations/otter-plan.png",
+    icon: CalendarCheck,
     title: "Welcome to SKALLARS Law",
     body: "The calm home for your time - scheduling that respects every calendar you own.",
   },
   {
-    img: "/brand/illustrations/otter-agenda.png",
+    icon: Link2,
     title: "Share one link",
     body: "People pick a time you're actually free. No back-and-forth, no double-booking.",
   },
   {
-    img: "/brand/illustrations/otter-relax.png",
+    icon: ShieldCheck,
     title: "Protect your calm",
     body: "Buffers, focus blocks, and gentle reminders keep your day yours - not your calendar's.",
   },
   {
-    img: "/brand/illustrations/otter-remind.png",
+    icon: BellRing,
     title: "Never miss a beat",
     body: "Automatic reminders and your whole team's free time, together in one place.",
   },
@@ -37,7 +37,12 @@ export default function WelcomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[var(--color-bg)] px-6 py-10">
       <div className="flex w-full max-w-md flex-1 flex-col items-center justify-center text-center">
-        <img src={slide.img} alt="" className="mb-9 h-60 w-60 object-contain sm:h-64 sm:w-64" />
+        <span
+          aria-hidden
+          className="mb-9 flex h-32 w-32 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
+        >
+          <slide.icon size={48} strokeWidth={1.5} />
+        </span>
         <h1 className="font-display text-3xl tracking-tight sm:text-4xl">{slide.title}</h1>
         <p className="mt-3 max-w-sm leading-relaxed text-[var(--color-muted)]">{slide.body}</p>
       </div>
