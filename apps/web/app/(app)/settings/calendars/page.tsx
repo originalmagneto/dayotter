@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ZoomConnect } from "@/components/zoom-connect";
 import { getSession } from "@/lib/auth/session";
+import { providerConfigured } from "@/lib/calendar/providers";
 import { cn } from "@/lib/cn";
 import { zoomEnabled } from "@/lib/integrations/zoom";
 import { eq, getDb, schema } from "@dayotter/db";
@@ -141,7 +142,11 @@ export default async function CalendarsPage({
                   </span>
                   {p.name}
                 </span>
-                {p.available ? (
+                {p.available &&
+                (p.id === "google" || p.id === "microsoft") &&
+                !providerConfigured(p.id) ? (
+                  <span className="text-xs text-[var(--color-faint)]">Not configured</span>
+                ) : p.available ? (
                   // Plain <a>, NOT next/link: this is an API route that 302s to the
                   // provider's OAuth page. A <Link> makes Next RSC-prefetch/fetch it,
                   // which then hits the provider cross-origin and fails CORS. A full

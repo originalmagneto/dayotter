@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { getSession } from "@/lib/auth/session";
 import { createState } from "@/lib/calendar/oauth-state";
-import { providerConfig } from "@/lib/calendar/providers";
+import { providerConfig, providerConfigured } from "@/lib/calendar/providers";
 import { GoogleCalendarAdapter, MicrosoftCalendarAdapter } from "@dayotter/calendar";
 import { NextResponse } from "next/server";
 
@@ -18,6 +18,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ prov
   if (!session?.user?.id) {
     const signIn = new URL("/sign-in", request.url);
     return NextResponse.redirect(signIn);
+  }
+
+  // Without credentials the consent URL would carry an empty client_id and the
+  // provider would reject it with a generic authorization error. Say so here.
+  if (!providerConfigured(provider)) {
+    const back = new URL("/settings/calendars", request.url);
+    back.searchParams.set("error", `${provider} is not configured on this server`);
+    return NextResponse.redirect(back);
   }
 
   const state = createState({ userId: session.user.id, provider }, randomUUID());
