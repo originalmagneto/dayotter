@@ -1,3 +1,4 @@
+import { hostForTenant } from "@dayotter/core";
 import { and, asc, eq, getDb, gt, isNull, lt, schema } from "@dayotter/db";
 import {
   bookingFollowUp,
@@ -41,10 +42,20 @@ export function startRemindersWorker(): Worker<ReminderJob> {
 
       const booking = await db.query.bookings.findFirst({
         where: eq(schema.bookings.id, job.data.bookingId),
-        with: { attendees: true, host: true },
+        with: { attendees: true, host: true, organization: true },
       });
       if (!booking) return;
-      const appUrl = process.env.APP_URL ?? "http://localhost:3000";
+
+      // A job has no request, so the firm has to come from the booking itself.
+      // Organization slugs are the tenant ids, so the domain is a lookup; a slug
+      // that isn't one of ours keeps the old APP_URL behaviour rather than
+      // guessing. Without this a client of one firm gets a reminder linking to
+      // another firm's domain, where their booking isn't.
+      const tenantHost = hostForTenant(booking.organization?.slug);
+      const appUrl = tenantHost
+        ? `${new URL(process.env.APP_URL ?? "https://localhost").protocol}//${tenantHost}`
+        : (process.env.APP_URL ?? "http://localhost:3000");
+      const brandName = booking.organization?.name ?? undefined;
 
       // Host-authored workflow message - render the workflow's own template.
       // "reminder" (before_event) sends only for a still-confirmed booking;
@@ -219,6 +230,8 @@ export function startRemindersWorker(): Worker<ReminderJob> {
               location: booking.location ?? undefined,
               manageUrl: `${appUrl}/booking/${booking.uid}`,
               leadLabel: label,
+              locale: booking.locale,
+              brandName,
             }),
             to: a.email,
           }),

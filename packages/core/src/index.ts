@@ -27,6 +27,7 @@ export {
 export {
   TENANT_HOSTS,
   allTenantHosts,
+  hostForTenant,
   knownTenantHost,
   tenantOrigins,
 } from "./tenant-hosts";

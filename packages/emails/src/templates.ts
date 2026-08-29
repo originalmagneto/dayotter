@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { type EmailKey, formatShort, formatWhen, te } from "./i18n";
 
 export interface BookingEmailData {
   eventTitle: string;
@@ -14,6 +15,17 @@ export interface BookingEmailData {
   manageUrl: string;
   /** Optional host-written note shown on cancel/reschedule emails. */
   reason?: string | null;
+  /**
+   * The language the booker was using. Only the booker-facing lifecycle
+   * templates read it; host-facing mail stays English. Absent means English.
+   */
+  locale?: string;
+  /**
+   * The firm this mail is from, for the footer. One deployment serves several,
+   * so there is no correct default - when it is absent the line is left out
+   * rather than guessed.
+   */
+  brandName?: string;
 }
 
 interface Rendered {
@@ -47,38 +59,73 @@ function safeUrl(url: string): string {
   return /^https?:\/\//i.test(url) ? url : "#";
 }
 
-function shell(heading: string, lines: string[], cta?: { label: string; url: string }): string {
+/**
+ * `brand` names the firm the mail is from. It used to be a hardcoded firm name,
+ * which meant every firm on the deployment signed its client mail with one
+ * other firm's name. No default: a caller that doesn't know gets no footer,
+ * which is better than a wrong one.
+ */
+function shell(
+  heading: string,
+  lines: string[],
+  cta?: { label: string; url: string },
+  brand?: { name?: string; locale?: string },
+): string {
   const body = lines
     .map((l) => `<p style="margin:0 0 10px;color:#3a3f4b;font-size:14px;line-height:1.6">${l}</p>`)
     .join("");
   const button = cta
     ? `<a href="${esc(safeUrl(cta.url))}" style="display:inline-block;margin-top:12px;background:#4f46e5;color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:500">${esc(cta.label)}</a>`
     : "";
+  const footer = brand?.name
+    ? `<p style="margin:24px 0 0;color:#98a0ae;font-size:12px">${esc(te(brand.locale, "sentBy", { brand: brand.name }))}</p>`
+    : "";
   return `<div style="max-width:520px;margin:0 auto;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">
     <h2 style="font-size:18px;color:#0c0e14;margin:0 0 14px">${heading}</h2>
-    ${body}${button}
-    <p style="margin:24px 0 0;color:#98a0ae;font-size:12px">Sent by SKALLARS Law</p>
+    ${body}${button}${footer}
   </div>`;
 }
 
-export function bookingConfirmation(d: BookingEmailData): Rendered {
-  const when = fmt(d.start, d.timezone);
+/** Shorthand for the booker-facing templates, which all translate the same way. */
+function bookerShell(
+  d: BookingEmailData,
+  headingKey: EmailKey,
+  lines: string[],
+  cta?: { label: string; url: string },
+): string {
+  return shell(esc(te(d.locale, headingKey)), lines, cta, {
+    name: d.brandName,
+    locale: d.locale,
+  });
+}
+
+/** The date/time block every booker-facing template repeats. */
+function bookerWhen(d: BookingEmailData): { when: string; short: string; where: string } {
+  const when = formatWhen(d.start, d.timezone, d.locale ?? "en");
+  const short = formatShort(d.start, d.timezone, d.locale ?? "en");
   const where = d.meetingUrl
-    ? `Join: ${d.meetingUrl}`
+    ? `${te(d.locale, "join")}: ${d.meetingUrl}`
     : d.location
-      ? `Location: ${d.location}`
+      ? `${te(d.locale, "where")}: ${d.location}`
       : "";
+  return { when, short, where };
+}
+
+export function bookingConfirmation(d: BookingEmailData): Rendered {
+  const { when, short, where } = bookerWhen(d);
+  const withHost = te(d.locale, "withHost", { host: d.hostName });
   return {
-    subject: `Confirmed: ${d.eventTitle} - ${DateTime.fromJSDate(d.start).setZone(d.timezone).toFormat("LLL d, h:mm a")}`,
-    text: `Your booking is confirmed.\n\n${d.eventTitle}\nWith: ${d.hostName}\nWhen: ${when}\n${where}\n\nManage or cancel: ${d.manageUrl}`,
-    html: shell(
-      "Your booking is confirmed 🎉",
+    subject: te(d.locale, "confirmedSubject", { title: d.eventTitle, short }),
+    text: `${te(d.locale, "confirmedLead")}\n\n${d.eventTitle}\n${withHost}\n${when}\n${where}\n\n${te(d.locale, "manageLine", { url: d.manageUrl })}`,
+    html: bookerShell(
+      d,
+      "confirmedHeading",
       [
-        `<strong>${esc(d.eventTitle)}</strong> with ${esc(d.hostName)}`,
-        `🗓 ${when}`,
+        `<strong>${esc(d.eventTitle)}</strong> ${esc(withHost)}`,
+        `🗓 ${esc(when)}`,
         where ? `📍 ${esc(where)}` : "",
       ].filter(Boolean),
-      { label: "View booking", url: d.manageUrl },
+      { label: te(d.locale, "ctaView"), url: d.manageUrl },
     ),
   };
 }
@@ -128,16 +175,18 @@ export function guardrailAlert(d: GuardrailAlertData): Rendered {
 }
 
 export function bookingReminder(d: BookingEmailData & { leadLabel: string }): Rendered {
-  const when = fmt(d.start, d.timezone);
+  const { when, where } = bookerWhen(d);
+  const withHost = te(d.locale, "withHost", { host: d.hostName });
   return {
-    subject: `Reminder: ${d.eventTitle} ${d.leadLabel}`,
-    text: `Reminder - ${d.eventTitle} with ${d.hostName} is ${d.leadLabel}.\nWhen: ${when}\n${d.meetingUrl ? `Join: ${d.meetingUrl}` : ""}\n\nManage: ${d.manageUrl}`,
+    subject: te(d.locale, "reminderSubject", { title: d.eventTitle, lead: d.leadLabel }),
+    text: `${te(d.locale, "reminderLead", { lead: d.leadLabel })}\n\n${d.eventTitle}\n${withHost}\n${when}\n${where}\n\n${te(d.locale, "manageLine", { url: d.manageUrl })}`,
     html: shell(
-      `Reminder: your meeting is ${esc(d.leadLabel)}`,
-      [`<strong>${esc(d.eventTitle)}</strong> with ${esc(d.hostName)}`, `🗓 ${when}`],
+      esc(te(d.locale, "reminderHeading", { lead: d.leadLabel })),
+      [`<strong>${esc(d.eventTitle)}</strong> ${esc(withHost)}`, `🗓 ${esc(when)}`],
       d.meetingUrl
-        ? { label: "Join call", url: d.meetingUrl }
-        : { label: "View booking", url: d.manageUrl },
+        ? { label: te(d.locale, "join"), url: d.meetingUrl }
+        : { label: te(d.locale, "ctaView"), url: d.manageUrl },
+      { name: d.brandName, locale: d.locale },
     ),
   };
 }
@@ -174,25 +223,22 @@ export function bookingNoShowFollowUp(d: BookingEmailData): Rendered {
 }
 
 export function bookingRescheduled(d: BookingEmailData): Rendered {
-  const when = fmt(d.start, d.timezone);
-  const where = d.meetingUrl
-    ? `Join: ${d.meetingUrl}`
-    : d.location
-      ? `Location: ${d.location}`
-      : "";
-  const note = d.reason ? `Reason: ${d.reason}` : "";
+  const { when, short, where } = bookerWhen(d);
+  const withHost = te(d.locale, "withHost", { host: d.hostName });
+  const note = d.reason ? `${te(d.locale, "reason")}: ${d.reason}` : "";
   return {
-    subject: `Rescheduled: ${d.eventTitle} - ${DateTime.fromJSDate(d.start).setZone(d.timezone).toFormat("LLL d, h:mm a")}`,
-    text: `Your booking has been moved to a new time.\n\n${d.eventTitle} with ${d.hostName}\nNew time: ${when}\n${where}${note ? `\n\n${note}` : ""}\n\nManage: ${d.manageUrl}`,
-    html: shell(
-      "Your booking was rescheduled",
+    subject: te(d.locale, "rescheduledSubject", { title: d.eventTitle, short }),
+    text: `${te(d.locale, "rescheduledLead", { title: d.eventTitle })}\n\n${d.eventTitle}\n${withHost}\n${te(d.locale, "newTime")}: ${when}\n${where}${note ? `\n\n${note}` : ""}\n\n${te(d.locale, "manageLine", { url: d.manageUrl })}`,
+    html: bookerShell(
+      d,
+      "rescheduledHeading",
       [
-        `<strong>${esc(d.eventTitle)}</strong> with ${esc(d.hostName)} has a new time:`,
-        `🗓 ${when}`,
+        `<strong>${esc(d.eventTitle)}</strong> ${esc(withHost)}`,
+        `🗓 ${esc(te(d.locale, "newTime"))}: ${esc(when)}`,
         where ? `📍 ${esc(where)}` : "",
         note ? `💬 ${esc(note)}` : "",
       ].filter(Boolean),
-      { label: "View booking", url: d.manageUrl },
+      { label: te(d.locale, "ctaView"), url: d.manageUrl },
     ),
   };
 }
@@ -232,18 +278,20 @@ export function bookingMessage(d: BookingEmailData & { body: string }): Rendered
  * booking is held as `pending` - nothing is on anyone's calendar yet.
  */
 export function bookingRequested(d: BookingEmailData): Rendered {
-  const when = fmt(d.start, d.timezone);
+  const { when, short } = bookerWhen(d);
+  const withHost = te(d.locale, "withHost", { host: d.hostName });
   return {
-    subject: `Request sent: ${d.eventTitle} - ${DateTime.fromJSDate(d.start).setZone(d.timezone).toFormat("LLL d, h:mm a")}`,
-    text: `Thanks - your request has been sent.\n\n${d.eventTitle} with ${d.hostName}\nRequested: ${when}\n\n${d.hostName} will review it; you'll get a confirmation email the moment it's approved.\n\nView or withdraw: ${d.manageUrl}`,
-    html: shell(
-      "Your request has been sent ✋",
+    subject: te(d.locale, "requestedSubject", { title: d.eventTitle, short }),
+    text: `${te(d.locale, "requestedLead", { host: d.hostName })}\n\n${d.eventTitle}\n${withHost}\n${when}\n\n${te(d.locale, "manageLine", { url: d.manageUrl })}`,
+    html: bookerShell(
+      d,
+      "requestedHeading",
       [
-        `<strong>${esc(d.eventTitle)}</strong> with ${esc(d.hostName)}`,
-        `🗓 ${when}`,
-        `This event needs ${esc(d.hostName)}'s approval. We'll email you the moment it's confirmed - nothing is on the calendar yet.`,
+        `<strong>${esc(d.eventTitle)}</strong> ${esc(withHost)}`,
+        `🗓 ${esc(when)}`,
+        esc(te(d.locale, "requestedLead", { host: d.hostName })),
       ],
-      { label: "View request", url: d.manageUrl },
+      { label: te(d.locale, "ctaView"), url: d.manageUrl },
     ),
   };
 }
@@ -271,32 +319,37 @@ export function newBookingRequest(d: BookingEmailData): Rendered {
 
 /** Sent to the ATTENDEE when the host declines a pending request. */
 export function bookingDeclined(d: BookingEmailData): Rendered {
-  const note = d.reason ? `Reason: ${d.reason}` : "";
+  const { when } = bookerWhen(d);
+  const note = d.reason ? `${te(d.locale, "reason")}: ${d.reason}` : "";
   return {
-    subject: `Not confirmed: ${d.eventTitle}`,
-    text: `Unfortunately ${d.hostName} couldn't confirm your request for ${d.eventTitle} (${fmt(d.start, d.timezone)}).${note ? `\n\n${note}` : ""}\n\nYou're welcome to pick another time: ${d.manageUrl}`,
-    html: shell(
-      "Your request wasn't confirmed",
+    subject: te(d.locale, "declinedSubject", { title: d.eventTitle }),
+    text: `${te(d.locale, "declinedLead", { host: d.hostName })}\n\n${d.eventTitle}\n${when}${note ? `\n\n${note}` : ""}\n\n${te(d.locale, "manageLine", { url: d.manageUrl })}`,
+    html: bookerShell(
+      d,
+      "declinedHeading",
       [
-        `Unfortunately ${esc(d.hostName)} couldn't confirm <strong>${esc(d.eventTitle)}</strong>.`,
-        `Requested: ${fmt(d.start, d.timezone)}`,
+        esc(te(d.locale, "declinedLead", { host: d.hostName })),
+        `<strong>${esc(d.eventTitle)}</strong>`,
+        `🗓 ${esc(when)}`,
         note ? `💬 ${esc(note)}` : "",
       ].filter(Boolean),
-      { label: "Pick another time", url: d.manageUrl },
+      { label: te(d.locale, "ctaRebook"), url: d.manageUrl },
     ),
   };
 }
 
 export function bookingCancellation(d: BookingEmailData): Rendered {
-  const note = d.reason ? `Reason: ${d.reason}` : "";
+  const { when, short } = bookerWhen(d);
+  const note = d.reason ? `${te(d.locale, "reason")}: ${d.reason}` : "";
   return {
-    subject: `Cancelled: ${d.eventTitle} - ${DateTime.fromJSDate(d.start).setZone(d.timezone).toFormat("LLL d, h:mm a")}`,
-    text: `This booking has been cancelled.\n\n${d.eventTitle} with ${d.hostName}\nWas: ${fmt(d.start, d.timezone)}${note ? `\n\n${note}` : ""}`,
-    html: shell(
-      "Booking cancelled",
+    subject: te(d.locale, "cancelledSubject", { title: d.eventTitle, short }),
+    text: `${te(d.locale, "cancelledLead", { title: d.eventTitle, host: d.hostName })}\n\n${te(d.locale, "wasTime")}: ${when}${note ? `\n\n${note}` : ""}`,
+    html: bookerShell(
+      d,
+      "cancelledHeading",
       [
-        `<strong>${esc(d.eventTitle)}</strong> with ${esc(d.hostName)} has been cancelled.`,
-        `Was: ${fmt(d.start, d.timezone)}`,
+        esc(te(d.locale, "cancelledLead", { title: d.eventTitle, host: d.hostName })),
+        `${esc(te(d.locale, "wasTime"))}: ${esc(when)}`,
         note ? `💬 ${esc(note)}` : "",
       ].filter(Boolean),
     ),

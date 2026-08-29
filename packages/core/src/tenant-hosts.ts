@@ -60,3 +60,17 @@ export function knownTenantHost(host: string | null | undefined): string | null 
 export function tenantOrigins(): string[] {
   return allTenantHosts().flatMap((host) => [`https://${host}`, `http://${host}`]);
 }
+
+/**
+ * The canonical hostname for a tenant id, for code that has no request to read.
+ *
+ * Background jobs - a reminder sent hours later - still have to put the right
+ * domain in the link they mail out, and the only thing they hold is the
+ * booking's organization. Organization slugs are the tenant ids here, so the
+ * lookup is direct; a slug that isn't one returns null and the caller keeps its
+ * own fallback rather than guessing.
+ */
+export function hostForTenant(id: string | null | undefined): string | null {
+  if (!id) return null;
+  return TENANT_HOSTS[id]?.[0] ?? null;
+}

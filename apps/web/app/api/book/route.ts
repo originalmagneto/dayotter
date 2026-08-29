@@ -1,5 +1,6 @@
 import { BookingError, type CreateBookingInput, createBooking } from "@/lib/booking/create-booking";
 import { chargeFor } from "@/lib/booking/money";
+import { type Locale, SUPPORTED_LOCALES, resolveLocale } from "@/lib/i18n/booking";
 import { creditBalance } from "@/lib/packages/credits";
 import { hostDestinationAccount } from "@/lib/payments/connect";
 import { stashPendingBooking } from "@/lib/payments/pending";
@@ -23,6 +24,13 @@ const schema = z.object({
   /** Collective member-selection: chosen team host user ids (server re-validates). */
   selectedHostIds: z.array(z.string().uuid()).max(50).optional(),
   notes: z.string().max(2000).optional(),
+  /**
+   * The language the booker is using. Validated against the catalogue rather
+   * than trusted into the database, and only used to choose a message
+   * catalogue - never rendered. Falls back to Accept-Language when absent (an
+   * embed, or an older client).
+   */
+  locale: z.string().max(8).optional(),
   // Intake answers, keyed by question id. Bounded so an unauthenticated caller
   // can't persist a multi-MB blob into bookings.responses: at most 50 answers,
   // each a short string / boolean / small string[] (matches BookingQuestion types).
@@ -82,6 +90,14 @@ export async function POST(request: Request) {
     location: parsed.data.location ?? undefined,
     linkToken: parsed.data.linkToken,
     accessCode: parsed.data.accessCode,
+    // The client sends its active language (the picker's choice, which
+    // Accept-Language alone would miss). Anything we don't have a catalogue for
+    // resolves to what the browser asked for, then to English.
+    locale: resolveLocale(
+      SUPPORTED_LOCALES.includes(parsed.data.locale as Locale)
+        ? parsed.data.locale
+        : request.headers.get("accept-language"),
+    ),
   };
 
   // Paid event type → collect payment via Stripe Checkout first; the booking is

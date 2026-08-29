@@ -1,3 +1,4 @@
+import { bookingSender } from "@/lib/booking/sender";
 import { logger } from "@dayotter/core";
 import { and, eq, getDb, schema, sql } from "@dayotter/db";
 import { bookingDeclined, sendEmail } from "@dayotter/emails";
@@ -93,7 +94,7 @@ export async function approveBooking(uid: string, hostUserId: string): Promise<R
     attendee,
     guests,
     notes: booking.description,
-    appUrl: process.env.APP_URL ?? "http://localhost:3000",
+    ...(await bookingSender()),
   });
 
   logger.info("booking approved", { event: "booking_approved", bookingId: booking.id, uid });
@@ -126,7 +127,7 @@ export async function declineBooking(
     .returning({ id: schema.bookings.id });
   if (claimed.length === 0) return "not_pending";
 
-  const appUrl = process.env.APP_URL ?? "http://localhost:3000";
+  const { appUrl, brandName } = await bookingSender();
   try {
     await Promise.all(
       booking.attendees.map((a) =>
@@ -140,6 +141,8 @@ export async function declineBooking(
             attendeeName: a.name ?? a.email,
             manageUrl: `${appUrl}/booking/${uid}`,
             reason: reason ?? null,
+            locale: booking.locale,
+            brandName,
           }),
           to: a.email,
         }),
