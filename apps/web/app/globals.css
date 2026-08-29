@@ -129,6 +129,81 @@
   --shadow-float: 0 40px 90px -24px rgba(0, 0, 0, 0.75);
 }
 
+/*
+ * Per-tenant palettes.
+ *
+ * The `:root` block above is SKALLARS - the flagship - and each other firm
+ * overrides it whole. These are CSS blocks rather than inline custom properties
+ * on <html> for one reason: an inline style applies to both themes at once, so
+ * a tenant could never have a different light and dark palette. `data-tenant`
+ * is set on <html> at render, so only the running deployment's block matches.
+ */
+:root[data-tenant="hitl"] {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f5f5;
+  --color-elevated: #ffffff;
+  --color-border: #e5e5e5;
+  --color-border-strong: #d4d4d4;
+  --color-text: #171717;
+  --color-muted: #525252;
+  --color-faint: #737373;
+  --color-brand: #171717;
+  --color-accent: #171717;
+  --color-accent-hover: #000000;
+  --color-accent-fg: #ffffff;
+  --color-accent-soft: #ededed;
+  --color-mint: #0a6e56;
+  --color-amber: #94560c;
+  --color-coral: #b03e28;
+  --color-sky: #1d4ed8;
+  --color-danger: #b51b3e;
+  --color-danger-soft: #fbeaee;
+  --color-success: #0a6e56;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Neutral surfaces want a neutral shadow, not the SKALLARS aubergine. */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-raise: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-pop: 0 24px 60px -12px rgba(0, 0, 0, 0.18);
+  --shadow-float: 0 40px 80px -24px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-tenant="hitl"].dark {
+  --color-bg: #0a0a0a;
+  --color-surface: #171717;
+  --color-surface-2: #212121;
+  --color-elevated: #212121;
+  --color-border: #2e2e2e;
+  --color-border-strong: #404040;
+  --color-text: #fafafa;
+  --color-muted: #a3a3a3;
+  /* #737373 reads 3.78 on #171717 - below the floor. Lightened until it clears. */
+  --color-faint: #8a8a8a;
+  --color-brand: #fafafa;
+  --color-accent: #fafafa;
+  --color-accent-hover: #ffffff;
+  --color-accent-fg: #171717;
+  --color-accent-soft: rgba(250, 250, 250, 0.12);
+  --color-mint: #38f8b8;
+  --color-amber: #f0ad4e;
+  --color-coral: #ff8266;
+  --color-sky: #60a5fa;
+  --color-danger: #fb7185;
+  --color-danger-soft: rgba(251, 113, 133, 0.12);
+  --color-success: #38f8b8;
+}
+
+/* LAWOSS - placeholder until the firm's design system lands. Deliberately its
+   own hue so a misrouted deployment is obvious rather than silently plausible. */
+:root[data-tenant="lawoss"] {
+  --color-brand: #1d4ed8;
+  --color-accent: #1d4ed8;
+  --color-accent-hover: #1a43ba;
+  --color-accent-soft: #e0e8fb;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

@@ -19,12 +19,6 @@ export interface Tenant {
   /** Which lockup `<BrandLockup>` draws. */
   mark: "skallars" | "wordmark";
   /**
-   * Palette overrides, applied as inline CSS variables on <html> so every
-   * `var(--color-*)` descendant follows - the same mechanism the per-host
-   * booking-page branding already uses. Omitted keys fall through to globals.css.
-   */
-  tokens: Record<string, string>;
-  /**
    * Languages this firm offers its clients, in picker order.
    *
    * Deliberately narrower than SUPPORTED_LOCALES: offering a language on a
@@ -43,7 +37,6 @@ export const TENANTS: Record<string, Tenant> = {
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
     mark: "skallars",
-    tokens: {}, // globals.css is already the SKALLARS palette
     locales: ["sk", "en", "de", "zh"],
     locale: "sk",
   },
@@ -52,15 +45,6 @@ export const TENANTS: Record<string, Tenant> = {
     tagline: "Book a slot.",
     email: "marian.cuprik@icloud.com",
     mark: "wordmark",
-    // Placeholder until the real palette lands - deliberately distinct from
-    // SKALLARS so a misconfigured TENANT is obvious at a glance rather than
-    // silently serving one firm's identity under the other's domain.
-    tokens: {
-      "--color-brand": "#0f766e",
-      "--color-accent": "#0f766e",
-      "--color-accent-hover": "#115e56",
-      "--color-accent-soft": "#d9f2ee",
-    },
     locales: ["en", "sk"],
     locale: "en",
   },
@@ -69,13 +53,6 @@ export const TENANTS: Record<string, Tenant> = {
     tagline: "Book a slot.",
     email: "majo@lawoss.app",
     mark: "wordmark",
-    // Placeholder until the real palette lands.
-    tokens: {
-      "--color-brand": "#1d4ed8",
-      "--color-accent": "#1d4ed8",
-      "--color-accent-hover": "#1a43ba",
-      "--color-accent-soft": "#e0e8fb",
-    },
     locales: ["en", "sk"],
     locale: "en",
   },
