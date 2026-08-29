@@ -16,6 +16,7 @@ type Theme = "system" | "light" | "dark";
  *  translated; the rest of the dashboard is English for now (see #81). */
 const LOCALE_LABELS: Record<Locale, string> = {
   en: "English",
+  sk: "Slovenčina",
   es: "Español",
   fr: "Français",
   de: "Deutsch",
