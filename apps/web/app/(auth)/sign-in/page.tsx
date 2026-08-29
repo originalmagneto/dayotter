@@ -7,11 +7,13 @@ import { FormError } from "@/components/ui/form";
 import { Input, Label } from "@/components/ui/input";
 import { identify, track } from "@/lib/analytics";
 import { signIn, twoFactor } from "@/lib/auth/auth-client";
+import { useTenant } from "@/lib/brand/context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function SignInPage() {
+  const tenant = useTenant();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,7 +57,7 @@ export default function SignInPage() {
     <div>
       <h1 className="font-display text-3xl leading-tight tracking-[-0.01em]">Welcome back</h1>
       <p className="mt-2 text-sm text-[var(--color-muted)]">
-        Sign in to your SKALLARS Law account.
+        Sign in to your {tenant.name} account.
       </p>
 
       <div className="mt-7 space-y-3">
@@ -103,7 +105,7 @@ export default function SignInPage() {
       </form>
 
       <p className="mt-6 text-center text-sm text-[var(--color-muted)]">
-        New to SKALLARS Law?{" "}
+        New to {tenant.name}?{" "}
         <Link href="/sign-up" className="font-medium text-[var(--color-accent)] hover:underline">
           Create an account
         </Link>
