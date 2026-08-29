@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-29T01:30:00.000Z",
+  "title": "Design System: DayOtter",
+  "extensions": {
+    "colorMeta": {
+      "otter-violet": {
+        "role": "primary",
+        "displayName": "Otter Violet",
+        "canonical": "oklch(52.6% 0.231 285.5)",
+        "tonalRamp": [
+          "oklch(15% 0.183 285.5)",
+          "oklch(26% 0.197 285.5)",
+          "oklch(37% 0.211 285.5)",
+          "oklch(48% 0.225 285.5)",
+          "oklch(60% 0.221 285.5)",
+          "oklch(71% 0.207 285.5)",
+          "oklch(83% 0.192 285.5)",
+          "oklch(95% 0.177 285.5)"
+        ]
+      },
+      "otter-violet-deep": {
+        "role": "primary",
+        "displayName": "Otter Violet Deep",
+        "canonical": "oklch(47.9% 0.229 283.5)",
+        "tonalRamp": [
+          "oklch(15% 0.188 283.5)",
+          "oklch(26% 0.201 283.5)",
+          "oklch(37% 0.215 283.5)",
+          "oklch(48% 0.229 283.5)",
+          "oklch(60% 0.214 283.5)",
+          "oklch(71% 0.200 283.5)",
+          "oklch(83% 0.185 283.5)",
+          "oklch(95% 0.170 283.5)"
+        ]
+      },
+      "violet-mist": {
+        "role": "primary",
+        "displayName": "Violet Mist",
+        "canonical": "oklch(94.7% 0.026 297.9)",
+        "tonalRamp": [
+          "oklch(15% 0.015 297.9)",
+          "oklch(26% 0.016 297.9)",
+          "oklch(37% 0.018 297.9)",
+          "oklch(48% 0.019 297.9)",
+          "oklch(60% 0.021 297.9)",
+          "oklch(71% 0.023 297.9)",
+          "oklch(83% 0.024 297.9)",
+          "oklch(95% 0.026 297.9)"
+        ]
+      },
+      "warm-ivory": {
+        "role": "neutral",
+        "displayName": "Warm Ivory",
+        "canonical": "oklch(98.2% 0.004 91.4)",
+        "tonalRamp": [
+          "oklch(15% 0.002 91.4)",
+          "oklch(26% 0.002 91.4)",
+          "oklch(37% 0.003 91.4)",
+          "oklch(48% 0.003 91.4)",
+          "oklch(60% 0.003 91.4)",
+          "oklch(71% 0.003 91.4)",
+          "oklch(83% 0.004 91.4)",
+          "oklch(95% 0.004 91.4)"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(60% 0.000 89.9)",
+          "oklch(71% 0.000 89.9)",
+          "oklch(83% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "cool-recess": {
+        "role": "neutral",
+        "displayName": "Cool Recess",
+        "canonical": "oklch(96.4% 0.008 293.9)",
+        "tonalRamp": [
+          "oklch(15% 0.004 293.9)",
+          "oklch(26% 0.005 293.9)",
+          "oklch(37% 0.005 293.9)",
+          "oklch(48% 0.006 293.9)",
+          "oklch(60% 0.006 293.9)",
+          "oklch(71% 0.007 293.9)",
+          "oklch(83% 0.007 293.9)",
+          "oklch(95% 0.008 293.9)"
+        ]
+      },
+      "rich-ink": {
+        "role": "neutral",
+        "displayName": "Rich Ink",
+        "canonical": "oklch(21.1% 0.018 295.0)",
+        "tonalRamp": [
+          "oklch(15% 0.017 295.0)",
+          "oklch(26% 0.017 295.0)",
+          "oklch(37% 0.016 295.0)",
+          "oklch(48% 0.015 295.0)",
+          "oklch(60% 0.014 295.0)",
+          "oklch(71% 0.013 295.0)",
+          "oklch(83% 0.012 295.0)",
+          "oklch(95% 0.011 295.0)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(43.4% 0.012 72.5)",
+        "tonalRamp": [
+          "oklch(15% 0.010 72.5)",
+          "oklch(26% 0.011 72.5)",
+          "oklch(37% 0.011 72.5)",
+          "oklch(48% 0.011 72.5)",
+          "oklch(60% 0.011 72.5)",
+          "oklch(71% 0.010 72.5)",
+          "oklch(83% 0.009 72.5)",
+          "oklch(95% 0.008 72.5)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "oklch(59.2% 0.018 82.8)",
+        "tonalRamp": [
+          "oklch(15% 0.014 82.8)",
+          "oklch(26% 0.015 82.8)",
+          "oklch(37% 0.016 82.8)",
+          "oklch(48% 0.017 82.8)",
+          "oklch(60% 0.018 82.8)",
+          "oklch(71% 0.017 82.8)",
+          "oklch(83% 0.016 82.8)",
+          "oklch(95% 0.014 82.8)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(92.8% 0.012 291.3)",
+        "tonalRamp": [
+          "oklch(15% 0.007 291.3)",
+          "oklch(26% 0.008 291.3)",
+          "oklch(37% 0.008 291.3)",
+          "oklch(48% 0.009 291.3)",
+          "oklch(60% 0.010 291.3)",
+          "oklch(71% 0.011 291.3)",
+          "oklch(83% 0.011 291.3)",
+          "oklch(95% 0.012 291.3)"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "oklch(87.8% 0.016 293.7)",
+        "tonalRamp": [
+          "oklch(15% 0.010 293.7)",
+          "oklch(26% 0.011 293.7)",
+          "oklch(37% 0.012 293.7)",
+          "oklch(48% 0.013 293.7)",
+          "oklch(60% 0.014 293.7)",
+          "oklch(71% 0.015 293.7)",
+          "oklch(83% 0.016 293.7)",
+          "oklch(95% 0.016 293.7)"
+        ]
+      },
+      "mint": {
+        "role": "tertiary",
+        "displayName": "Mint",
+        "canonical": "oklch(63.2% 0.116 174.5)",
+        "tonalRamp": [
+          "oklch(15% 0.085 174.5)",
+          "oklch(26% 0.092 174.5)",
+          "oklch(37% 0.099 174.5)",
+          "oklch(48% 0.106 174.5)",
+          "oklch(60% 0.114 174.5)",
+          "oklch(71% 0.111 174.5)",
+          "oklch(83% 0.103 174.5)",
+          "oklch(95% 0.095 174.5)"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber",
+        "canonical": "oklch(69.6% 0.142 64.7)",
+        "tonalRamp": [
+          "oklch(15% 0.100 64.7)",
+          "oklch(26% 0.108 64.7)",
+          "oklch(37% 0.117 64.7)",
+          "oklch(48% 0.125 64.7)",
+          "oklch(60% 0.135 64.7)",
+          "oklch(71% 0.141 64.7)",
+          "oklch(83% 0.132 64.7)",
+          "oklch(95% 0.123 64.7)"
+        ]
+      },
+      "coral": {
+        "role": "tertiary",
+        "displayName": "Coral",
+        "canonical": "oklch(68.3% 0.169 32.1)",
+        "tonalRamp": [
+          "oklch(15% 0.120 32.1)",
+          "oklch(26% 0.130 32.1)",
+          "oklch(37% 0.140 32.1)",
+          "oklch(48% 0.150 32.1)",
+          "oklch(60% 0.162 32.1)",
+          "oklch(71% 0.167 32.1)",
+          "oklch(83% 0.156 32.1)",
+          "oklch(95% 0.144 32.1)"
+        ]
+      },
+      "sky": {
+        "role": "tertiary",
+        "displayName": "Sky",
+        "canonical": "oklch(62.3% 0.188 259.8)",
+        "tonalRamp": [
+          "oklch(15% 0.139 259.8)",
+          "oklch(26% 0.150 259.8)",
+          "oklch(37% 0.162 259.8)",
+          "oklch(48% 0.173 259.8)",
+          "oklch(60% 0.186 259.8)",
+          "oklch(71% 0.179 259.8)",
+          "oklch(83% 0.167 259.8)",
+          "oklch(95% 0.154 259.8)"
+        ]
+      },
+      "rose-danger": {
+        "role": "tertiary",
+        "displayName": "Rose Danger",
+        "canonical": "oklch(58.6% 0.222 17.6)",
+        "tonalRamp": [
+          "oklch(15% 0.169 17.6)",
+          "oklch(26% 0.182 17.6)",
+          "oklch(37% 0.196 17.6)",
+          "oklch(48% 0.209 17.6)",
+          "oklch(60% 0.220 17.6)",
+          "oklch(71% 0.207 17.6)",
+          "oklch(83% 0.192 17.6)",
+          "oklch(95% 0.178 17.6)"
+        ]
+      }
+    },
+    "darkPalette": {
+      "note": "Class-based dark theme (.dark on <html>), a genuine second palette rather than an inversion. Keys match the frontmatter colour tokens.",
+      "otter-violet": "#9079f8",
+      "otter-violet-deep": "#a390fa",
+      "violet-mist": "rgba(144, 121, 248, 0.16)",
+      "warm-ivory": "#0b0a10",
+      "paper-white": "#141219",
+      "cool-recess": "#1c1a23",
+      "rich-ink": "#edeae3",
+      "ink-muted": "#9d988f",
+      "ink-faint": "#6b6678",
+      "hairline": "#262330",
+      "hairline-strong": "#332f3e",
+      "mint": "#2dd4a7",
+      "amber": "#f0ad4e",
+      "coral": "#ff8266",
+      "sky": "#60a5fa",
+      "rose-danger": "#fb7185",
+      "rose-danger-soft": "rgba(251, 113, 133, 0.12)"
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Marketing hero headlines only. One per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "App page titles; owned by the PageHeader component."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section and card headings. Card headers run smaller at 15px/600."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The app default. Marketing lead paragraphs step up to 18-20px; prose measure 65-75ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "The .eyebrow class - Geist Mono, uppercase, wide tracking. Metadata and section kickers only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 1px 2px rgba(40, 33, 20, 0.04), 0 2px 6px rgba(40, 33, 20, 0.05)",
+        "purpose": "Resting state of a card or primary button. Barely there by design."
+      },
+      {
+        "name": "raise",
+        "value": "0 8px 24px rgba(40, 33, 20, 0.08)",
+        "purpose": "Hover on an interactive card."
+      },
+      {
+        "name": "pop",
+        "value": "0 24px 60px -12px rgba(40, 33, 20, 0.18)",
+        "purpose": "Popovers, menus, dropdowns."
+      },
+      {
+        "name": "float",
+        "value": "0 40px 80px -24px rgba(30, 24, 60, 0.28)",
+        "purpose": "Modals and the largest floating layers; note the violet drift in the tint."
+      },
+      {
+        "name": "card-dark",
+        "value": "0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3)",
+        "purpose": "Dark-theme resting shadow. Pure black - a warm tint on a near-black ground reads as smudge."
+      },
+      {
+        "name": "float-dark",
+        "value": "0 40px 90px -24px rgba(0, 0, 0, 0.75)",
+        "purpose": "Dark-theme floating layers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-exit",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The system easing - exponential ease-out. Dialog entrance and every marketing reveal."
+      },
+      {
+        "name": "duration-control",
+        "value": "150ms",
+        "purpose": "Button and control state changes."
+      },
+      {
+        "name": "duration-lift",
+        "value": "300ms",
+        "purpose": "Interactive card hover lift."
+      },
+      {
+        "name": "duration-theme",
+        "value": "220ms",
+        "purpose": "Theme cross-fade, scoped to .theme-transition on <html>. Never a global transition."
+      },
+      {
+        "name": "dialog-in",
+        "value": "opacity 0 -> 1, translateY(6px) -> 0, scale(0.98) -> 1 over 160ms",
+        "purpose": "Dialog and popover entrance."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0 -> 1, translateY(24px) -> 0 over 700ms, viewport margin -80px, once",
+        "purpose": "Marketing scroll reveal; staggered children at 80ms. Bails to static under prefers-reduced-motion."
+      },
+      {
+        "name": "marquee",
+        "value": "translateX(0) -> translateX(-50%) over 32s linear infinite",
+        "purpose": "Logo strip."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "slot-grid-3col",
+        "value": "@container 300px"
+      },
+      {
+        "name": "slot-grid-4col",
+        "value": "@container 460px"
+      }
+    ],
+    "browserSurfaces": [
+      {
+        "name": "focus-ring",
+        "value": "outline-style: solid; outline-width: 2px; outline-color: var(--color-accent); outline-offset: 2px",
+        "purpose": "Global keyboard focus. Longhands deliberately - through the outline shorthand the accent is dropped and the ring falls back to currentColor."
+      },
+      {
+        "name": "selection",
+        "value": "background: color-mix(in srgb, var(--color-accent) 22%, transparent)",
+        "purpose": "Text selection."
+      },
+      {
+        "name": "caret",
+        "value": "caret-color: var(--color-accent)",
+        "purpose": "Text cursor in every field."
+      },
+      {
+        "name": "scrollbar",
+        "value": "scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent",
+        "purpose": "Themed scrollbars."
+      },
+      {
+        "name": "underline",
+        "value": "text-underline-offset: 0.18em; text-decoration-thickness: from-font",
+        "purpose": "Link underlines."
+      },
+      {
+        "name": "grain",
+        "value": "fractalNoise baseFrequency 0.85, 2 octaves, opacity 0.4, mix-blend-mode: soft-light",
+        "purpose": "Fixed film-grain overlay on marketing and app shells - the texture that keeps flat ivory from reading as dead."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action on a screen that matters. The only button carrying a shadow.",
+      "html": "<button class=\"ds-btn-primary\">Confirm booking</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all 150ms;}.ds-btn-primary:active{transform:scale(.98);}.ds-btn-primary:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}.ds-btn-primary{background:var(--color-accent);color:var(--color-accent-fg);border:none;box-shadow:var(--shadow-card);}.ds-btn-primary:hover{background:var(--color-accent-hover);}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The secondary path. Paper-white on the ivory ground, filling to the recessed tone on hover.",
+      "html": "<button class=\"ds-btn-outline\">See how it works</button>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all 150ms;}.ds-btn-outline:active{transform:scale(.98);}.ds-btn-outline:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}.ds-btn-outline{background:var(--color-surface);color:var(--color-text);border:1px solid var(--color-border-strong);}.ds-btn-outline:hover{background:var(--color-surface-2);}"
+    },
+    {
+      "name": "Danger Soft Button",
+      "kind": "button",
+      "refersTo": "button-danger-soft",
+      "description": "A quiet destructive action that leads to a confirm step. Solid-tinted rather than ghost, because a muted treatment washes out on the dark ground.",
+      "html": "<button class=\"ds-btn-danger-soft\">Cancel booking</button>",
+      "css": ".ds-btn-danger-soft{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:var(--radius-md);font-family:var(--font-sans);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all 150ms;}.ds-btn-danger-soft:active{transform:scale(.98);}.ds-btn-danger-soft:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}.ds-btn-danger-soft{background:var(--color-danger-soft);color:var(--color-danger);border:1px solid color-mix(in srgb, var(--color-danger) 30%, transparent);}.ds-btn-danger-soft:hover{background:var(--color-danger);color:#fff;}"
+    },
+    {
+      "name": "Card (interactive)",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The app's surface container. Flat at rest; lifts 2px into the raise shadow on hover only when marked interactive.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-header\"><h2 class=\"ds-card-title\">Intro call</h2><p class=\"ds-card-desc\">30 minutes · Google Meet</p></div><div class=\"ds-card-body\">A short call to see whether we should work together.</div></div>",
+      "css": ".ds-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);font-family:var(--font-sans);color:var(--color-text);max-width:360px;transition:all 300ms;}.ds-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-raise);}.ds-card-header{padding:16px 20px;border-bottom:1px solid var(--color-border);}.ds-card-title{margin:0;font-size:15px;font-weight:600;}.ds-card-desc{margin:2px 0 0;font-size:14px;color:var(--color-muted);font-variant-numeric:tabular-nums;}.ds-card-body{padding:16px 20px;font-size:14px;line-height:1.6;color:var(--color-muted);}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Filled with the ivory ground rather than white, so a field reads as a well cut into the card instead of another raised surface.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-i1\">Your name</label><input class=\"ds-input\" id=\"ds-i1\" placeholder=\"Jane Kovacova\"></div>",
+      "css": ".ds-field{font-family:var(--font-sans);max-width:320px;}.ds-label{display:block;margin-bottom:6px;font-size:14px;font-weight:500;color:var(--color-text);}.ds-input{height:40px;width:100%;padding:0 12px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-bg);color:var(--color-text);font-family:inherit;font-size:14px;caret-color:var(--color-accent);}.ds-input::placeholder{color:var(--color-faint);}.ds-input:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}"
+    },
+    {
+      "name": "Status Badges",
+      "kind": "chip",
+      "refersTo": "badge-neutral",
+      "description": "One construction, five meanings: the hue at 15% opacity as the field, the hue itself as the text. Neutral swaps in the recessed tone.",
+      "html": "<span class=\"ds-badge ds-badge-success\">Confirmed</span> <span class=\"ds-badge ds-badge-warning\">Pending</span> <span class=\"ds-badge ds-badge-accent\">Recommended</span> <span class=\"ds-badge ds-badge-neutral\">Draft</span>",
+      "css": ".ds-badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:9999px;font-family:var(--font-sans);font-size:12px;font-weight:500;}.ds-badge-success{background:color-mix(in srgb, var(--color-success) 15%, transparent);color:var(--color-success);}.ds-badge-warning{background:color-mix(in srgb, var(--color-amber) 15%, transparent);color:var(--color-amber);}.ds-badge-accent{background:var(--color-accent-soft);color:var(--color-accent);}.ds-badge-neutral{background:var(--color-surface-2);color:var(--color-muted);}"
+    },
+    {
+      "name": "Sidebar Nav Item",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "The active item is marked by a 3px accent bar pinned to the rail's left edge - a pointer, not a filled row.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-item-active\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg>Bookings</a><a class=\"ds-nav-item\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/></svg>Availability</a></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;gap:2px;font-family:var(--font-sans);width:200px;}.ds-nav-item{position:relative;display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-md);font-size:14px;color:var(--color-muted);text-decoration:none;transition:color 150ms, background-color 150ms;}.ds-nav-item:hover{color:var(--color-text);background:var(--color-surface-2);}.ds-nav-item:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}.ds-nav-item-active{color:var(--color-text);font-weight:500;}.ds-nav-item-active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:0 9999px 9999px 0;background:var(--color-accent);}"
+    },
+    {
+      "name": "Time Slot Grid",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The product's signature. Tabular figures so the columns align, an accent outline plus a sparkle for AI-recommended times, and a struck-through faint state for slots that clash with the booker's own calendar.",
+      "html": "<div class=\"ds-slots\"><button class=\"ds-slot\">9:00 AM</button><button class=\"ds-slot\">9:30 AM</button><button class=\"ds-slot ds-slot-rec\"><svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.9 4.2 8.5 8.5 4.2 9.9l4.3 1.4 1.4 4.3 1.4-4.3 4.3-1.4-4.3-1.4zM18 14l-.8 2.2-2.2.8 2.2.8.8 2.2.8-2.2 2.2-.8-2.2-.8z\"/></svg>10:30 AM</button><button class=\"ds-slot\">11:00 AM</button><button class=\"ds-slot\">11:30 AM</button><button class=\"ds-slot ds-slot-busy\">12:00 PM</button></div>",
+      "css": ".ds-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:var(--font-sans);font-variant-numeric:tabular-nums;max-width:340px;}.ds-slot{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:10px 0;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:transparent;color:var(--color-text);font-family:inherit;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;cursor:pointer;transition:border-color 150ms, color 150ms;}.ds-slot:hover{border-color:var(--color-accent);color:var(--color-accent);}.ds-slot:focus-visible{outline-style:solid;outline-width:2px;outline-color:var(--color-accent);outline-offset:2px;}.ds-slot-rec{border-color:color-mix(in srgb, var(--color-accent) 50%, transparent);color:var(--color-accent);}.ds-slot-busy{border-color:var(--color-border);color:var(--color-faint);text-decoration:line-through;text-decoration-color:var(--color-faint);cursor:not-allowed;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Calendar",
+    "overview": "DayOtter is a scheduling product that refuses to look like scheduling software. The ground is warm ivory rather than the cold grey-white of enterprise SaaS, the text is a near-black that leans warm rather than a flat neutral, and exactly one chromatic voice - otter violet - carries every action worth taking. The result reads closer to a well-set printed agenda than to a database with a calendar view bolted on.\n\nThe \"living\" half is the counterweight. A calendar is not a static document: times arrive, days fill, slots disappear while you look at them. So the system stays quiet at rest and reserves its energy for state. Surfaces sit flat until you touch them, motion exists only where something genuinely changed, and the accent appears sparingly enough that when it does appear you know it means this one.\n\nDensity is generous rather than compressed. This is a product people open to make a decision - pick a time, approve a booking, protect an afternoon - not a console they stare at all day. Whitespace is the default and information is grouped tightly inside it, so a screen reads as a small number of decisions rather than a wall of rows.",
+    "keyCharacteristics": [
+      "Warm ivory ground (#faf9f6), never a cold or pure-white page",
+      "One accent voice - otter violet - for actions, selection, and focus; nothing else",
+      "One grotesque (Geist) doing both display and body; Geist Mono only for labels",
+      "Flat at rest, lifted on state",
+      "Tabular figures wherever a time, date, duration, or count appears",
+      "A class-based dark theme that is a genuine second palette, not an inversion"
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Otter violet is the only chromatic accent in the interface chrome. If a screen needs a second accent to make sense, the hierarchy is wrong, not the palette. The event hues are exempt because they encode data, not emphasis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never-White-Ground Rule",
+        "body": "The page is #faf9f6 and raised surfaces are #ffffff. Inverting that - a white page with grey cards - collapses the elevation model and erases the system's warmth in one edit.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Line Rule",
+        "body": "There are exactly two border weights. hairline divides content inside a surface; hairline-strong outlines something you can interact with. A third weight, or a coloured border used as decoration, is drift.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Geist Sans does display and body. A serif display face was deliberately removed from this system once already; reintroducing one is a regression, not a refresh.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every time, date, duration, count, and price renders with tabular-nums. The app shell sets it once at the root rather than leaving each component to remember. In a product whose substance is a column of times, proportional figures are a visible defect.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-At-Rest Rule",
+        "body": "Surfaces are flat until something happens to them. Elevation is a response - hover, focus, overlay - not a property a component owns.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Scale-Or-Nothing Rule",
+        "body": "Radii come from the scale. rounded-[12px] and its relatives are drift - the exception is a literal object being drawn (a phone bezel at 46px, a 3px calendar tick), where the number describes a real thing rather than a UI surface.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do style through the CSS variables (var(--color-surface), var(--color-muted), var(--color-accent)). Every colour in the system has a token; a literal hex in a component is unreachable by the dark theme.",
+      "Do reach for Card / CardHeader / CardBody for any app surface, so elevation and internal rhythm stay consistent.",
+      "Do pick an existing width tier when adding a page. Landing, Browse, Read, or Form - matching the page's type is what makes navigation feel smooth.",
+      "Do render every time, date, duration, and count with tabular figures.",
+      "Do keep elevation a response to state, not a property of a component.",
+      "Do give every scroll region that clips content a trailing fade, so a half-visible row reads as \"more\" rather than as a crop."
+    ],
+    "donts": [
+      "Don't put a coloured border-left or border-right above 1px on a card, list item, callout, or alert. It is the most recognisable tell of generated UI, and this system has a real accent-marker pattern already - the 3px nav pointer pinned to a container edge, not a stripe down the side of content.",
+      "Don't introduce a serif or a second display face. Geist Sans does both jobs; a serif was deliberately removed from this system once already.",
+      "Don't write arbitrary radii or type sizes (rounded-[12px], text-[15px]) for UI surfaces. Use the scale. The exception is a literal object being drawn - a device bezel, a calendar tick - where the number describes a real thing.",
+      "Don't use gradient text, or glass and blur as decoration. Emphasis comes from weight and size; the one backdrop-blur in the system sits on a pill that genuinely overlaps scrolling content.",
+      "Don't add a transition to body * or any global selector. It delays every hover, focus, and selection in the product. Theme changes get a scoped 220ms class; everything else declares its own.",
+      "Don't ship a loading state that is smaller than the content it will become. A skeleton holds the footprint; a line of text lets the page jump under the cursor.",
+      "Don't animate without honouring prefers-reduced-motion - especially anything that loops."
+    ]
+  }
+}
