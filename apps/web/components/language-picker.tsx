@@ -1,6 +1,7 @@
 "use client";
 
-import { LOCALE_LABELS, type Locale, SUPPORTED_LOCALES } from "@/lib/i18n";
+import { TENANT } from "@/lib/brand/tenants";
+import { LOCALE_LABELS, type Locale } from "@/lib/i18n";
 import { useLocaleContext, useSetLocale } from "@/lib/i18n/locale-provider";
 import { Globe } from "lucide-react";
 
@@ -21,7 +22,7 @@ export function LanguagePicker() {
         onChange={(e) => setLocale(e.target.value as Locale)}
         className="cursor-pointer rounded-md border border-[var(--color-border)] bg-transparent py-1 pr-6 pl-2 text-xs text-[var(--color-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
       >
-        {SUPPORTED_LOCALES.map((l) => (
+        {TENANT.locales.map((l) => (
           <option key={l} value={l}>
             {LOCALE_LABELS[l]}
           </option>

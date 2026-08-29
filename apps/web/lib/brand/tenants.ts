@@ -1,3 +1,4 @@
+import type { Locale } from "@/lib/i18n";
 /**
  * Tenant identities for a shared codebase.
  *
@@ -23,8 +24,17 @@ export interface Tenant {
    * booking-page branding already uses. Omitted keys fall through to globals.css.
    */
   tokens: Record<string, string>;
-  /** Default booking-surface locale for this tenant's clients. */
-  locale: "sk" | "en";
+  /**
+   * Languages this firm offers its clients, in picker order.
+   *
+   * Deliberately narrower than SUPPORTED_LOCALES: offering a language on a
+   * booking page is a promise that the firm can act in it. SKALLARS mirrors the
+   * set on skallars.com - SK, EN, DE, CN - rather than every catalogue that
+   * happens to ship with the app.
+   */
+  locales: readonly Locale[];
+  /** Falls back to the first entry in `locales`. */
+  locale: Locale;
 }
 
 export const TENANTS: Record<string, Tenant> = {
@@ -34,6 +44,7 @@ export const TENANTS: Record<string, Tenant> = {
     email: "info@skallars.com",
     mark: "skallars",
     tokens: {}, // globals.css is already the SKALLARS palette
+    locales: ["sk", "en", "de", "zh"],
     locale: "sk",
   },
   hitl: {
@@ -50,6 +61,7 @@ export const TENANTS: Record<string, Tenant> = {
       "--color-accent-hover": "#115e56",
       "--color-accent-soft": "#d9f2ee",
     },
+    locales: ["en", "sk"],
     locale: "en",
   },
   lawoss: {
@@ -64,6 +76,7 @@ export const TENANTS: Record<string, Tenant> = {
       "--color-accent-hover": "#1a43ba",
       "--color-accent-soft": "#e0e8fb",
     },
+    locales: ["en", "sk"],
     locale: "en",
   },
 };

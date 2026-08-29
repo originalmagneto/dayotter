@@ -17,6 +17,7 @@ type Theme = "system" | "light" | "dark";
 const LOCALE_LABELS: Record<Locale, string> = {
   en: "English",
   sk: "Slovenčina",
+  zh: "中文",
   es: "Español",
   fr: "Français",
   de: "Deutsch",
