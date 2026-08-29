@@ -1,6 +1,7 @@
 import { isCloud } from "@/lib/billing/edition";
 import { primaryOrg } from "@/lib/billing/entitlements";
 import { seatCount } from "@/lib/billing/subscription";
+import { getTenant } from "@/lib/brand/server";
 import { createSubscriptionCheckout, subscriptionsEnabled } from "@/lib/payments/stripe";
 import { jsonError, withUser } from "@/lib/server/http";
 import { logger } from "@dayotter/core";
@@ -11,7 +12,8 @@ export const dynamic = "force-dynamic";
 
 /** Start a Pro subscription checkout for the caller's org (owner/admin only). */
 export const POST = withUser(async (u) => {
-  if (!isCloud) return jsonError("Billing is only available on SKALLARS Law Cloud.", 400);
+  const tenant = await getTenant();
+  if (!isCloud) return jsonError(`Billing is only available on ${tenant.name} Cloud.`, 400);
   if (!subscriptionsEnabled) return jsonError("Billing is not configured.", 400);
 
   const org = await primaryOrg(u.id);

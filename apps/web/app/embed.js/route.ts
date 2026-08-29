@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 /**
- * The SKALLARS Law embed SDK - a tiny, dependency-free script sites drop in to embed
+ * The booking embed SDK - a tiny, dependency-free script sites drop in to embed
  * a booking page. Two modes:
  *
  *   Inline:  <div data-dayotter-embed data-url="/ada/intro" data-height="720"></div>

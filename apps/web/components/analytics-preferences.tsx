@@ -7,6 +7,7 @@ import {
   configuredProviders,
   setAnalyticsEnabled,
 } from "@/lib/analytics";
+import { useTenant } from "@/lib/brand/context";
 import { cn } from "@/lib/cn";
 import { useEffect, useState } from "react";
 
@@ -40,6 +41,7 @@ function Switch({ on, onClick }: { on: boolean; onClick: () => void }) {
  * State lives in localStorage (see lib/analytics), so it's read after mount.
  */
 export function AnalyticsPreferences() {
+  const tenant = useTenant();
   const [enabled, setEnabled] = useState(true);
   useEffect(() => setEnabled(!analyticsOptedOut()), []);
 
@@ -53,7 +55,7 @@ export function AnalyticsPreferences() {
     <Card className="mt-6">
       <CardHeader
         title="Analytics & privacy"
-        description="Anonymous product usage that helps improve SKALLARS Law."
+        description={`Anonymous product usage that helps improve ${tenant.name}.`}
       />
       <CardBody>
         {analyticsConfigured ? (
@@ -71,7 +73,7 @@ export function AnalyticsPreferences() {
           </div>
         ) : (
           <p className="text-sm text-[var(--color-muted)]">
-            Analytics isn't enabled on this SKALLARS Law instance - nothing is being collected. A
+            Analytics isn't enabled on this ${tenant.name} instance - nothing is being collected. A
             deployer can turn it on by setting a provider key (Mixpanel, Google Analytics, or
             PostHog).
           </p>

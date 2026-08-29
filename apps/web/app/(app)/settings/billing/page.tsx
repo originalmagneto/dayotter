@@ -6,6 +6,7 @@ import { PRO_PRICE_USD, isCloud } from "@/lib/billing/edition";
 import { getEntitlements, primaryOrg } from "@/lib/billing/entitlements";
 import { FEATURE_LABEL, FEATURE_TIER, type Feature } from "@/lib/billing/features";
 import { seatCount, syncSubscriptionById } from "@/lib/billing/subscription";
+import { getTenant } from "@/lib/brand/server";
 import {
   paymentsEnabled,
   proPriceId,
@@ -39,6 +40,7 @@ export default async function BillingPage({
 }: {
   searchParams: Promise<{ session_id?: string }>;
 }) {
+  const tenant = await getTenant();
   const session = await getSession();
   const userId = session!.user!.id;
 
@@ -46,7 +48,7 @@ export default async function BillingPage({
   if (!isCloud) {
     return (
       <div>
-        <PageHeader title="Billing" description="Your SKALLARS Law edition and plan." />
+        <PageHeader title="Billing" description={`Your ${tenant.name} edition and plan.`} />
         <Card className="max-w-2xl">
           <CardBody className="space-y-4 p-6">
             <div className="flex items-center gap-2 font-medium">
@@ -96,7 +98,7 @@ export default async function BillingPage({
 
   return (
     <div>
-      <PageHeader title="Billing" description="Manage your SKALLARS Law plan." />
+      <PageHeader title="Billing" description={`Manage your ${tenant.name} plan.`} />
       <Card className="max-w-2xl">
         <CardBody className="space-y-5 p-6">
           <div className="flex items-baseline justify-between">

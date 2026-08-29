@@ -1,6 +1,7 @@
 import { aiEnabled } from "@/lib/ai/schedule-parse";
 import { LOCATION_TYPES } from "@/lib/booking/event-type-input";
 import { createOtterEvent } from "@/lib/booking/otter-create";
+import { getTenant } from "@/lib/brand/server";
 import { jsonError, withUser } from "@/lib/server/http";
 import { enforceRateLimit } from "@/lib/server/rate-limit";
 import { logger } from "@dayotter/core";
@@ -38,7 +39,7 @@ const body = z.object({
 });
 
 /**
- * Write a confirmed AI draft as a real SKALLARS Law booking. This is the
+ * Write a confirmed AI draft as a real {tenant.name} booking. This is the
  * human-confirmed step - the AI never reaches here on its own. Goes through the
  * host-booking engine so the meeting shows in the app and gets reminders,
  * overflow and scribe (not just a raw calendar event).

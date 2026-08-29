@@ -1,5 +1,6 @@
 "use client";
 import { FormError } from "@/components/ui/form";
+import { useTenant } from "@/lib/brand/context";
 
 import { BookingAssistant } from "@/components/booking-assistant";
 import { type Slot, SlotGrid, useLocalZone } from "@/components/slot-grid";
@@ -47,6 +48,7 @@ export function SlotPicker({
   /** Collective team event: hosts the booker may pick from. Empty = no picker. */
   teamHosts?: { id: string; name: string }[];
 }) {
+  const tenant = useTenant();
   const router = useRouter();
   const zone = useLocalZone();
   const locale = useBookingLocale();
@@ -149,7 +151,7 @@ export function SlotPicker({
     if (embed && typeof window !== "undefined" && window.parent !== window) {
       window.parent.postMessage({ type: "dayotter:booking", uid: data.uid, url: data.url }, "*");
     }
-    // Honor a host-configured redirect (external URL) over the SKALLARS Law confirmation.
+    // Honor a host-configured redirect (external URL) over the {tenant.name} confirmation.
     if (typeof data.redirectUrl === "string" && /^https?:\/\//.test(data.redirectUrl)) {
       window.location.href = data.redirectUrl;
       return;

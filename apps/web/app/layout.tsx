@@ -15,7 +15,7 @@ import "./globals.css";
 // a continuation of the brand rather than a different product. One variable file
 // carries every weight; Geist Mono still handles the small uppercase eyebrow
 // labels. Both self-hosted - no runtime network request.
-// Inter is Human in the Loop's face; General Sans is SKALLARS'. Both ship, and
+// Inter is {tenant.name}'s face; General Sans is SKALLARS'. Both ship, and
 // the tenant's CSS block points --font-sans at the right one - a few unused KB
 // against a second build pipeline per firm.
 const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });

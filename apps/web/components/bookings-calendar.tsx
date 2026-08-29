@@ -1,6 +1,7 @@
 "use client";
 
 import { SkeletonRows } from "@/components/ui/skeleton";
+import { useTenant } from "@/lib/brand/context";
 
 import { buttonVariants } from "@/components/ui/button";
 import { track } from "@/lib/analytics";
@@ -44,7 +45,7 @@ const BLOCK_META: Record<BlockCategory, { label: string; border: string; text: s
   unavailable: { label: "Blocked", border: "var(--color-amber)", text: "var(--color-amber)" },
 };
 
-/** A calendar cell item: a SKALLARS Law booking, or a non-booking "busy" block. */
+/** A calendar cell item: a {tenant.name} booking, or a non-booking "busy" block. */
 type CalItem =
   | ({ kind: "booking"; id: string } & CalBooking)
   | ({ kind: "busy"; id: string } & CalEvent);
@@ -71,6 +72,7 @@ function localKey(iso: string, tz: string): string {
  * by event type, in the viewer's timezone. Fetches only the visible range.
  */
 export function BookingsCalendar({ tz }: { tz: string }) {
+  const tenant = useTenant();
   const [view, setView] = useState<View>("month");
   const [anchor, setAnchor] = useState<DateTime>(() => DateTime.now().setZone(tz).startOf("day"));
   const [bookings, setBookings] = useState<CalBooking[]>([]);
@@ -132,7 +134,7 @@ export function BookingsCalendar({ tz }: { tz: string }) {
     const bookingStarts = new Set(bookings.map((b) => b.startsAt));
     for (const b of bookings) add({ kind: "booking", id: b.uid, ...b });
     events.forEach((e, i) => {
-      // Skip an event that's a SKALLARS Law booking's own calendar mirror.
+      // Skip an event that`s a ${tenant.name} booking`s own calendar mirror.
       if (bookingStarts.has(e.startsAt)) return;
       add({ kind: "busy", id: `busy:${i}`, ...e });
     });

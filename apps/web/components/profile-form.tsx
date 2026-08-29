@@ -1,6 +1,7 @@
 "use client";
 import { FormError } from "@/components/ui/form";
 import { ImageUpload } from "@/components/ui/image-upload";
+import { useTenant } from "@/lib/brand/context";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
@@ -22,7 +23,7 @@ function timezones(): string[] {
   }
 }
 
-/** Preset booking-page accent colours (hex). `null` = the default SKALLARS Law theme. */
+/** Preset booking-page accent colours (hex). `null` = the default ${tenant.name} theme. */
 const BRAND_PRESETS = ["#6743e6", "#0ea5e9", "#10b981", "#f59e0b", "#ef6a52", "#ec4899"];
 
 export function ProfileForm({
@@ -39,6 +40,7 @@ export function ProfileForm({
     bookingPageAnalytics?: Record<string, string> | null;
   };
 }) {
+  const tenant = useTenant();
   const router = useRouter();
   const { toast } = useToast();
   // Ensure the stored timezone is always selectable - some runtimes omit "UTC"

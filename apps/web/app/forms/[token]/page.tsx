@@ -1,5 +1,6 @@
 import { RoutingRunner } from "@/components/routing-runner";
 import { Card, CardBody } from "@/components/ui/card";
+import { getTenant } from "@/lib/brand/server";
 import { getFormByToken } from "@/lib/routing/routing";
 import { Split } from "lucide-react";
 import type { Metadata } from "next";
@@ -13,8 +14,9 @@ export async function generateMetadata({
 }: {
   params: Promise<{ token: string }>;
 }): Promise<Metadata> {
+  const tenant = await getTenant();
   const form = await getFormByToken((await params).token);
-  return { title: form ? `${form.title} - SKALLARS Law` : "SKALLARS Law" };
+  return { title: form ? `${form.title} - ${tenant.name}` : `${tenant.name}` };
 }
 
 export default async function PublicRoutingFormPage({
@@ -23,6 +25,7 @@ export default async function PublicRoutingFormPage({
   params: Promise<{ token: string }>;
 }) {
   const { token } = await params;
+  const tenant = await getTenant();
   const form = await getFormByToken(token);
   if (!form || form.fields.length === 0) notFound();
 
@@ -45,7 +48,7 @@ export default async function PublicRoutingFormPage({
       <p className="mt-6 text-center text-xs text-[var(--color-faint)]">
         Powered by{" "}
         <Link href="/" className="hover:text-[var(--color-text)]">
-          SKALLARS Law
+          {tenant.name}
         </Link>
       </p>
     </main>

@@ -1,4 +1,5 @@
 import { requireFeature } from "@/lib/billing/require-feature";
+import { getTenant } from "@/lib/brand/server";
 import {
   channelInputSchema,
   configFromInput,
@@ -15,6 +16,7 @@ export const dynamic = "force-dynamic";
 
 /** List the user's notification channels with safe, masked destinations. */
 export const GET = withUser(async (u) => {
+  const tenant = await getTenant();
   const rows = await getDb().query.notificationChannels.findMany({
     where: eq(schema.notificationChannels.userId, u.id),
     orderBy: asc(schema.notificationChannels.createdAt),
@@ -44,6 +46,7 @@ export const GET = withUser(async (u) => {
 
 /** Add a channel, then send a test message to verify it works. */
 export const POST = withUser(async (u, request) => {
+  const tenant = await getTenant();
   const parsed = channelInputSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
@@ -66,7 +69,7 @@ export const POST = withUser(async (u, request) => {
 
   // Verify by delivering a real test message before we trust the channel.
   const test = await dispatchToChannel(input.type, config, {
-    title: "SKALLARS Law connected",
+    title: `${tenant.name} connected`,
     body: "This channel will now receive your meeting reminders.",
     url: `${appUrl}/settings/notifications`,
   });

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
 import { twoFactor } from "@/lib/auth/auth-client";
+import { useTenant } from "@/lib/brand/context";
 import { CheckCircle2, Copy, ShieldCheck, ShieldOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -49,6 +50,7 @@ function CodeList({ codes }: { codes: string[] }) {
 }
 
 export function TwoFactorManager({ enabled }: { enabled: boolean }) {
+  const tenant = useTenant();
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("idle");
   const [password, setPassword] = useState("");
@@ -133,7 +135,7 @@ export function TwoFactorManager({ enabled }: { enabled: boolean }) {
     return (
       <form onSubmit={confirmEnable} className="space-y-4">
         <div>
-          <p className="text-sm font-medium">1. Add SKALLARS Law to your authenticator app</p>
+          <p className="text-sm font-medium">1. Add ${tenant.name} to your authenticator app</p>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
             In Google Authenticator, 1Password, Authy, etc., add an account by entering this setup
             key manually:

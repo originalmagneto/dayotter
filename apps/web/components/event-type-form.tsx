@@ -21,6 +21,7 @@ import {
   QUESTION_TYPE_LABELS,
 } from "@/lib/booking/event-type-input";
 import { CURRENCIES, CURRENCY_SYMBOL } from "@/lib/booking/money";
+import { useTenant } from "@/lib/brand/context";
 import { slugify } from "@/lib/slug";
 import { ChevronDown, Plus, Trash2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -89,6 +90,7 @@ export function EventTypeForm({
   initial?: EventTypeInitial;
   paymentsEnabled?: boolean;
 }) {
+  const tenant = useTenant();
   const router = useRouter();
   const [title, setTitle] = useState(initial?.title ?? "");
   const [slug, setSlug] = useState(initial?.slug ?? "");
@@ -909,7 +911,7 @@ export function EventTypeForm({
                     placeholder="https://example.com/thanks"
                   />
                   <p className="mt-1 text-xs text-[var(--color-faint)]">
-                    Send bookers here instead of the SKALLARS Law confirmation page.
+                    Send bookers here instead of the {tenant.name} confirmation page.
                   </p>
                 </div>
                 <div className="mt-4">

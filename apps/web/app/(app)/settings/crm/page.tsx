@@ -2,6 +2,7 @@ import { CrmDisconnectButton } from "@/components/crm-manager";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { getSession } from "@/lib/auth/session";
+import { getTenant } from "@/lib/brand/server";
 import { cn } from "@/lib/cn";
 import { eq, getDb, schema } from "@dayotter/db";
 import { crmEnabledProviders } from "@dayotter/integrations";
@@ -30,6 +31,7 @@ export default async function CrmSettingsPage({
 }: {
   searchParams: Promise<{ crm?: string }>;
 }) {
+  const tenant = await getTenant();
   const session = await getSession();
   if (!session?.user) return null; // the (app) layout redirects; this guards the render race
   const params = await searchParams;
@@ -66,7 +68,7 @@ export default async function CrmSettingsPage({
       <div className="mb-6">
         <h2 className="text-lg font-semibold">CRM sync</h2>
         <p className="mt-1 text-sm text-[var(--color-muted)]">
-          Push every booking to your CRM: SKALLARS Law finds or creates the guest as a contact and
+          Push every booking to your CRM: {tenant.name} finds or creates the guest as a contact and
           logs the meeting as an activity - updated on reschedule, closed on cancel.
         </p>
       </div>

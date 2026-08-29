@@ -8,6 +8,7 @@ import { Input, Label } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { useToast } from "@/components/ui/toast";
 import { track } from "@/lib/analytics";
+import { useTenant } from "@/lib/brand/context";
 import { CHANNEL_LABELS } from "@/lib/notifications/channel-input";
 import {
   Bell,
@@ -59,6 +60,7 @@ export function NotificationChannelsForm({
   initialChannels: Channel[];
   available: ChannelType[];
 }) {
+  const tenant = useTenant();
   const [channels, setChannels] = useState<Channel[]>(initialChannels);
   // Web push is added via the browser subscribe flow, not the type dropdown.
   const typeOptions = available.filter((t) => t !== "webpush");
@@ -210,8 +212,8 @@ export function NotificationChannelsForm({
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium">Turn on browser notifications</p>
               <p className="mt-0.5 text-xs text-[var(--color-muted)]">
-                Get a desktop nudge before each meeting - even when SKALLARS Law isn't open. You can
-                turn it off anytime.
+                Get a desktop nudge before each meeting - even when {tenant.name} isn't open. You
+                can turn it off anytime.
               </p>
               {pushError ? (
                 <p className="mt-2 text-xs text-[var(--color-danger)]">{pushError}</p>
@@ -337,7 +339,7 @@ export function NotificationChannelsForm({
                 placeholder="ExponentPushToken[…]"
               />
               <p className="mt-1 text-xs text-[var(--color-faint)]">
-                The SKALLARS Law mobile app registers this for you automatically.
+                The {tenant.name} mobile app registers this for you automatically.
               </p>
             </div>
           ) : null}

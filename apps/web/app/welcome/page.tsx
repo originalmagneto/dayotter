@@ -1,15 +1,16 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
+import { useTenant } from "@/lib/brand/context";
 import { cn } from "@/lib/cn";
 import { ArrowRight, BellRing, CalendarCheck, Link2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-const SLIDES = [
+const slidesFor = (name: string) => [
   {
     icon: CalendarCheck,
-    title: "Welcome to SKALLARS Law",
+    title: `Welcome to ${name}`,
     body: "The calm home for your time - scheduling that respects every calendar you own.",
   },
   {
@@ -30,6 +31,8 @@ const SLIDES = [
 ];
 
 export default function WelcomePage() {
+  const tenant = useTenant();
+  const SLIDES = slidesFor(tenant.name);
   const [i, setI] = useState(0);
   const slide = SLIDES[i]!;
   const last = i === SLIDES.length - 1;

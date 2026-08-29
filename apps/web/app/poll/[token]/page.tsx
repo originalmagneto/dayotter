@@ -1,5 +1,6 @@
 import { PollVoteForm } from "@/components/poll-vote-form";
 import { Card, CardBody } from "@/components/ui/card";
+import { getTenant } from "@/lib/brand/server";
 import { getPollByToken } from "@/lib/polls/polls";
 import { CalendarCheck, Clock } from "lucide-react";
 import type { Metadata } from "next";
@@ -13,12 +14,14 @@ export async function generateMetadata({
 }: {
   params: Promise<{ token: string }>;
 }): Promise<Metadata> {
+  const tenant = await getTenant();
   const poll = await getPollByToken((await params).token);
-  return { title: poll ? `Vote: ${poll.title} - SKALLARS Law` : "Poll - SKALLARS Law" };
+  return { title: poll ? `Vote: ${poll.title} - ${tenant.name}` : `Poll - ${tenant.name}` };
 }
 
 export default async function PublicPollPage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
+  const tenant = await getTenant();
   const poll = await getPollByToken(token);
   if (!poll) notFound();
 
@@ -64,7 +67,7 @@ export default async function PublicPollPage({ params }: { params: Promise<{ tok
       <p className="mt-6 text-center text-xs text-[var(--color-faint)]">
         Powered by{" "}
         <Link href="/" className="hover:text-[var(--color-text)]">
-          SKALLARS Law
+          {tenant.name}
         </Link>
       </p>
     </main>

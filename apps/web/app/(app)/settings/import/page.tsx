@@ -2,10 +2,12 @@ import { CalcomImport } from "@/components/calcom-import";
 import { CalendlyImport } from "@/components/calendly-import";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { getSession } from "@/lib/auth/session";
+import { getTenant } from "@/lib/brand/server";
 
 export const dynamic = "force-dynamic";
 
 export default async function ImportSettingsPage() {
+  const tenant = await getTenant();
   const session = await getSession();
   if (!session?.user) return null; // the (app) layout redirects; this guards the render race
 
@@ -16,7 +18,7 @@ export default async function ImportSettingsPage() {
         <p className="mt-1 text-sm text-[var(--color-muted)]">
           Switching over? Bring your event types across in one step. We read them straight from the
           source with a token/key you paste below - nothing is changed on the other side, and
-          existing SKALLARS Law data is never overwritten.
+          existing {tenant.name} data is never overwritten.
         </p>
       </div>
 

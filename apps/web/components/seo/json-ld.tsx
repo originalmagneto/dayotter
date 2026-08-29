@@ -88,7 +88,8 @@ export function BreadcrumbJsonLd({ items }: { items: { name: string; path: strin
 }
 
 /** A glossary term (schema.org DefinedTerm), for /glossary/[slug] pages. */
-export function DefinedTermJsonLd(props: { term: string; definition: string; path: string }) {
+export async function DefinedTermJsonLd(props: { term: string; definition: string; path: string }) {
+  const tenant = await getTenant();
   return (
     <JsonLd
       data={{
@@ -99,7 +100,7 @@ export function DefinedTermJsonLd(props: { term: string; definition: string; pat
         url: `${BRAND.url}${props.path}`,
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
-          name: "SKALLARS Law Scheduling Glossary",
+          name: `${tenant.name} Scheduling Glossary`,
           url: `${BRAND.url}/glossary`,
         },
       }}

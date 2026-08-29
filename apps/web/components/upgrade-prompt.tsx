@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
 import { FEATURE_LABEL, type Feature } from "@/lib/billing/features";
+import { useTenant } from "@/lib/brand/context";
 import { Lock } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -36,6 +37,7 @@ export function useFeature(feature: Feature): FeatureState {
 
 /** A friendly paywall card shown in place of a Pro feature on the free plan. */
 export function UpgradePrompt({ feature }: { feature: Feature }) {
+  const tenant = useTenant();
   return (
     <Card className="mx-auto max-w-md">
       <CardBody className="flex flex-col items-center gap-3 p-8 text-center">
@@ -45,7 +47,7 @@ export function UpgradePrompt({ feature }: { feature: Feature }) {
         <h2 className="text-lg font-semibold">{FEATURE_LABEL[feature]} is a Pro feature</h2>
         <p className="text-sm text-[var(--color-muted)]">
           Upgrade to Pro ($9/seat/mo) to unlock {FEATURE_LABEL[feature].toLowerCase()} and every
-          other SKALLARS Law differentiator.
+          other {tenant.name} differentiator.
         </p>
         <Link href="/settings/billing" className="mt-1">
           <Button>Upgrade to Pro</Button>
