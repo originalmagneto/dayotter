@@ -1,11 +1,12 @@
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
-import { useCallback, useEffect, useState } from "react";
+import { useTenant } from "@/lib/brand/context";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const KEY = "dayotter_toured";
 
-const STEPS = [
+const stepsFor = (name: string) => [
   {
     sel: '[data-tour="link"]',
     title: "Your booking link",
@@ -14,7 +15,7 @@ const STEPS = [
   {
     sel: '[data-tour="hours"]',
     title: "Set your hours",
-    body: "Tell SKALLARS Law when you're open, so it only ever offers times that work for you.",
+    body: `Tell ${name} when you're open, so it only ever offers times that work for you.`,
   },
   {
     sel: '[data-tour="types"]',
@@ -25,6 +26,9 @@ const STEPS = [
 
 /** First-visit coachmark tour of the dashboard. Runs once (localStorage flag). */
 export function DashboardTour() {
+  const tenant = useTenant();
+  // Memoised so the hooks below can depend on it without re-running each render.
+  const STEPS = useMemo(() => stepsFor(tenant.name), [tenant.name]);
   const [step, setStep] = useState(-1);
   const [rect, setRect] = useState<DOMRect | null>(null);
 
@@ -35,7 +39,7 @@ export function DashboardTour() {
       /* ignore */
     }
     setStep(STEPS.length);
-  }, []);
+  }, [STEPS]);
 
   useEffect(() => {
     try {
@@ -65,7 +69,7 @@ export function DashboardTour() {
       window.clearInterval(id);
       window.removeEventListener("resize", measure);
     };
-  }, [step]);
+  }, [step, STEPS]);
 
   if (step < 0 || step >= STEPS.length || !rect) return null;
   const s = STEPS[step]!;

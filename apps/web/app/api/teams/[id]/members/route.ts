@@ -1,4 +1,5 @@
 import { getSession } from "@/lib/auth/session";
+import { getTenant } from "@/lib/brand/server";
 import { and, eq, getDb, schema } from "@dayotter/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -8,6 +9,7 @@ export const dynamic = "force-dynamic";
 const body = z.object({ email: z.string().email() });
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const tenant = await getTenant();
   const session = await getSession();
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id: teamId } = await params;
@@ -32,7 +34,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   });
   if (!user) {
     return NextResponse.json(
-      { error: "No SKALLARS Law account with that email yet. They need to sign up first." },
+      { error: `No ${tenant.name} account with that email yet. They need to sign up first.` },
       { status: 404 },
     );
   }

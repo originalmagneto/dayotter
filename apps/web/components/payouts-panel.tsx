@@ -5,6 +5,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { FormError } from "@/components/ui/form";
 import { track } from "@/lib/analytics";
 import { minorPerUnit, withdrawMinimum } from "@/lib/booking/money";
+import { useTenant } from "@/lib/brand/context";
 import { cn } from "@/lib/cn";
 import { Banknote, CheckCircle2, ExternalLink } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -40,6 +41,7 @@ export function PayoutsPanel({
   balances: CurrencyBalance[];
   feePercent: number;
 }) {
+  const tenant = useTenant();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -87,7 +89,7 @@ export function PayoutsPanel({
             {feePercent > 0 ? (
               <>
                 {" "}
-                SKALLARS Law keeps a {feePercent}% platform fee on each payment; the rest is yours.
+                {tenant.name} keeps a {feePercent}% platform fee on each payment; the rest is yours.
               </>
             ) : null}
           </p>
@@ -110,7 +112,7 @@ export function PayoutsPanel({
         }
         description={
           feePercent > 0
-            ? `Payments land in your Stripe account minus SKALLARS Law's ${feePercent}% fee.`
+            ? `Payments land in your Stripe account minus ${tenant.name}'s ${feePercent}% fee.`
             : "Payments land straight in your Stripe account."
         }
       />
