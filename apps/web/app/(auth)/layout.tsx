@@ -1,4 +1,4 @@
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getSession } from "@/lib/auth/session";
 import { BRAND } from "@/lib/marketing";
@@ -39,8 +39,7 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         />
         <div className="relative">
           <Link href="/" className="flex items-center gap-2">
-            <BrandMark size={32} />
-            <span className="text-lg font-semibold tracking-tight">Day{" "}Otter</span>
+            <BrandLockup height={26} />
           </Link>
         </div>
 
@@ -72,8 +71,7 @@ export default async function AuthLayout({ children }: { children: ReactNode }) 
         <div className="flex items-center justify-between">
           {/* Logo shown on mobile (the brand panel carries it on desktop). */}
           <Link href="/" className="flex items-center gap-2 lg:invisible">
-            <BrandMark size={32} />
-            <span className="text-lg font-semibold tracking-tight">Day{" "}Otter</span>
+            <BrandLockup height={26} />
           </Link>
           <ThemeToggle />
         </div>

@@ -6,6 +6,7 @@ import { type BetterAuthPlugin, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { bearer, organization, phoneNumber, twoFactor } from "better-auth/plugins";
+import { assertSignupAllowed } from "./signup-gate";
 
 /**
  * Better Auth server instance - the single source of truth for identity and
@@ -89,6 +90,18 @@ export const auth = betterAuth({
       // so the cascade on everything else (event types, schedules, sessions…) runs.
       beforeDelete: async (user) => {
         await getDb().delete(schema.bookings).where(eq(schema.bookings.hostId, user.id));
+      },
+    },
+  },
+  databaseHooks: {
+    user: {
+      create: {
+        // The gate runs before the row exists, so a refused sign-up leaves
+        // nothing behind - no half-created user to clean up.
+        before: async (user: { email: string }) => {
+          assertSignupAllowed(user.email);
+          return { data: user };
+        },
       },
     },
   },
