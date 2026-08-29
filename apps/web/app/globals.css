@@ -55,6 +55,23 @@
   --radius-lg: 16px;
   --radius-xl: 22px;
 
+  /* Type scale - the UI steps that sit between Tailwind's own.
+   * Tailwind gives us xs 12 · sm 14 · base 16 · lg 18 · xl 20, and the product
+   * needs finer rungs than that: metadata at 11, captions at 13, subheads at 15.
+   * Those were written as text-[11px] and friends in ~50 places, which is how a
+   * scale quietly stops being a scale. Named steps, same pixel values.
+   *   micro    badge counts, the smallest legible label
+   *   meta     timestamps, per-item counts, dense secondary rows
+   *   caption  captions and compact list copy
+   *   subhead  card titles, lead paragraphs, the lg button
+   * `wordmark` is not a text role - it is the app-nav lockup, named so nobody
+   * reaches for 17px as a body size. */
+  --text-micro: 0.625rem;
+  --text-meta: 0.6875rem;
+  --text-caption: 0.8125rem;
+  --text-subhead: 0.9375rem;
+  --text-wordmark: 1.0625rem;
+
   /* Spacing rhythm - the canonical gaps/paddings the components compose from.
    * Field gap: space-y-4 · Card padding: p-6 · Section gap: gap-3 · inline: gap-2 */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,

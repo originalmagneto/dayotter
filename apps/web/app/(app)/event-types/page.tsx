@@ -59,12 +59,12 @@ export default async function EventTypesPage() {
                   />
                   {et.title}
                   {!et.isActive ? (
-                    <span className="ml-2 rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-[11px] font-normal text-[var(--color-muted)]">
+                    <span className="ml-2 rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-meta font-normal text-[var(--color-muted)]">
                       hidden
                     </span>
                   ) : null}
                   {et.isPrivate ? (
-                    <span className="ml-2 rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-[11px] font-normal text-[var(--color-muted)]">
+                    <span className="ml-2 rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-meta font-normal text-[var(--color-muted)]">
                       private
                     </span>
                   ) : null}

@@ -38,8 +38,8 @@ function Pill({
       title={title}
       className={
         active
-          ? "rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2.5 py-0.5 text-[11px] text-[var(--color-text)] disabled:opacity-50"
-          : "rounded-full border border-[var(--color-border-strong)] px-2.5 py-0.5 text-[11px] text-[var(--color-muted)] hover:text-[var(--color-text)] disabled:opacity-40"
+          ? "rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2.5 py-0.5 text-meta text-[var(--color-text)] disabled:opacity-50"
+          : "rounded-full border border-[var(--color-border-strong)] px-2.5 py-0.5 text-meta text-[var(--color-muted)] hover:text-[var(--color-text)] disabled:opacity-40"
       }
     >
       {children}
@@ -153,7 +153,7 @@ export function CalendarManager({ calendars }: { calendars: ManagedCalendar[] })
           )}
 
           {cal.isReadOnly ? (
-            <span className="rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-[11px] text-[var(--color-muted)]">
+            <span className="rounded bg-[var(--color-surface-2)] px-1.5 py-0.5 text-meta text-[var(--color-muted)]">
               read-only
             </span>
           ) : null}

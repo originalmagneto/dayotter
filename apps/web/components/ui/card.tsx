@@ -36,7 +36,7 @@ export function CardHeader({
   return (
     <div className="flex items-start justify-between gap-4 border-b border-[var(--color-border)] px-5 py-4">
       <div>
-        <h2 className="text-[15px] font-semibold text-[var(--color-text)]">{title}</h2>
+        <h2 className="text-subhead font-semibold text-[var(--color-text)]">{title}</h2>
         {description ? (
           <p className="mt-0.5 text-sm text-[var(--color-muted)]">{description}</p>
         ) : null}

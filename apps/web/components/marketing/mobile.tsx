@@ -51,10 +51,10 @@ function StoreBadge({
     <>
       {logo}
       <div className="text-left leading-tight">
-        <div className="text-[10px] uppercase tracking-[0.12em] text-white/60">
+        <div className="text-micro uppercase tracking-[0.12em] text-white/60">
           {href ? "Get it on" : "Coming soon"}
         </div>
-        <div className="text-[15px] font-semibold">{label}</div>
+        <div className="text-subhead font-semibold">{label}</div>
       </div>
     </>
   );
@@ -107,7 +107,7 @@ function PhoneMock() {
                 <BrandMark size={26} />
                 <div>
                   <p className="font-display text-lg leading-none">Day{" "}Otter</p>
-                  <p className="mt-1 text-[11px] text-[var(--color-muted)]">Thursday, Jul 3</p>
+                  <p className="mt-1 text-meta text-[var(--color-muted)]">Thursday, Jul 3</p>
                 </div>
               </div>
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-accent)] text-xs font-semibold text-white">
@@ -130,12 +130,12 @@ function PhoneMock() {
                     className="h-8 w-1 shrink-0 rounded-full"
                     style={{ backgroundColor: HUES[e.hue] }}
                   />
-                  <div className="w-9 shrink-0 text-[11px] font-medium text-[var(--color-muted)]">
+                  <div className="w-9 shrink-0 text-meta font-medium text-[var(--color-muted)]">
                     {e.time}
                   </div>
                   <div className="min-w-0">
-                    <p className="truncate text-[13px] font-medium">{e.title}</p>
-                    <p className="truncate text-[11px] text-[var(--color-muted)]">{e.who}</p>
+                    <p className="truncate text-caption font-medium">{e.title}</p>
+                    <p className="truncate text-meta text-[var(--color-muted)]">{e.who}</p>
                   </div>
                 </div>
               ))}

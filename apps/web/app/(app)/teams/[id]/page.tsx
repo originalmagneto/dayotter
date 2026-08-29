@@ -107,7 +107,7 @@ export default async function TeamDetailPage({ params }: { params: Promise<{ id:
                     <p className="flex items-center gap-2 text-sm font-medium">
                       {m.user?.name ?? "Member"}
                       {m.role !== "member" ? (
-                        <span className="rounded-full bg-[var(--color-surface-2)] px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-[var(--color-muted)]">
+                        <span className="rounded-full bg-[var(--color-surface-2)] px-1.5 py-0.5 text-micro font-medium uppercase tracking-wide text-[var(--color-muted)]">
                           {m.role}
                         </span>
                       ) : null}

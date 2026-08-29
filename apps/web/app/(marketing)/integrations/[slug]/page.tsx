@@ -64,7 +64,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
           {it.intro.map((p) => (
             <p
               key={p.slice(0, 24)}
-              className="text-[15px] leading-relaxed text-[var(--color-muted)]"
+              className="text-subhead leading-relaxed text-[var(--color-muted)]"
             >
               {p}
             </p>

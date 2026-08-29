@@ -51,7 +51,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       <MarketingHeader eyebrow="Compare" title={c.title} subtitle={c.subtitle} />
 
       <div className="mx-auto max-w-3xl px-6 py-16">
-        <div className="space-y-4 text-[15px] leading-7 text-[var(--color-muted)]">
+        <div className="space-y-4 text-subhead leading-7 text-[var(--color-muted)]">
           {c.intro.map((p) => (
             <p key={p}>{p}</p>
           ))}

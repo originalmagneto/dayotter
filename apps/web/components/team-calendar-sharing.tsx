@@ -110,7 +110,7 @@ export function TeamCalendarSharing({
             {copiedEmbed ? "Copied" : "Copy code"}
           </button>
         </div>
-        <pre className="overflow-x-auto rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)] p-2 text-[11px] text-[var(--color-muted)]">
+        <pre className="overflow-x-auto rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)] p-2 text-meta text-[var(--color-muted)]">
           <code>{embedCode}</code>
         </pre>
       </div>

@@ -99,7 +99,7 @@ export default async function DocGuidePage({ params }: { params: Promise<{ slug:
       <div className="mx-auto max-w-6xl gap-10 px-6 py-14 lg:grid lg:grid-cols-[1fr_220px]">
         {/* Main content */}
         <div
-          className="min-w-0 max-w-2xl text-[15px] leading-7 text-[var(--color-muted)]
+          className="min-w-0 max-w-2xl text-subhead leading-7 text-[var(--color-muted)]
             [&_a]:text-[var(--color-accent)] [&_a:hover]:underline
             [&_h2]:font-display [&_h2]:mt-12 [&_h2]:mb-3 [&_h2]:scroll-mt-24 [&_h2]:text-2xl [&_h2]:tracking-[-0.01em] [&_h2]:text-[var(--color-text)]
             [&_p]:mb-4

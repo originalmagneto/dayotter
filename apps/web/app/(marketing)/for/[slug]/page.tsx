@@ -108,7 +108,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ slug: 
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-soft)] font-mono text-sm font-semibold text-[var(--color-accent)]">
                   {i + 1}
                 </span>
-                <p className="pt-1 text-[15px] text-[var(--color-muted)]">{step}</p>
+                <p className="pt-1 text-subhead text-[var(--color-muted)]">{step}</p>
               </li>
             ))}
           </ol>

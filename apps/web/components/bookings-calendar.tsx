@@ -219,7 +219,7 @@ export function BookingsCalendar({ tz }: { tz: string }) {
         <Agenda rangeStart={rangeStart} rangeEnd={rangeEnd} byDay={byDay} tz={tz} />
       )}
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-[var(--color-muted)]">
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-meta text-[var(--color-muted)]">
         <span className="inline-flex items-center gap-1.5">
           <span
             className="h-2.5 w-2.5 rounded-[3px]"

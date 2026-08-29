@@ -206,7 +206,7 @@ export function SchedulesManager({
                         {s.isDefault ? (
                           <span
                             title="Default schedule"
-                            className="inline-flex shrink-0 items-center gap-1 text-[11px] text-[var(--color-accent)]"
+                            className="inline-flex shrink-0 items-center gap-1 text-meta text-[var(--color-accent)]"
                           >
                             <Star size={11} fill="currentColor" /> Default
                           </span>
