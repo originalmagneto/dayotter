@@ -139,60 +139,74 @@
  * is set on <html> at render, so only the running deployment's block matches.
  */
 :root[data-tenant="hitl"] {
-  --color-bg: #fafafa;
+  /* From the firm's own design system export, not derived from the website -
+     an earlier guess taken off humanintheloop.sk read its Tailwind defaults and
+     was wrong. Semantic names in comments are theirs. */
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-2: #f5f5f5;
+  --color-surface-2: #eff0f7; /* bg-subtle / navy-100 */
   --color-elevated: #ffffff;
-  --color-border: #e5e5e5;
-  --color-border-strong: #d4d4d4;
-  --color-text: #171717;
-  --color-muted: #525252;
-  --color-faint: #737373;
-  --color-brand: #171717;
-  --color-accent: #171717;
-  --color-accent-hover: #000000;
+  --color-border: #dcddeb; /* navy-200 */
+  --color-border-strong: #b3b5c9; /* navy-300 */
+  --color-text: #0e1726; /* slate-900 */
+  --color-muted: #51607a; /* slate-600 */
+  /* Their `text-subtle` (#8794a8) reads 3.07 on white - below the floor for the
+     placeholders and metadata this token carries here, so navy-600 takes it. */
+  --color-faint: #6e7191;
+  /* Two blues, because their system has two: `ai` is the brand blue and reads
+     3.50 on white, which is large-text only; `ai-accent` is the one meant to
+     carry text and fills. Brand keeps the bright one, the interface takes the
+     dark. */
+  --color-brand: #1d88fe; /* ai / blue-500 */
+  --color-accent: #1a3e98; /* ai-accent / dark-blue-0 */
+  --color-accent-hover: #163480;
   --color-accent-fg: #ffffff;
-  --color-accent-soft: #ededed;
-  --color-mint: #0a6e56;
-  --color-amber: #94560c;
-  --color-coral: #b03e28;
-  --color-sky: #1d4ed8;
+  --color-accent-soft: #eaf3ff; /* ai-bg */
+  /* `decision` - the orange this brand gives to the human's call - in its
+     text-safe weight (orange-800), which is what their own decision-text uses. */
+  --color-coral: #a64600;
+  --color-mint: #157a52; /* success / green-700 */
+  --color-success: #157a52;
+  --color-amber: #8a5a00; /* warning / amber-700 */
+  --color-sky: #1a3e98;
   --color-danger: #b51b3e;
   --color-danger-soft: #fbeaee;
-  --color-success: #0a6e56;
+  /* Their shape scale is tighter than the default: 4 and 8, not 8 and 10. */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  /* Neutral surfaces want a neutral shadow, not the SKALLARS aubergine. */
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.05);
-  --shadow-raise: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-pop: 0 24px 60px -12px rgba(0, 0, 0, 0.18);
-  --shadow-float: 0 40px 80px -24px rgba(0, 0, 0, 0.28);
+  --shadow-card: 0 1px 2px rgba(14, 23, 38, 0.05), 0 2px 6px rgba(14, 23, 38, 0.06);
+  --shadow-raise: 0 8px 24px rgba(14, 23, 38, 0.1);
+  --shadow-pop: 0 24px 60px -12px rgba(14, 23, 38, 0.2);
+  --shadow-float: 0 40px 80px -24px rgba(33, 31, 84, 0.3);
 }
 
 :root[data-tenant="hitl"].dark {
-  --color-bg: #0a0a0a;
-  --color-surface: #171717;
-  --color-surface-2: #212121;
-  --color-elevated: #212121;
-  --color-border: #2e2e2e;
-  --color-border-strong: #404040;
-  --color-text: #fafafa;
-  --color-muted: #a3a3a3;
-  /* #737373 reads 3.78 on #171717 - below the floor. Lightened until it clears. */
-  --color-faint: #8a8a8a;
-  --color-brand: #fafafa;
-  --color-accent: #fafafa;
-  --color-accent-hover: #ffffff;
-  --color-accent-fg: #171717;
-  --color-accent-soft: rgba(250, 250, 250, 0.12);
-  --color-mint: #38f8b8;
-  --color-amber: #f0ad4e;
-  --color-coral: #ff8266;
-  --color-sky: #60a5fa;
+  --color-bg: #0a0f1a;
+  --color-surface: #0e1726;
+  --color-surface-2: #16203180;
+  --color-elevated: #162031;
+  --color-border: #26304180;
+  --color-border-strong: #3a4557;
+  --color-text: #eff0f7;
+  --color-muted: #b3b5c9;
+  --color-faint: #8794a8;
+  --color-brand: #6db3ff; /* blue-400 */
+  --color-accent: #98c4ff; /* light-blue-0 */
+  --color-accent-hover: #b4d6ff;
+  --color-accent-fg: #0e1726;
+  --color-accent-soft: rgba(152, 196, 255, 0.16);
+  --color-coral: #ffba92;
+  --color-mint: #1f9d6b;
+  --color-success: #1f9d6b;
+  --color-amber: #ffd08a;
+  --color-sky: #6db3ff;
   --color-danger: #fb7185;
   --color-danger-soft: rgba(251, 113, 133, 0.12);
-  --color-success: #38f8b8;
 }
 
 /*

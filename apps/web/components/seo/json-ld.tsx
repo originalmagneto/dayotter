@@ -1,3 +1,4 @@
+import { TENANT } from "@/lib/brand/tenants";
 import { BRAND } from "@/lib/marketing";
 
 /**
@@ -24,7 +25,7 @@ export function OrganizationJsonLd() {
           "@type": "Organization",
           name: BRAND.name,
           url: BRAND.url,
-          logo: `${BRAND.url}/brand/skallars-icon.svg`,
+          logo: `${BRAND.url}${TENANT.icon}`,
           email: BRAND.email,
           sameAs: [BRAND.x, BRAND.github],
         }}
@@ -125,7 +126,7 @@ export function ArticleJsonLd(props: {
         publisher: {
           "@type": "Organization",
           name: BRAND.name,
-          logo: { "@type": "ImageObject", url: `${BRAND.url}/brand/skallars-icon.svg` },
+          logo: { "@type": "ImageObject", url: `${BRAND.url}${TENANT.icon}` },
         },
       }}
     />

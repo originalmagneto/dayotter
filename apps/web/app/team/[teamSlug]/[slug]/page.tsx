@@ -2,6 +2,8 @@ import { SlotPicker } from "@/components/slot-picker";
 import { Card, CardBody } from "@/components/ui/card";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
+import { TENANT } from "@/lib/brand/tenants";
+import { BRAND } from "@/lib/marketing";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { and, eq, getDb, schema } from "@dayotter/db";
 import { Clock, CreditCard, Users, Video } from "lucide-react";
@@ -141,14 +143,14 @@ export default async function TeamBookingPage({
       <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
         <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
           <img
-            src="/brand/skallars-icon.svg"
+            src={TENANT.icon}
             alt=""
             width={21}
             height={21}
             className="absolute -left-[3px] -top-[3px] max-w-none"
           />
         </span>
-        Powered by <span className="text-[var(--color-muted)]">SKALLARS Law</span>
+        Powered by <span className="text-[var(--color-muted)]">{BRAND.name}</span>
       </p>
     </main>
   );
