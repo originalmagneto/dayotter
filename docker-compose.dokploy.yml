@@ -1,0 +1,104 @@
+# DayOtter on Dokploy.
+#
+# Same stack as deploy/docker-compose.prod.yml, minus Caddy: Dokploy's Traefik
+# owns :80/:443 and terminates TLS, so no service publishes a host port. Point a
+# Dokploy domain at service `web`, port 3000.
+#
+# Dokploy writes the service env into `.env` next to this file (Create .env = on),
+# which docker compose uses both for ${VAR} substitution below and, via env_file,
+# for the app containers themselves.
+
+x-app-env: &app-env
+  DATABASE_URL: ${DATABASE_URL:-postgresql://dayotter:${POSTGRES_PASSWORD}@postgres:5432/dayotter}
+  REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+  APP_VERSION: ${APP_VERSION:-dokploy}
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dayotter
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: dayotter
+    volumes:
+      - dayotter_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dayotter"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - dayotter_redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # One-shot: apply committed migrations, then exit. web/worker wait for it.
+  # Reuses the worker image (single build target for that tag) rather than
+  # declaring its own build - two services building the same tag races.
+  migrate:
+    image: dayotter-app:local
+    env_file: .env
+    environment:
+      <<: *app-env
+    command: ["pnpm", "--filter", "@dayotter/db", "migrate"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      # NEXT_PUBLIC_* are inlined into the client bundle at build time, so they
+      # come in as build args. Change one -> redeploy to rebuild.
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-}
+        NEXT_PUBLIC_GOOGLE_AUTH: ${NEXT_PUBLIC_GOOGLE_AUTH:-}
+        NEXT_PUBLIC_PHONE_AUTH: ${NEXT_PUBLIC_PHONE_AUTH:-}
+        NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${NEXT_PUBLIC_VAPID_PUBLIC_KEY:-}
+        NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${NEXT_PUBLIC_TURNSTILE_SITE_KEY:-}
+        NEXT_PUBLIC_MIXPANEL_TOKEN: ${NEXT_PUBLIC_MIXPANEL_TOKEN:-}
+        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+    image: dayotter-web:local
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      <<: *app-env
+      NODE_ENV: production
+    expose:
+      - "3000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    image: dayotter-app:local
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      <<: *app-env
+      NODE_ENV: production
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+volumes:
+  dayotter_pgdata:
+  dayotter_redisdata:
