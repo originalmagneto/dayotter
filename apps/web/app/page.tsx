@@ -1,35 +1,17 @@
-import { Features } from "@/components/marketing/features";
-import { Hero } from "@/components/marketing/hero";
-import { Marquee } from "@/components/marketing/marquee";
-import { MobileApps } from "@/components/marketing/mobile";
-import { MarketingNav } from "@/components/marketing/nav";
-import { CTA, FAQ, Footer, HowItWorks, Manifesto, Shift } from "@/components/marketing/sections";
-import { CompareTeaser, DayWithOtter, OtterDemo } from "@/components/marketing/showcase";
-import { OtterBand, WhyOtter } from "@/components/marketing/why";
+import { getSession } from "@/lib/auth/session";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return (
-    <div className="grain relative">
-      <MarketingNav />
-      <main className="relative z-10 pt-14">
-        <Hero />
-        {/* The demo sits high on purpose: it's the first thing that shows the
-            product doing the job, rather than describing it. */}
-        <OtterDemo />
-        <Marquee />
-        <Features />
-        <Shift />
-        <WhyOtter />
-        <DayWithOtter />
-        <MobileApps />
-        <HowItWorks />
-        <CompareTeaser />
-        <Manifesto />
-        <OtterBand />
-        <FAQ />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
-  );
+export const dynamic = "force-dynamic";
+
+/**
+ * The root of a firm's domain is the way in, not a pitch.
+ *
+ * These domains are handed to colleagues and clients of a specific firm; the
+ * product's own marketing has no audience here. Signed in you land on your
+ * dashboard, signed out on the login screen. The marketing site still exists at
+ * /home for whoever wants it.
+ */
+export default async function RootPage() {
+  const session = await getSession();
+  redirect(session?.user ? "/dashboard" : "/sign-in");
 }

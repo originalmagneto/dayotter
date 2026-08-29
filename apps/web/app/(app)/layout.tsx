@@ -5,6 +5,8 @@ import { TimezoneSync } from "@/components/timezone-sync";
 import { ToastProvider } from "@/components/ui/toast";
 import { aiEnabled } from "@/lib/ai/llm";
 import { getSession } from "@/lib/auth/session";
+import { getUserFirms } from "@/lib/brand/firms";
+import { getTenant } from "@/lib/brand/server";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { resolveUserLocale } from "@/lib/i18n/server";
 import { eq, getDb, schema } from "@dayotter/db";
@@ -25,6 +27,8 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     where: eq(schema.memberships.userId, session.user.id),
     columns: { organizationId: true },
   });
+  const tenant = await getTenant();
+  const firms = await getUserFirms(session.user.id, tenant.organizationSlug);
   const org = membership
     ? await getDb().query.organizations.findFirst({
         where: eq(schema.organizations.id, membership.organizationId),
@@ -40,7 +44,16 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         date, a duration or a count, and stacked in a list they have to line up.
         Tabular figures are the default for the whole shell. */}
         <div className="grain relative flex h-[100dvh] overflow-hidden tabular-nums">
-          <AppNav user={{ name: session.user.name, email: session.user.email }} logo={org?.logo} />
+          <AppNav
+            user={{ name: session.user.name, email: session.user.email }}
+            logo={org?.logo}
+            firms={firms.map((f) => ({
+              id: f.id,
+              name: f.tenant.name,
+              url: f.url,
+              current: f.current,
+            }))}
+          />
           <MobileNav />
           <main className="relative flex-1 overflow-y-auto">
             {/* Ambient wash so the app inherits the marketing atmosphere instead of

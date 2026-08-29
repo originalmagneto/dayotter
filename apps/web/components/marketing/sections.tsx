@@ -223,7 +223,7 @@ export function Footer() {
     <footer className="border-t border-[var(--color-border)]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 sm:grid-cols-3 md:grid-cols-[1.4fr_repeat(5,1fr)]">
         <div>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/home" className="flex items-center gap-2">
             <BrandMark size={28} />
             <span className="text-subhead font-semibold tracking-tight">Day{" "}Otter</span>
           </Link>

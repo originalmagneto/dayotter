@@ -1,6 +1,7 @@
 "use client";
 
 import { BrandLockup } from "@/components/brand-mark";
+import { type FirmOption, FirmSwitcher } from "@/components/firm-switcher";
 import { NAV } from "@/components/nav-items";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { resetAnalytics } from "@/lib/analytics";
@@ -28,7 +29,12 @@ const section = (p: string) => `/${p.split("/")[1] ?? ""}`;
 export function AppNav({
   user,
   logo,
-}: { user: { name?: string | null; email: string }; logo?: string | null }) {
+  firms = [],
+}: {
+  user: { name?: string | null; email: string };
+  logo?: string | null;
+  firms?: FirmOption[];
+}) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -37,6 +43,7 @@ export function AppNav({
       <Link href="/dashboard" className="flex items-center gap-2 px-2 py-3">
         <BrandLockup height={24} logo={logo} />
       </Link>
+      <FirmSwitcher firms={firms} />
 
       <nav className="mt-4 flex flex-1 flex-col gap-5">
         {GROUPS.map((group) => (

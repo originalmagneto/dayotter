@@ -24,6 +24,14 @@ export interface Tenant {
   /** Which lockup `<BrandLockup>` draws. */
   mark: "skallars" | "hitl" | "wordmark";
   /**
+   * The organization this firm's domain belongs to.
+   *
+   * The domain is the firm, so it is also the workspace: arriving on
+   * cal.skallars.com puts you in SKALLARS' organization, with no active-org
+   * cookie to get out of sync with what the page says it is.
+   */
+  organizationSlug: string;
+  /**
    * Favicon and the small square used in booking footers and JSON-LD.
    * A letter tile for firms without a vector mark - it is a placeholder a
    * firm replaces by uploading its logo, never a stand-in for its identity.
@@ -47,6 +55,7 @@ export interface Tenant {
 export const TENANTS: Record<string, Tenant> = {
   skallars: {
     name: "SKALLARS Law",
+    organizationSlug: "skallars",
     domains: ["cal.skallars.com", "cal.skallars.co"],
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
@@ -58,6 +67,7 @@ export const TENANTS: Record<string, Tenant> = {
   },
   hitl: {
     name: "Human in the Loop",
+    organizationSlug: "hitl",
     domains: ["cal.humanintheloop.sk", "localhost:3000"],
     icon: "/brand/hitl-icon.svg",
     tagline: "Book a slot.",
@@ -69,6 +79,7 @@ export const TENANTS: Record<string, Tenant> = {
   },
   lawoss: {
     name: "LAWOSS",
+    organizationSlug: "lawoss",
     domains: ["cal.lawoss.app"],
     tagline: "Book a slot.",
     email: "majo@lawoss.app",
