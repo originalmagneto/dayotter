@@ -16,3 +16,17 @@ export function providerConfig(provider: "google" | "microsoft"): ProviderOAuthC
     redirectUri: `${env.APP_URL}/api/calendars/connect/microsoft/callback`,
   };
 }
+
+/**
+ * Whether this server has OAuth credentials for the provider at all.
+ *
+ * env.GOOGLE_CLIENT_ID defaults to "", so without this the connect route happily
+ * builds a consent URL with an empty client_id and sends the user to Google,
+ * which answers "Access blocked: Authorization Error / Missing required
+ * parameter: client_id". An unconfigured integration should stay inert, not
+ * look like the product is broken.
+ */
+export function providerConfigured(provider: "google" | "microsoft"): boolean {
+  const { clientId, clientSecret } = providerConfig(provider);
+  return Boolean(clientId && clientSecret);
+}
