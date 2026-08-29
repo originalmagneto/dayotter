@@ -73,9 +73,14 @@ services:
     image: dayotter-web:local
     restart: unless-stopped
     env_file: .env
+    # Uploaded avatars and the firm logo live on a volume, not in the image:
+    # without this every redeploy would silently reset them to the defaults.
+    volumes:
+      - dayotter_uploads:/app/uploads
     environment:
       <<: *app-env
       NODE_ENV: production
+      UPLOAD_DIR: /app/uploads
     expose:
       - "3000"
     depends_on:
@@ -101,5 +106,6 @@ services:
         condition: service_healthy
 
 volumes:
+  dayotter_uploads:
   dayotter_pgdata:
   dayotter_redisdata:

@@ -7,6 +7,7 @@ import { aiEnabled } from "@/lib/ai/llm";
 import { getSession } from "@/lib/auth/session";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { resolveUserLocale } from "@/lib/i18n/server";
+import { eq, getDb, schema } from "@dayotter/db";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
@@ -18,6 +19,18 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   // language on the server and the client - no hydration mismatch. An explicit
   // stored language preference wins over the browser's Accept-Language header.
   const locale = await resolveUserLocale(session.user.id, (await headers()).get("accept-language"));
+  // The firm's uploaded mark, if there is one - it replaces the tenant default
+  // everywhere the lockup is drawn.
+  const membership = await getDb().query.memberships.findFirst({
+    where: eq(schema.memberships.userId, session.user.id),
+    columns: { organizationId: true },
+  });
+  const org = membership
+    ? await getDb().query.organizations.findFirst({
+        where: eq(schema.organizations.id, membership.organizationId),
+        columns: { logo: true },
+      })
+    : null;
 
   return (
     <LocaleProvider locale={locale}>
@@ -27,7 +40,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         date, a duration or a count, and stacked in a list they have to line up.
         Tabular figures are the default for the whole shell. */}
         <div className="grain relative flex h-[100dvh] overflow-hidden tabular-nums">
-          <AppNav user={{ name: session.user.name, email: session.user.email }} />
+          <AppNav user={{ name: session.user.name, email: session.user.email }} logo={org?.logo} />
           <MobileNav />
           <main className="relative flex-1 overflow-y-auto">
             {/* Ambient wash so the app inherits the marketing atmosphere instead of

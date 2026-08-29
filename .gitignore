@@ -53,3 +53,6 @@ LAUNCH-POSITIONING.md
 
 # self-host DB backups from deploy/upgrade.sh
 deploy/backups/
+
+# Local uploads (gitignored - they are user content, not source)
+apps/web/uploads/

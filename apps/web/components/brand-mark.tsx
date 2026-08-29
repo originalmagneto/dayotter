@@ -77,7 +77,23 @@ export function BrandMark({ size = 28, className }: { size?: number; className?:
  * typographic wordmark is a legitimate lockup, where an invented mark for a real
  * company would be worse than none.
  */
-export function BrandLockup({ height = 26, className }: { height?: number; className?: string }) {
+export function BrandLockup({
+  height = 26,
+  className,
+  logo,
+}: { height?: number; className?: string; logo?: string | null }) {
+  // An uploaded logo wins over the built-in mark: a firm that set one in
+  // settings expects to see it, not the tenant default it replaced.
+  if (logo) {
+    return (
+      <img
+        src={logo}
+        alt={TENANT.name}
+        style={{ height }}
+        className={cn("w-auto shrink-0", className)}
+      />
+    );
+  }
   if (TENANT.mark === "skallars") return <SkallarsLockup height={height} className={className} />;
   return (
     <span
