@@ -1,5 +1,5 @@
+import { returnOrigin } from "@/lib/brand/origin";
 import { verifyState } from "@/lib/calendar/oauth-state";
-import { env } from "@/lib/server/env";
 import { logger } from "@dayotter/core";
 import { connectCrm, exchangeCrmCode, isCrmProvider } from "@dayotter/integrations";
 import { NextResponse } from "next/server";
@@ -9,16 +9,17 @@ export const dynamic = "force-dynamic";
 /** CRM OAuth callback: verify state, exchange the code, store the connection. */
 export async function GET(request: Request, { params }: { params: Promise<{ provider: string }> }) {
   const { provider } = await params;
-  const settings = `${env.APP_URL}/settings/crm`;
-
-  if (!isCrmProvider(provider)) return NextResponse.redirect(`${settings}?crm=error`);
-
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
-  if (!code || !state) return NextResponse.redirect(`${settings}?crm=error`);
 
-  const payload = verifyState(state);
+  // The signed state carries the domain the person started on; read it first so
+  // every exit below lands there rather than on APP_URL's domain.
+  const payload = state ? verifyState(state) : null;
+  const settings = `${returnOrigin(payload?.origin)}/settings/crm`;
+
+  if (!isCrmProvider(provider)) return NextResponse.redirect(`${settings}?crm=error`);
+  if (!code || !state) return NextResponse.redirect(`${settings}?crm=error`);
   if (!payload || payload.provider !== provider) {
     return NextResponse.redirect(`${settings}?crm=error`);
   }

@@ -60,7 +60,7 @@ export const TENANTS: Record<string, Tenant> = {
   skallars: {
     name: "SKALLARS Law",
     organizationSlug: "skallars",
-    domains: ["cal.skallars.com", "cal.skallars.co"],
+    domains: ["cal.skallars.com"],
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
     mark: "skallars",
@@ -112,6 +112,24 @@ export function tenantIdFromHost(host: string | null | undefined): string {
     if (t.domains.some((d) => d === h || d === bare)) return id;
   }
   return FALLBACK_TENANT_ID;
+}
+
+/**
+ * The request's own hostname, if this deployment actually serves it.
+ *
+ * Deliberately stricter than `tenantIdFromHost`, which falls back to a default
+ * so a page always renders. This one answers a different question - "may we
+ * send somebody to this host" - where a fallback would be an open redirect.
+ * Exact match only, on the full host or the host without its port.
+ */
+export function knownHost(host: string | null | undefined): string | null {
+  if (!host) return null;
+  const full = host.toLowerCase().trim();
+  const bare = full.split(":")[0] ?? full;
+  for (const tenant of Object.values(TENANTS)) {
+    if (tenant.domains.some((d) => d === full || d === bare)) return full;
+  }
+  return null;
 }
 
 export function tenantFromHost(host: string | null | undefined): Tenant {

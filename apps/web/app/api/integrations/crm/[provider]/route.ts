@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { getSession } from "@/lib/auth/session";
 import { requireFeature } from "@/lib/billing/require-feature";
+import { originForHost } from "@/lib/brand/origin";
 import { createState } from "@/lib/calendar/oauth-state";
 import { and, eq, getDb, schema } from "@dayotter/db";
 import { crmAuthUrl, crmEnabledProviders, isCrmProvider } from "@dayotter/integrations";
@@ -29,7 +30,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ prov
     return NextResponse.redirect(settings);
   }
 
-  const state = createState({ userId: session.user.id, provider }, randomUUID());
+  const state = createState(
+    { userId: session.user.id, provider, origin: originForHost(request.headers.get("host")) },
+    randomUUID(),
+  );
   return NextResponse.redirect(crmAuthUrl(provider, state));
 }
 

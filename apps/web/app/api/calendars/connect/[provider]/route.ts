@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { getSession } from "@/lib/auth/session";
+import { originForHost } from "@/lib/brand/origin";
 import { createState } from "@/lib/calendar/oauth-state";
 import { providerConfig, providerConfigured } from "@/lib/calendar/providers";
 import { GoogleCalendarAdapter, MicrosoftCalendarAdapter } from "@dayotter/calendar";
@@ -28,7 +29,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ prov
     return NextResponse.redirect(back);
   }
 
-  const state = createState({ userId: session.user.id, provider }, randomUUID());
+  // The origin is carried through the provider so the callback can land the
+  // person back on the domain they started on, not on APP_URL's.
+  const state = createState(
+    { userId: session.user.id, provider, origin: originForHost(request.headers.get("host")) },
+    randomUUID(),
+  );
   const config = providerConfig(provider);
   const authUrl =
     provider === "google"

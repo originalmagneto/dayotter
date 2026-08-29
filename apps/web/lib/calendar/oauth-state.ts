@@ -11,6 +11,15 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 interface StatePayload {
   userId: string;
   provider: string;
+  /**
+   * The origin the flow started on, when it is one of ours.
+   *
+   * The provider returns to a single registered redirect URI for the whole
+   * stack, so without this a person who began on one firm's domain lands on
+   * another's and is asked to sign in again. Carried through signed so the
+   * callback can finish where the person actually was.
+   */
+  origin?: string | undefined;
   nonce: string;
   /** Issued-at epoch ms; callers reject stale states. */
   iat: number;
