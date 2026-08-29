@@ -5,13 +5,14 @@
  * is never half-translated.
  */
 
-export const SUPPORTED_LOCALES = ["en", "es", "fr", "de", "pt", "it", "nl"] as const;
+export const SUPPORTED_LOCALES = ["en", "sk", "es", "fr", "de", "pt", "it", "nl"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = "en";
 
 /** Each locale's name in its own language, for language pickers. */
 export const LOCALE_LABELS: Record<Locale, string> = {
   en: "English",
+  sk: "Slovenčina",
   es: "Español",
   fr: "Français",
   de: "Deutsch",
