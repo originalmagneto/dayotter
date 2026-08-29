@@ -1,5 +1,6 @@
 "use client";
 import { FormError } from "@/components/ui/form";
+import { ImageUpload } from "@/components/ui/image-upload";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
@@ -31,6 +32,8 @@ export function ProfileForm({
     name: string;
     timezone: string;
     handle: string;
+    image?: string | null;
+    orgLogo?: string | null;
     brandColor?: string | null;
     welcomeMessage?: string;
     bookingPageAnalytics?: Record<string, string> | null;
@@ -89,6 +92,13 @@ export function ProfileForm({
     <Card className="max-w-2xl">
       <CardBody className="p-6">
         <form onSubmit={onSubmit} className="space-y-4">
+          <ImageUpload
+            kind="avatar"
+            label="Your picture"
+            hint="Shown on your booking page. PNG, JPEG or WebP, up to 2 MB."
+            initial={initial.image}
+            fallbackName={name}
+          />
           <div>
             <Label htmlFor="p-name">Name</Label>
             <Input
@@ -133,6 +143,17 @@ export function ProfileForm({
             <p className="mb-3 text-xs text-[var(--color-faint)]">
               Personalize the public page bookers see at /{handle || "your-handle"}.
             </p>
+
+            <div className="mb-4">
+              <ImageUpload
+                kind="logo"
+                label="Firm logo"
+                hint="Replaces the built-in mark across this workspace. PNG, JPEG or WebP."
+                initial={initial.orgLogo}
+                fallbackName="Logo"
+                round={false}
+              />
+            </div>
 
             <div className="mb-4">
               <Label htmlFor="p-welcome">Welcome message</Label>

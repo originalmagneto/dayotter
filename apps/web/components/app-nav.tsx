@@ -25,14 +25,17 @@ const GROUPS: { label: string; items: string[] }[] = [
 // /event-types/[id]/edit) keep their parent item highlighted.
 const section = (p: string) => `/${p.split("/")[1] ?? ""}`;
 
-export function AppNav({ user }: { user: { name?: string | null; email: string } }) {
+export function AppNav({
+  user,
+  logo,
+}: { user: { name?: string | null; email: string }; logo?: string | null }) {
   const pathname = usePathname();
   const router = useRouter();
 
   return (
     <aside className="hidden h-full w-64 shrink-0 flex-col overflow-y-auto border-r border-[var(--color-border)] bg-[var(--color-surface)] p-3 lg:flex">
       <Link href="/dashboard" className="flex items-center gap-2 px-2 py-3">
-        <BrandLockup height={24} />
+        <BrandLockup height={24} logo={logo} />
       </Link>
 
       <nav className="mt-4 flex flex-1 flex-col gap-5">
