@@ -1,10 +1,15 @@
+import { getTenant } from "@/lib/brand/server";
 import { slugify, uniqueSlug } from "@/lib/slug";
 import { and, eq, getDb, schema } from "@dayotter/db";
 
 /**
- * Ensure a user has the minimum workspace to schedule: a personal organization
- * + owner membership, a public booking handle, and a default 9–5 schedule.
- * Idempotent - safe to call before any create action.
+ * Ensure a user has the minimum workspace to schedule inside the firm whose
+ * domain they are on: membership of that firm's organization, a public booking
+ * handle, and a default 9-5 schedule. Idempotent.
+ *
+ * The organization comes from the tenant rather than from whatever membership
+ * happens to be first, so one person can belong to several firms and still get
+ * the right workspace on each domain.
  */
 export async function ensureUserWorkspace(userId: string): Promise<{
   organizationId: string;
@@ -17,21 +22,26 @@ export async function ensureUserWorkspace(userId: string): Promise<{
   if (!user) throw new Error("User not found");
 
   // 1. Organization + membership.
+  const tenant = await getTenant();
+  let org = await db.query.organizations.findFirst({
+    where: eq(schema.organizations.slug, tenant.organizationSlug),
+  });
+  if (!org) {
+    [org] = await db
+      .insert(schema.organizations)
+      .values({ name: tenant.name, slug: tenant.organizationSlug })
+      .returning();
+  }
   let membership = await db.query.memberships.findFirst({
-    where: eq(schema.memberships.userId, userId),
+    where: and(
+      eq(schema.memberships.userId, userId),
+      eq(schema.memberships.organizationId, org!.id),
+    ),
   });
   if (!membership) {
-    const base = slugify(user.name ?? user.email.split("@")[0] ?? "", {
-      max: 32,
-      fallback: "team",
-    });
-    const slug = await uniqueSlug(base, async (v) =>
-      Boolean(await db.query.organizations.findFirst({ where: eq(schema.organizations.slug, v) })),
-    );
-    const [org] = await db
-      .insert(schema.organizations)
-      .values({ name: user.name ? `${user.name}'s workspace` : "My workspace", slug })
-      .returning();
+    // Joining the firm, not founding a personal workspace: the organization is
+    // the domain's, and a second one here would quietly split the same person's
+    // data across two workspaces on the same site.
     [membership] = await db
       .insert(schema.memberships)
       .values({ organizationId: org!.id, userId, role: "owner" })
