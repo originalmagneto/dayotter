@@ -5,7 +5,7 @@
  * is never half-translated.
  */
 
-export const SUPPORTED_LOCALES = ["en", "sk", "es", "fr", "de", "pt", "it", "nl"] as const;
+export const SUPPORTED_LOCALES = ["en", "sk", "de", "zh", "es", "fr", "pt", "it", "nl"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = "en";
 
@@ -13,6 +13,7 @@ export const DEFAULT_LOCALE: Locale = "en";
 export const LOCALE_LABELS: Record<Locale, string> = {
   en: "English",
   sk: "Slovenčina",
+  zh: "中文",
   es: "Español",
   fr: "Français",
   de: "Deutsch",
@@ -22,14 +23,24 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 };
 
 /** Map a browser/Accept-Language value (e.g. "es-419,es;q=0.9") to a supported locale. */
-export function resolveLocale(input: string | null | undefined): Locale {
-  if (!input) return DEFAULT_LOCALE;
+export function resolveLocale(
+  input: string | null | undefined,
+  /**
+   * The languages actually on offer. Defaults to everything the app ships, but
+   * a tenant passes its own narrower set: a German browser should only get a
+   * German page from a firm that offers German, not from every deployment that
+   * happens to have the catalogue.
+   */
+  offered: readonly Locale[] = SUPPORTED_LOCALES,
+): Locale {
+  const fallback = offered[0] ?? DEFAULT_LOCALE;
+  if (!input) return fallback;
   for (const part of input.split(",")) {
     const tag = part.trim().split(";")[0]?.toLowerCase() ?? "";
     const base = tag.split("-")[0] as Locale;
-    if ((SUPPORTED_LOCALES as readonly string[]).includes(base)) return base;
+    if ((offered as readonly string[]).includes(base)) return base;
   }
-  return DEFAULT_LOCALE;
+  return fallback;
 }
 
 /** Interpolate `{name}` placeholders in a message string. */

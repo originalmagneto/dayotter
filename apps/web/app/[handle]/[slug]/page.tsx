@@ -12,6 +12,7 @@ import { sanitizePixelConfig } from "@/lib/booking/analytics-pixels";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
+import { TENANT } from "@/lib/brand/tenants";
 import { resolveLocale } from "@/lib/i18n/booking";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { BRAND } from "@/lib/marketing";
@@ -46,7 +47,7 @@ export default async function PublicBookingPage({
   if (!eventType) notFound();
 
   const branding = await getHostBranding(host.id);
-  const locale = resolveLocale((await headers()).get("accept-language"));
+  const locale = resolveLocale((await headers()).get("accept-language"), TENANT.locales);
 
   // If the host is out of office right now (their local "today"), surface it and,
   // when they've named a delegate, offer to redirect the booker to that teammate.

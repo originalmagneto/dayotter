@@ -16,6 +16,7 @@ import it from "./locales/it/booking.json";
 import nl from "./locales/nl/booking.json";
 import pt from "./locales/pt/booking.json";
 import sk from "./locales/sk/booking.json";
+import zh from "./locales/zh/booking.json";
 
 export {
   DEFAULT_LOCALE,
@@ -29,6 +30,7 @@ export type BookingKey = keyof typeof en;
 const MESSAGES: Record<Locale, Record<BookingKey, string>> = {
   en,
   sk,
+  zh,
   es,
   fr,
   de,
