@@ -36,16 +36,48 @@ since upstream adds keys to them regularly; ours only adds `slotsAvailable` afte
 
 ## What is in the delta, and what could leave it
 
-Two classes, and they age differently:
+Three classes now, and they age very differently:
 
-- **Deploy-only, permanent.** `docker-compose.dokploy.yml` and this file. Never going
-  upstream; zero conflict risk (new files).
-- **Genuinely upstream-worthy.** The heap-ceiling and `HOSTNAME=0.0.0.0` Dockerfile
-  fixes are plain bugs — the second one 502s behind any reverse proxy on a second Docker
-  network. The design pass (focus ring, reduced-motion, scoped theme transition, booking
-  skeleton and scroll fades, tabular figures) is not deployment-specific either. If those
-  are sent upstream and merged, they drop out of this branch on the next rebase and the
-  delta shrinks to the first class.
+- **Deploy-only, permanent.** `docker-compose.dokploy.yml` and this file. Never
+  going upstream; zero conflict risk (new files).
+- **Sent upstream.** The build fixes, the i18n crash, the a11y pass and the booking
+  and app craft work are open as PRs #255–#259 against `Dayotter/dayotter`
+  (issues #252–#254). If they merge, those commits drop out of this branch on the
+  next rebase. **Check their state before resolving a conflict in the same files** -
+  a conflict there may mean the change landed upstream and ours can simply be
+  dropped.
+- **The rebrand, permanent and wide.** SKALLARS Law naming, the palette, General
+  Sans, the mark, and the removal of the mascot illustrations. This is the class
+  that changes the character of the fork.
 
-`DESIGN.md` and `.impeccable/design.json` sit in between: they document the upstream
-design system rather than our deployment, but they were generated here.
+## The rebrand changes what syncing costs
+
+Before the rebrand this was a thin patch series and a rebase was mostly clean.
+It is not that any more. The delta now touches `app/globals.css`, the root layout,
+every marketing page, and ~500 occurrences of the product name. A rebase onto a
+release with marketing changes will conflict, and it will conflict in prose.
+
+That is a deliberate trade the owner made, not an accident - but it means the
+sync habit has to change:
+
+- **Take upstream selectively.** Pull the app and package changes; be willing to
+  keep our own version of `app/(marketing)/**` wholesale rather than merging line
+  by line. Their marketing copy describes an open-source product and ours
+  describes a law firm; there is no meaningful merge of those two.
+- **`globals.css` conflicts are ours to win.** Upstream tuning of DayOtter's warm
+  palette is not wanted here. Take our side and only port genuinely structural
+  changes (a new token, a new layer).
+- **`lib/marketing.ts` is the naming hub.** The product name lives in `BRAND.name`,
+  so a future rename is one line - it is the marketing prose around it that costs.
+
+## Known follow-ups
+
+- The marketing pages still read as an open-source product under a law firm's
+  name: `/pricing`, `/vs`, and the self-hosting pages compare "SKALLARS Law" to
+  Calendly and Cal.com. Either trim those routes or point the marketing root at
+  the booking page.
+- The AI assistant is still called "Otter" in ~276 places, including four
+  component filenames. Renaming it is a separate decision from renaming the
+  product.
+- `apps/mobile` was deliberately left on the old name: it is not deployed from
+  this fork, so renaming it would be pure conflict surface.

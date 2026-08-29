@@ -1,69 +1,70 @@
 ---
-name: DayOtter
-description: Editorial calm meets a living calendar — a warm-ivory scheduling product with one violet voice.
+name: SKALLARS Law
+description: The firm's identity, on a calendar - cool violet neutrals, General Sans, one accent held back for interface use.
 colors:
-  otter-violet: "#6743e6"
-  otter-violet-deep: "#5734d6"
-  violet-mist: "#efeafd"
-  warm-ivory: "#faf9f6"
-  paper-white: "#ffffff"
-  cool-recess: "#f3f2f8"
-  rich-ink: "#191720"
-  ink-muted: "#55504a"
-  ink-faint: "#837d72"
-  hairline: "#e7e6ef"
-  hairline-strong: "#d7d5e1"
-  mint: "#16a085"
-  amber: "#d98829"
-  coral: "#ef6a52"
-  sky: "#3b82f6"
-  rose-danger: "#e11d48"
-  rose-danger-soft: "#fdf1f3"
+  brand-violet: "#5d00ff"
+  accent: "#5326d9"
+  accent-deep: "#451eb8"
+  violet-mist: "#ece7fe"
+  paper: "#f7f6fc"
+  surface: "#ffffff"
+  recess: "#eeecf8"
+  aubergine-ink: "#18092b"
+  ink-muted: "#4a4060"
+  ink-faint: "#756c8c"
+  hairline: "#e3e0f2"
+  hairline-strong: "#cdc7e6"
+  mint: "#0a6e56"
+  amber: "#94560c"
+  coral: "#b03e28"
+  sky: "#1d4ed8"
+  rose-danger: "#b51b3e"
+  rose-danger-soft: "#fbeaee"
 typography:
   display:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "clamp(2.6rem, 6vw, 4.5rem)"
     fontWeight: 600
     lineHeight: 1.04
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "clamp(2rem, 4vw, 2.4rem)"
     fontWeight: 600
     lineHeight: 1.08
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "1.25rem"
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "-0.01em"
   subhead:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 600
     lineHeight: 1.4
     letterSpacing: "normal"
   body:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
     lineHeight: 1.6
     letterSpacing: "normal"
   caption:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.8125rem"
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "normal"
   meta:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.6875rem"
     fontWeight: 400
     lineHeight: 1.4
     letterSpacing: "normal"
   micro:
-    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontFamily: "General Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.625rem"
     fontWeight: 500
     lineHeight: 1.3
@@ -88,18 +89,18 @@ spacing:
   card-y: "16px"
 components:
   button-primary:
-    backgroundColor: "{colors.otter-violet}"
-    textColor: "{colors.paper-white}"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.surface}"
     rounded: "{rounded.md}"
     padding: "0 16px"
     height: "40px"
     typography: "{typography.body}"
   button-primary-hover:
-    backgroundColor: "{colors.otter-violet-deep}"
-    textColor: "{colors.paper-white}"
+    backgroundColor: "{colors.accent-deep}"
+    textColor: "{colors.surface}"
   button-outline:
-    backgroundColor: "{colors.paper-white}"
-    textColor: "{colors.rich-ink}"
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.aubergine-ink}"
     rounded: "{rounded.md}"
     padding: "0 16px"
     height: "40px"
@@ -116,56 +117,59 @@ components:
     padding: "0 16px"
     height: "40px"
   card:
-    backgroundColor: "{colors.paper-white}"
-    textColor: "{colors.rich-ink}"
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.aubergine-ink}"
     rounded: "{rounded.lg}"
     padding: "16px 20px"
   input:
-    backgroundColor: "{colors.warm-ivory}"
-    textColor: "{colors.rich-ink}"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.aubergine-ink}"
     rounded: "{rounded.md}"
     padding: "0 12px"
     height: "40px"
   badge-neutral:
-    backgroundColor: "{colors.cool-recess}"
+    backgroundColor: "{colors.recess}"
     textColor: "{colors.ink-muted}"
     rounded: "{rounded.full}"
     padding: "4px 10px"
   badge-accent:
     backgroundColor: "{colors.violet-mist}"
-    textColor: "{colors.otter-violet}"
+    textColor: "{colors.accent}"
     rounded: "{rounded.full}"
     padding: "4px 10px"
 ---
 
-# Design System: DayOtter
+# Design System: SKALLARS Law
 
 ## Overview
 
-**Creative North Star: "The Living Calendar"**
+**Creative North Star: "The Firm's Calm, On a Calendar"**
 
-DayOtter is a scheduling product that refuses to look like scheduling software. The
-ground is warm ivory rather than the cold grey-white of enterprise SaaS, the text is a
-near-black that leans warm rather than a flat neutral, and exactly one chromatic voice —
-otter violet — carries every action worth taking. The result reads closer to a
-well-set printed agenda than to a database with a calendar view bolted on.
+This is a law firm's scheduling surface, and it has one job before any other: a
+client who arrives from skallars.com should not feel they have left. The ground is
+the site's own cool violet-tinted white, the text its deep aubergine, and the
+accent its violet — so the booking link reads as the firm continuing, not as a
+third-party tool wearing a logo.
 
-The "living" half is the counterweight. A calendar is not a static document: times
-arrive, days fill, slots disappear while you look at them. So the system stays quiet at
-rest and reserves its energy for state. Surfaces sit flat until you touch them, motion
-exists only where something genuinely changed, and the accent appears sparingly enough
-that when it does appear you know it means *this one*.
+Underneath that it is still a calendar, and a calendar is not a static document:
+times arrive, days fill, slots disappear while you look at them. So the system
+stays quiet at rest and spends its energy on state. Surfaces sit flat until you
+touch them, motion exists only where something genuinely changed, and the accent
+appears sparingly enough that when it does, you know it means *this one*.
 
-Density is generous rather than compressed. This is a product people open to make a
-decision — pick a time, approve a booking, protect an afternoon — not a console they
-stare at all day. Whitespace is the default and information is grouped tightly inside
-it, so a screen reads as a small number of decisions rather than a wall of rows.
+The brand violet and the interface accent are deliberately not the same value.
+`#5d00ff` is right for a mark and a hero, where it appears once; across a dense
+app screen, where the accent lands on every button, every selected slot and every
+focus ring at once, the same value is punishing. The interface uses the same hue
+held back. Light is the default, and that is a use-scene decision rather than a
+taste one: the booking page is read on a phone, often outdoors, by someone who
+wants to pick a time and leave.
 
 **Key Characteristics:**
 
-- Warm ivory ground (`#faf9f6`), never a cold or pure-white page
-- One accent voice — otter violet — for actions, selection, and focus; nothing else
-- One grotesque (Geist) doing both display and body; Geist Mono only for labels
+- Cool violet-tinted ground (`#f7f6fc`), never a warm or pure-white page
+- Two violets: `#5d00ff` for the mark, a held-back tone for the interface
+- One grotesque — General Sans — doing display and body; Geist Mono only for labels
 - Flat at rest, lifted on state
 - Tabular figures wherever a time, date, duration, or count appears
 - A class-based dark theme that is a genuine second palette, not an inversion
@@ -177,26 +181,29 @@ that exist to distinguish calendar entries, never to decorate.
 
 ### Primary
 
-- **Otter Violet** (`#6743e6`): the product's only voice. Primary buttons, the active
-  nav indicator, selected time slots, links, focus rings, AI-recommended times. It
-  matches the otter illustration palette, which is why it reads as brand rather than as
-  a generic SaaS purple.
-- **Otter Violet Deep** (`#5734d6`): the hover state of every primary action. Never used
-  at rest.
+- **Brand Violet** (`#5d00ff`): the firm's exact violet, taken from skallars.com.
+  Reserved: the mark, the hero, the one primary call to action on a page. Its scarcity
+  is what makes it read as identity rather than decoration.
+- **Accent** (`#5326d9`): the same hue, held back, for everything the interface does
+  with it — primary buttons, the active nav indicator, selected time slots, links, focus
+  rings, recommended times. Contrast is not the reason for the difference; `#5d00ff`
+  clears 7.2:1 on white on its own. Saturation across a dense screen is.
+- **Accent Deep** (`#451eb8`): the hover state of every primary action. Never at rest.
 - **Violet Mist** (`#efeafd`): the accent's soft field — recommended-time panels, accent
   badges, selected chips. Carries the accent's meaning at a whisper.
 
 ### Neutral
 
-- **Warm Ivory** (`#faf9f6`): the page ground. The single most identifying colour in the
-  system; a cold `#fafafa` would dissolve the whole character.
+- **Paper** (`#f7f6fc`): the page ground, the site's own light. The single most
+  identifying neutral here; a plain `#fafafa` would dissolve the violet cast that ties
+  this to the firm.
 - **Paper White** (`#ffffff`): raised surfaces — cards, dialogs, popovers. Its job is to
   separate from the ivory ground, which is why the ground is never white.
 - **Cool Recess** (`#f3f2f8`): the *recessed* tone — inset blocks, secondary buttons,
   skeletons, table zebra. Deliberately a faintly cool neutral leaning toward the accent
   rather than a warmer beige, so inset areas read crisp instead of dated.
-- **Rich Ink** (`#191720`): body and heading text. Warm near-black, not a grey.
-- **Ink Muted** (`#55504a`): secondary and supporting copy. Kept dark and warm enough to
+- **Aubergine Ink** (`#18092b`): body and heading text. The site's darkest value — a
+  near-black that is unmistakably violet rather than a neutral grey.
   stay readable rather than washing out.
 - **Ink Faint** (`#837d72`): tertiary text, placeholders, metadata.
 - **Hairline** (`#e7e6ef`) / **Hairline Strong** (`#d7d5e1`): the two line weights.
@@ -215,11 +222,11 @@ not decoration.
 
 ### Named Rules
 
-**The One Voice Rule.** Otter violet is the only chromatic accent in the interface
+**The One Voice Rule.** The violet is the only chromatic accent in the interface
 chrome. If a screen needs a second accent to make sense, the hierarchy is wrong, not the
 palette. The event hues are exempt because they encode data, not emphasis.
 
-**The Never-White-Ground Rule.** The page is `#faf9f6` and raised surfaces are
+**The Never-White-Ground Rule.** The page is `#f7f6fc` and raised surfaces are
 `#ffffff`. Inverting that — a white page with grey cards — collapses the elevation model
 and erases the system's warmth in one edit.
 
@@ -229,8 +236,8 @@ weight, or a coloured border used as decoration, is drift.
 
 ## Typography
 
-**Display Font:** Geist Sans (fallback: `ui-sans-serif`, `system-ui`, `-apple-system`)
-**Body Font:** Geist Sans — the same family, one weight heavier for display
+**Display Font:** General Sans (fallback: `ui-sans-serif`, `system-ui`, `-apple-system`)
+**Body Font:** General Sans — the same family, one weight heavier for display
 **Label/Mono Font:** Geist Mono (fallback: `ui-monospace`, `SFMono-Regular`, Menlo)
 
 **Character:** One modern grotesque carries the entire system. Display is not a
@@ -269,9 +276,9 @@ size.
 
 ### Named Rules
 
-**The One Family Rule.** Geist Sans does display and body. A serif display face was
-deliberately removed from this system once already; reintroducing one is a regression,
-not a refresh.
+**The One Family Rule.** General Sans does display and body — the same face the firm's
+site and its document templates use, which is the point: one voice across a letter, a
+contract and a booking link. A second display face breaks that, not just this page.
 
 **The Named Step Rule.** Type sizes come from the scale — Tailwind's steps or the named
 roles between them. `text-[13px]` is how a scale quietly stops being one; the fifty
@@ -365,8 +372,8 @@ barely-there shadows — and unmistakably responsive to touch, with a `.98` pres
   `transition-all 150ms`, `disabled:opacity-50`.
 - **Sizes:** sm (`h-8`, `px-3`, 14px) · md (`h-10`, `px-4`, 14px) · lg (`h-11`, `px-5`,
   15px).
-- **Primary:** otter violet on white text with the resting card shadow; hover deepens to
-  Otter Violet Deep. The only button that carries a shadow.
+- **Primary:** the accent on white text with the resting card shadow; hover deepens to
+  Accent Deep. The only button that carries a shadow.
 - **Secondary:** cool recess field, ink text; hover steps to the hairline tone.
 - **Outline:** paper-white with a strong hairline; hover fills to cool recess.
 - **Ghost:** muted text only; hover gains both full ink and a cool-recess field.
@@ -440,8 +447,8 @@ sparkle glyph, never by a fill.
   callout, or alert. It is the most recognisable tell of generated UI, and this system has
   a real accent-marker pattern already — the 3px nav pointer pinned to a container edge,
   not a stripe down the side of content.
-- **Don't** introduce a serif or a second display face. Geist Sans does both jobs; a
-  serif was deliberately removed from this system once already.
+- **Don't** introduce a serif or a second display face. General Sans does both jobs, and
+  it is the firm's face across every other document it sends.
 - **Don't** write arbitrary radii or type sizes (`rounded-[12px]`, `text-[15px]`) for UI
   surfaces. Use the scale. The exception is a literal object being drawn — a device
   bezel, a calendar tick — where the number describes a real thing.
