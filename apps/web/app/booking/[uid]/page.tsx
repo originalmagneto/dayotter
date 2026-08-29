@@ -4,6 +4,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { getHostPixels } from "@/lib/booking/branding";
 import { googleCalendarUrl } from "@/lib/booking/ics";
 import { formatMoney } from "@/lib/booking/money";
+import { BRAND } from "@/lib/marketing";
 import { eq, getDb, schema } from "@dayotter/db";
 import {
   CalendarPlus,
@@ -200,7 +201,7 @@ export default async function BookingPage({ params }: { params: Promise<{ uid: s
             className="absolute -left-[3px] -top-[3px] max-w-none"
           />
         </span>
-        Powered by <span className="text-[var(--color-muted)]">SKALLARS Law</span>
+        Powered by <span className="text-[var(--color-muted)]">{BRAND.name}</span>
       </p>
     </main>
   );

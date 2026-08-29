@@ -29,6 +29,8 @@ export interface Tenant {
   locales: readonly Locale[];
   /** Falls back to the first entry in `locales`. */
   locale: Locale;
+  /** Which theme a first-time visitor sees. LAWOSS is a dark-first identity. */
+  defaultTheme: "light" | "dark";
 }
 
 export const TENANTS: Record<string, Tenant> = {
@@ -39,6 +41,7 @@ export const TENANTS: Record<string, Tenant> = {
     mark: "skallars",
     locales: ["sk", "en", "de", "zh"],
     locale: "sk",
+    defaultTheme: "light",
   },
   hitl: {
     name: "Human in the Loop",
@@ -47,6 +50,7 @@ export const TENANTS: Record<string, Tenant> = {
     mark: "wordmark",
     locales: ["en", "sk"],
     locale: "en",
+    defaultTheme: "light",
   },
   lawoss: {
     name: "LAWOSS",
@@ -55,6 +59,7 @@ export const TENANTS: Record<string, Tenant> = {
     mark: "wordmark",
     locales: ["en", "sk"],
     locale: "en",
+    defaultTheme: "dark",
   },
 };
 

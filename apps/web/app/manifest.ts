@@ -1,9 +1,10 @@
+import { BRAND } from "@/lib/marketing";
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "SKALLARS Law",
-    short_name: "SKALLARS Law",
+    name: BRAND.name,
+    short_name: BRAND.name,
     description: "The AI-native, open-source scheduling platform.",
     start_url: "/dashboard",
     display: "standalone",
