@@ -1,14 +1,16 @@
+import { TENANT } from "@/lib/brand/tenants";
+
 /** Brand + marketing constants. One place for links, contact, and footer nav. */
 
 export const BRAND = {
-  name: "SKALLARS Law",
-  tagline: "Book time with the firm.",
+  name: TENANT.name,
+  tagline: TENANT.tagline,
   /** Canonical site origin - drives metadataBase, sitemap, canonical URLs, JSON-LD.
    * Use `||`, not `??`: the Docker build sets NEXT_PUBLIC_APP_URL to an EMPTY
    * string when it isn't provided, and `"" ?? default` keeps the empty string,
    * which makes `new URL(BRAND.url)` in the root layout throw at build time. */
   url: process.env.NEXT_PUBLIC_APP_URL?.trim() || "https://cal.humanintheloop.sk",
-  email: "info@skallars.com",
+  email: TENANT.email,
   /**
    * The fork this instance runs. Not vanity: SKALLARS Law is AGPLv3, and section 13
    * requires that people who interact with a modified version over a network be

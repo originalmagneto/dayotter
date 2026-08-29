@@ -1,3 +1,4 @@
+import { TENANT } from "@/lib/brand/tenants";
 import { cn } from "@/lib/cn";
 
 /**
@@ -7,7 +8,7 @@ import { cn } from "@/lib/cn";
  * serves the light and dark themes instead of shipping a second white variant
  * that then has to be switched on the theme class.
  */
-export function BrandLockup({ height = 26, className }: { height?: number; className?: string }) {
+function SkallarsLockup({ height = 26, className }: { height?: number; className?: string }) {
   return (
     <svg
       viewBox="0 0 256 48"
@@ -65,5 +66,25 @@ export function BrandMark({ size = 28, className }: { size?: number; className?:
       <path d="M30.6838 48L61 17.4922H48.1181L17.6238 48H30.6838Z" />
       <path d="M13.0907 34.8227L35.2147 12.689H48.1363C48.1363 12.689 34.6948 26.4549 26.3083 34.8227H13.0907Z" />
     </svg>
+  );
+}
+
+/**
+ * The active tenant's lockup.
+ *
+ * A firm with a real vector logo gets it; the others get their name set in the
+ * product's own face. That is deliberately not a placeholder graphic - a
+ * typographic wordmark is a legitimate lockup, where an invented mark for a real
+ * company would be worse than none.
+ */
+export function BrandLockup({ height = 26, className }: { height?: number; className?: string }) {
+  if (TENANT.mark === "skallars") return <SkallarsLockup height={height} className={className} />;
+  return (
+    <span
+      className={cn("font-display shrink-0 whitespace-nowrap tracking-[-0.01em]", className)}
+      style={{ fontSize: Math.round(height * 0.72), lineHeight: 1 }}
+    >
+      {TENANT.name}
+    </span>
   );
 }
