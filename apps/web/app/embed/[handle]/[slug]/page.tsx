@@ -4,7 +4,7 @@ import { aiEnabled } from "@/lib/ai/llm";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
-import { TENANT } from "@/lib/brand/tenants";
+import { getTenant } from "@/lib/brand/server";
 import { resolveLocale, t } from "@/lib/i18n/booking";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { paymentsEnabled } from "@/lib/payments/stripe";
@@ -28,6 +28,7 @@ export default async function EmbedBookingPage({
   params: Promise<{ handle: string; slug: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  const tenant = await getTenant();
   const { handle, slug } = await params;
   const sp = await searchParams;
   const db = getDb();
@@ -45,7 +46,7 @@ export default async function EmbedBookingPage({
   if (!eventType) notFound();
 
   const branding = await getHostBranding(host.id);
-  const locale = resolveLocale((await headers()).get("accept-language"), TENANT.locales);
+  const locale = resolveLocale((await headers()).get("accept-language"), tenant.locales);
   const chargeAmount = paymentsEnabled ? chargeFor(eventType.price, eventType.depositAmount) : 0;
   const priceLabel =
     chargeAmount > 0 ? formatMoney(chargeAmount, eventType.currency ?? "usd") : null;

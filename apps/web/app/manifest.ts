@@ -1,10 +1,12 @@
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import type { MetadataRoute } from "next";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const tenant = await getTenant();
   return {
-    name: BRAND.name,
-    short_name: BRAND.name,
+    name: tenant.name,
+    short_name: tenant.name,
     description: "The AI-native, open-source scheduling platform.",
     start_url: "/dashboard",
     display: "standalone",

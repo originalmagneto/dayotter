@@ -1,6 +1,6 @@
 "use client";
 
-import { TENANT } from "@/lib/brand/tenants";
+import { useTenant } from "@/lib/brand/context";
 import { LOCALE_LABELS, type Locale } from "@/lib/i18n";
 import { useLocaleContext, useSetLocale } from "@/lib/i18n/locale-provider";
 import { Globe } from "lucide-react";
@@ -11,6 +11,7 @@ import { Globe } from "lucide-react";
  * LocaleProvider. Native-rendered <select> so it stays light and accessible.
  */
 export function LanguagePicker() {
+  const TENANT = useTenant();
   const locale = useLocaleContext();
   const setLocale = useSetLocale();
   return (

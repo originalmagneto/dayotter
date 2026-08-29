@@ -12,7 +12,7 @@ import { sanitizePixelConfig } from "@/lib/booking/analytics-pixels";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
-import { TENANT } from "@/lib/brand/tenants";
+import { getTenant } from "@/lib/brand/server";
 import { resolveLocale } from "@/lib/i18n/booking";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
 import { BRAND } from "@/lib/marketing";
@@ -31,6 +31,7 @@ export default async function PublicBookingPage({
 }: {
   params: Promise<{ handle: string; slug: string }>;
 }) {
+  const tenant = await getTenant();
   const { handle, slug } = await params;
   const db = getDb();
 
@@ -47,7 +48,7 @@ export default async function PublicBookingPage({
   if (!eventType) notFound();
 
   const branding = await getHostBranding(host.id);
-  const locale = resolveLocale((await headers()).get("accept-language"), TENANT.locales);
+  const locale = resolveLocale((await headers()).get("accept-language"), tenant.locales);
 
   // If the host is out of office right now (their local "today"), surface it and,
   // when they've named a delegate, offer to redirect the booker to that teammate.
@@ -196,7 +197,7 @@ export default async function PublicBookingPage({
       */}
       <p className="mt-6 flex items-center justify-center gap-1.5 text-meta text-[var(--color-faint)]">
         <BrandMark size={12} className="text-[var(--color-faint)]" />
-        {BRAND.name}
+        {tenant.name}
         <span aria-hidden>·</span>
         <a
           href={BRAND.github}

@@ -1,4 +1,5 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   description: "How SKALLARS Law collects, uses, and protects your data.",
 };
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const tenant = await getTenant();
   return (
     <>
       <MarketingHeader
@@ -18,7 +20,7 @@ export default function PrivacyPage() {
       />
       <Prose>
         <p>
-          Your calendar is deeply personal. This policy explains what {BRAND.name} collects, why,
+          Your calendar is deeply personal. This policy explains what {tenant.name} collects, why,
           and the control you have. In short: we collect the minimum needed to run scheduling for
           you, we never sell your data, and sensitive tokens are encrypted at rest.
         </p>
@@ -56,7 +58,7 @@ export default function PrivacyPage() {
 
         <h2>Otter, our AI assistant</h2>
         <p>
-          When you use Otter - {BRAND.name}'s built-in assistant - the message you send and the
+          When you use Otter - {tenant.name}'s built-in assistant - the message you send and the
           relevant scheduling context (your event types, availability, and upcoming bookings) are
           sent to our AI provider, Anthropic, to generate a response. Otter is{" "}
           <strong>confirm-first</strong>: it only ever drafts a change and waits for your explicit
@@ -68,7 +70,7 @@ export default function PrivacyPage() {
 
         <h2>Google Workspace APIs &amp; Limited Use</h2>
         <p>
-          {BRAND.name}'s use of information received from Google Workspace APIs (including Google
+          {tenant.name}'s use of information received from Google Workspace APIs (including Google
           Calendar) adheres to the{" "}
           <a href="https://developers.google.com/terms/api-services-user-data-policy">
             Google API Services User Data Policy
@@ -145,13 +147,14 @@ export default function PrivacyPage() {
 
         <h2>Self-hosting</h2>
         <p>
-          If you self-host {BRAND.name}, your data lives on your own infrastructure and this policy
+          If you self-host {tenant.name}, your data lives on your own infrastructure and this policy
           does not apply - you are the data controller.
         </p>
 
         <h2>Contact</h2>
         <p>
-          Privacy questions or requests? Email <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>.
+          Privacy questions or requests? Email <a href={`mailto:${tenant.email}`}>{tenant.email}</a>
+          .
         </p>
 
         <hr />

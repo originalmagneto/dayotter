@@ -1,4 +1,5 @@
 import { POSTS } from "@/lib/blog";
+import { getTenant } from "@/lib/brand/server";
 import { COMPARISONS } from "@/lib/comparisons";
 import { GUIDES } from "@/lib/docs";
 import { FEATURES } from "@/lib/features";
@@ -22,9 +23,10 @@ function section(title: string, lines: string[]): string {
   return `## ${title}\n${lines.join("\n")}\n`;
 }
 
-export function GET(): Response {
+export async function GET(): Promise<Response> {
+  const tenant = await getTenant();
   const body = [
-    `# ${BRAND.name}`,
+    `# ${tenant.name}`,
     "",
     "> SKALLARS Law is the AI-native, open-source scheduling platform. Its assistant, Otter, books meetings, protects focus, and clears the scheduling back-and-forth - always confirm-first (it drafts, a human approves). Sync every calendar, run team round-robin and collective scheduling, accept payments, and self-host the whole thing under AGPLv3.",
     "",

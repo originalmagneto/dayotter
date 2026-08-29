@@ -4,7 +4,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { getHostPixels } from "@/lib/booking/branding";
 import { googleCalendarUrl } from "@/lib/booking/ics";
 import { formatMoney } from "@/lib/booking/money";
-import { TENANT } from "@/lib/brand/tenants";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import { eq, getDb, schema } from "@dayotter/db";
 import {
@@ -23,6 +23,7 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export default async function BookingPage({ params }: { params: Promise<{ uid: string }> }) {
+  const tenant = await getTenant();
   const { uid } = await params;
   const booking = await getDb().query.bookings.findFirst({
     where: eq(schema.bookings.uid, uid),
@@ -195,14 +196,14 @@ export default async function BookingPage({ params }: { params: Promise<{ uid: s
       <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
         <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
           <img
-            src="${TENANT.icon}"
+            src="${tenant.icon}"
             alt=""
             width={21}
             height={21}
             className="absolute -left-[3px] -top-[3px] max-w-none"
           />
         </span>
-        Powered by <span className="text-[var(--color-muted)]">{BRAND.name}</span>
+        Powered by <span className="text-[var(--color-muted)]">{tenant.name}</span>
       </p>
     </main>
   );

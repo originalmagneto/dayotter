@@ -2,7 +2,7 @@ import { SlotPicker } from "@/components/slot-picker";
 import { Card, CardBody } from "@/components/ui/card";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
-import { TENANT } from "@/lib/brand/tenants";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { and, eq, getDb, schema } from "@dayotter/db";
@@ -21,6 +21,7 @@ export default async function TeamBookingPage({
 }: {
   params: Promise<{ teamSlug: string; slug: string }>;
 }) {
+  const tenant = await getTenant();
   const { teamSlug, slug } = await params;
   const db = getDb();
 
@@ -143,14 +144,14 @@ export default async function TeamBookingPage({
       <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
         <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
           <img
-            src={TENANT.icon}
+            src={tenant.icon}
             alt=""
             width={21}
             height={21}
             className="absolute -left-[3px] -top-[3px] max-w-none"
           />
         </span>
-        Powered by <span className="text-[var(--color-muted)]">{BRAND.name}</span>
+        Powered by <span className="text-[var(--color-muted)]">{tenant.name}</span>
       </p>
     </main>
   );

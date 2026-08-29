@@ -1,4 +1,4 @@
-import { TENANT } from "@/lib/brand/tenants";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 
 /**
@@ -16,17 +16,18 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 }
 
 /** Site-wide: who we are + the software product. Rendered once in the root layout. */
-export function OrganizationJsonLd() {
+export async function OrganizationJsonLd() {
+  const tenant = await getTenant();
   return (
     <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: BRAND.name,
+          name: tenant.name,
           url: BRAND.url,
-          logo: `${BRAND.url}${TENANT.icon}`,
-          email: BRAND.email,
+          logo: `${BRAND.url}${tenant.icon}`,
+          email: tenant.email,
           sameAs: [BRAND.x, BRAND.github],
         }}
       />
@@ -34,7 +35,7 @@ export function OrganizationJsonLd() {
         data={{
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: BRAND.name,
+          name: tenant.name,
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web, Android",
           description:
@@ -107,12 +108,13 @@ export function DefinedTermJsonLd(props: { term: string; definition: string; pat
 }
 
 /** A blog post / article. */
-export function ArticleJsonLd(props: {
+export async function ArticleJsonLd(props: {
   title: string;
   description: string;
   path: string;
   datePublished?: string;
 }) {
+  const tenant = await getTenant();
   return (
     <JsonLd
       data={{
@@ -122,11 +124,11 @@ export function ArticleJsonLd(props: {
         description: props.description,
         url: `${BRAND.url}${props.path}`,
         ...(props.datePublished ? { datePublished: props.datePublished } : {}),
-        author: { "@type": "Organization", name: BRAND.name },
+        author: { "@type": "Organization", name: tenant.name },
         publisher: {
           "@type": "Organization",
-          name: BRAND.name,
-          logo: { "@type": "ImageObject", url: `${BRAND.url}${TENANT.icon}` },
+          name: tenant.name,
+          logo: { "@type": "ImageObject", url: `${BRAND.url}${tenant.icon}` },
         },
       }}
     />
