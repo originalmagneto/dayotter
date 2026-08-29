@@ -1,48 +1,27 @@
-import { POSTS } from "@/lib/blog";
-import { COMPARISONS } from "@/lib/comparisons";
-import { GUIDES } from "@/lib/docs";
-import { FEATURES } from "@/lib/features";
-import { GLOSSARY } from "@/lib/glossary";
-import { INTEGRATIONS } from "@/lib/integrations-content";
 import { BRAND } from "@/lib/marketing";
-import { PERSONAS } from "@/lib/personas";
 import type { MetadataRoute } from "next";
 
-/** Dynamic sitemap - every public page, so search engines can crawl the lot. */
+/**
+ * There is almost nothing here to crawl, and that is deliberate.
+ *
+ * The marketing site is gated off on these deployments (see
+ * `app/(marketing)/layout.tsx`), the root redirects to sign-in, and booking
+ * pages are links a firm hands to a specific client rather than pages it wants
+ * indexed. What is left is the two legal pages.
+ *
+ * The absolute URL comes from NEXT_PUBLIC_APP_URL, so on a multi-firm stack the
+ * sitemap speaks for whichever domain that names. Fine while it lists only
+ * pages every domain serves identically; revisit if anything firm-specific is
+ * ever added here.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = BRAND.url;
   const now = new Date();
+  const entry = (path: string, priority: number): MetadataRoute.Sitemap[number] => ({
+    url: `${BRAND.url}${path}`,
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority,
+  });
 
-  const entry = (
-    path: string,
-    priority: number,
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] = "weekly",
-  ) => ({ url: `${base}${path}`, lastModified: now, changeFrequency, priority });
-
-  return [
-    entry("", 1, "daily"),
-    entry("/pricing", 0.9),
-    entry("/features", 0.9),
-    entry("/integrations", 0.9),
-    entry("/vs", 0.8),
-    entry("/for", 0.7),
-    entry("/self-hosting", 0.8),
-    entry("/blog", 0.7),
-    entry("/docs", 0.7),
-    entry("/glossary", 0.6),
-    entry("/about", 0.5),
-    entry("/security", 0.5),
-    entry("/contact", 0.5),
-    entry("/changelog", 0.4),
-    entry("/status", 0.3),
-    entry("/privacy", 0.3),
-    entry("/terms", 0.3),
-    ...FEATURES.map((f) => entry(`/features/${f.slug}`, 0.7)),
-    ...INTEGRATIONS.map((i) => entry(`/integrations/${i.slug}`, 0.7)),
-    ...COMPARISONS.map((c) => entry(`/vs/${c.slug}`, 0.8)),
-    ...PERSONAS.map((p) => entry(`/for/${p.slug}`, 0.7)),
-    ...POSTS.map((p) => entry(`/blog/${p.slug}`, 0.6)),
-    ...GUIDES.map((g) => entry(`/docs/${g.slug}`, 0.5)),
-    ...GLOSSARY.map((t) => entry(`/glossary/${t.slug}`, 0.5)),
-  ];
+  return [entry("/privacy", 0.3), entry("/terms", 0.3)];
 }

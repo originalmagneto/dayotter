@@ -1,13 +1,17 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
 import { getTenant } from "@/lib/brand/server";
-import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  alternates: { canonical: "/terms" },
-  description: "The terms that govern your use of SKALLARS Law.",
-};
+// Request-scoped: one deployment serves several firms, so the firm's name
+// is only known once the request's Host is.
+export async function generateMetadata(): Promise<Metadata> {
+  const tenant = await getTenant();
+  return {
+    title: "Terms of Service",
+    alternates: { canonical: "/terms" },
+    description: `The terms that govern your use of ${tenant.name}.`,
+  };
+}
 
 export default async function TermsPage() {
   const tenant = await getTenant();

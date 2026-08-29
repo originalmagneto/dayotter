@@ -6,7 +6,27 @@ import { type BetterAuthPlugin, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { bearer, organization, phoneNumber, twoFactor } from "better-auth/plugins";
-import { assertSignupAllowed } from "./signup-gate";
+import { assertSignupAllowed, hostFromAuthContext } from "./signup-gate";
+
+/**
+ * Which site an auth email is about.
+ *
+ * This package is shared by every firm on the deployment and cannot see the
+ * tenant registry in apps/web, so it names the host the person actually used
+ * rather than a firm name. That is always right; a hardcoded name was wrong for
+ * two firms out of three.
+ */
+function siteFromRequest(request?: Request | { headers?: Headers }): string {
+  const host = request?.headers?.get("host");
+  return host ?? new URL(process.env.APP_URL ?? "https://localhost").host;
+}
+
+/**
+ * Label shown in authenticator apps and in OTP texts. Static by nature - a TOTP
+ * issuer is baked into the QR code when the user enrols - so it names the
+ * deployment, not a firm. Override with AUTH_ISSUER.
+ */
+const AUTH_ISSUER = process.env.AUTH_ISSUER ?? "Scheduling";
 
 /**
  * Better Auth server instance - the single source of truth for identity and
@@ -39,12 +59,13 @@ export const auth = betterAuth({
     // Password reset via emailed capability link. Better Auth mints the token
     // and hands us the URL (it routes through the API, then redirects to the
     // `redirectTo` page with the token) - we just deliver it.
-    sendResetPassword: async ({ user, url }) => {
+    sendResetPassword: async ({ user, url }, request) => {
+      const site = siteFromRequest(request);
       await sendEmail({
         to: user.email,
-        subject: "Reset your dayotter password",
-        text: `Reset your dayotter password: ${url}\n\nIf you didn't request this, you can ignore this email.`,
-        html: `<p>Someone requested a password reset for your dayotter account.</p>
+        subject: `Reset your password on ${site}`,
+        text: `Reset your password on ${site}: ${url}\n\nIf you didn't request this, you can ignore this email.`,
+        html: `<p>Someone requested a password reset for your account on ${site}.</p>
 <p><a href="${url}">Reset your password</a></p>
 <p style="color:#666;font-size:13px">If this wasn't you, you can safely ignore this email - your password won't change.</p>`,
       });
@@ -57,12 +78,13 @@ export const auth = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    sendVerificationEmail: async ({ user, url }) => {
+    sendVerificationEmail: async ({ user, url }, request) => {
+      const site = siteFromRequest(request);
       await sendEmail({
         to: user.email,
-        subject: "Verify your SKALLARS Law email",
-        text: `Welcome to SKALLARS Law! Confirm your email to secure your account: ${url}`,
-        html: `<p>Welcome to SKALLARS Law - confirm your email to secure your account.</p>
+        subject: `Confirm your email on ${site}`,
+        text: `Confirm your email to secure your account on ${site}: ${url}`,
+        html: `<p>Confirm your email to secure your account on ${site}.</p>
 <p><a href="${url}">Verify your email</a></p>
 <p style="color:#666;font-size:13px">If you didn't sign up, you can ignore this email.</p>`,
       });
@@ -97,9 +119,14 @@ export const auth = betterAuth({
     user: {
       create: {
         // The gate runs before the row exists, so a refused sign-up leaves
-        // nothing behind - no half-created user to clean up.
-        before: async (user: { email: string }) => {
-          assertSignupAllowed(user.email);
+        // nothing behind - no half-created user to clean up. It sits here
+        // rather than in the sign-up route because this is the one point every
+        // path to a new account goes through, Google OAuth included.
+        //
+        // `context` carries the request, which is how the gate knows which
+        // firm's domain the sign-up arrived on.
+        before: async (user: { email: string }, context: unknown) => {
+          assertSignupAllowed(user.email, hostFromAuthContext(context));
           return { data: user };
         },
       },
@@ -127,14 +154,14 @@ export const auth = betterAuth({
     // instead of a session until they verify a code (see the web sign-in step).
     // Cast for the same TS2742 reason as expo()/phoneNumber() below - keeps the
     // inferred auth type portable; the plugin still registers its endpoints.
-    twoFactor({ issuer: "SKALLARS Law" }) as BetterAuthPlugin,
+    twoFactor({ issuer: AUTH_ISSUER }) as BetterAuthPlugin,
     // Phone + OTP sign-in - enabled only when Twilio is configured (it sends the
     // code). Phone-only users get an auto-provisioned account via a temp email.
     ...(twilioConfigured()
       ? [
           phoneNumber({
             sendOTP: async ({ phoneNumber: phone, code }) => {
-              await sendTextSms(phone, `Your SKALLARS Law code is ${code}`);
+              await sendTextSms(phone, `Your ${AUTH_ISSUER} code is ${code}`);
             },
             signUpOnVerification: {
               getTempEmail: (phone) => `${phone.replace(/[^0-9]/g, "")}@phone.dayotter.local`,
