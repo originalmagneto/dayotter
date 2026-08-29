@@ -44,7 +44,7 @@ const BLOCK_META: Record<BlockCategory, { label: string; border: string; text: s
   unavailable: { label: "Blocked", border: "var(--color-amber)", text: "var(--color-amber)" },
 };
 
-/** A calendar cell item: a DayOtter booking, or a non-booking "busy" block. */
+/** A calendar cell item: a SKALLARS Law booking, or a non-booking "busy" block. */
 type CalItem =
   | ({ kind: "booking"; id: string } & CalBooking)
   | ({ kind: "busy"; id: string } & CalEvent);
@@ -132,7 +132,7 @@ export function BookingsCalendar({ tz }: { tz: string }) {
     const bookingStarts = new Set(bookings.map((b) => b.startsAt));
     for (const b of bookings) add({ kind: "booking", id: b.uid, ...b });
     events.forEach((e, i) => {
-      // Skip an event that's a DayOtter booking's own calendar mirror.
+      // Skip an event that's a SKALLARS Law booking's own calendar mirror.
       if (bookingStarts.has(e.startsAt)) return;
       add({ kind: "busy", id: `busy:${i}`, ...e });
     });

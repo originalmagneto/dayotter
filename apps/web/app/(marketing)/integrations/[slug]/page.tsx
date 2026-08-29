@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export const generateMetadata = makeSlugMetadata(
   getIntegration,
   (it) => ({
-    title: `${it.name} scheduling - DayOtter integration`,
+    title: `${it.name} scheduling - SKALLARS Law integration`,
     description: it.subtitle,
     path: `/integrations/${it.slug}`,
     keywords: [
@@ -23,7 +23,7 @@ export const generateMetadata = makeSlugMetadata(
       `${it.name} calendar sync`,
       `book meetings with ${it.name}`,
       "AI scheduling",
-      "DayOtter",
+      "SKALLARS Law",
     ],
   }),
   "Integrations",
@@ -46,7 +46,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
       />
       <MarketingHeader
         eyebrow={`${it.category} integration`}
-        title={`DayOtter + ${it.name}`}
+        title={`SKALLARS Law + ${it.name}`}
         subtitle={it.subtitle}
       />
 

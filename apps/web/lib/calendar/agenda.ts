@@ -1,7 +1,7 @@
 import { and, asc, eq, getDb, gte, inArray, lt, ne, schema } from "@dayotter/db";
 
 /**
- * One item on the host's real agenda - either a DayOtter booking or a busy event
+ * One item on the host's real agenda - either a SKALLARS Law booking or a busy event
  * synced from a connected (Google / Microsoft / Apple) calendar. This is what the
  * calendar views AND the AI assistant should both see: a booking page that only
  * knows its own bookings is blind to the meetings on the host's actual calendar.
@@ -10,7 +10,7 @@ export interface AgendaItem {
   title: string;
   startsAt: Date;
   endsAt: Date;
-  /** "booking" = a DayOtter booking (actionable); "external" = a synced calendar event (read-only). */
+  /** "booking" = a SKALLARS Law booking (actionable); "external" = a synced calendar event (read-only). */
   source: "booking" | "external";
   attendees: string[];
   /** Public booking id (only for `source: "booking"`), so it can be acted on. */
@@ -19,7 +19,7 @@ export interface AgendaItem {
 
 /**
  * Busy, non-all-day events synced from the host's conflict-checked calendars in
- * [from, to). Mirrors of DayOtter bookings we wrote to the calendar are excluded
+ * [from, to). Mirrors of SKALLARS Law bookings we wrote to the calendar are excluded
  * (by external id) so a booking never shows up twice. Shared by the calendar
  * range API and the AI agenda so the two can never drift.
  */
@@ -64,7 +64,7 @@ export async function syncedExternalEvents(
 }
 
 /**
- * Merge DayOtter bookings and synced external events into one chronological,
+ * Merge SKALLARS Law bookings and synced external events into one chronological,
  * source-tagged agenda, capped at `limit`. Pure (no I/O) so it can be unit-tested.
  */
 export function mergeAgenda(
@@ -94,7 +94,7 @@ export function mergeAgenda(
 }
 
 /**
- * The host's real agenda over [from, to): DayOtter bookings + synced external
+ * The host's real agenda over [from, to): SKALLARS Law bookings + synced external
  * calendar events, merged chronologically and capped. This is the source of
  * truth for "what's on my calendar / how busy am I / when's my next meeting".
  */

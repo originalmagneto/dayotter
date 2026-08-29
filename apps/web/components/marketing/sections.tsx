@@ -35,7 +35,7 @@ export function Shift() {
       <div className="mt-14 grid gap-4 md:grid-cols-2">
         <Reveal>
           <div className="h-full rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-2)] p-7">
-            <p className="text-sm font-semibold text-[var(--color-faint)]">Without DayOtter</p>
+            <p className="text-sm font-semibold text-[var(--color-faint)]">Without SKALLARS Law</p>
             <ul className="mt-5 space-y-3.5">
               {BEFORE.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-[var(--color-muted)]">
@@ -48,7 +48,7 @@ export function Shift() {
         </Reveal>
         <Reveal delay={0.1}>
           <div className="h-full rounded-[var(--radius-xl)] border border-[var(--color-accent)]/40 bg-[var(--color-surface)] p-7 shadow-[var(--shadow-raise)]">
-            <p className="text-sm font-semibold text-[var(--color-accent)]">With DayOtter</p>
+            <p className="text-sm font-semibold text-[var(--color-accent)]">With SKALLARS Law</p>
             <ul className="mt-5 space-y-3.5">
               {AFTER.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-[var(--color-text)]">
@@ -68,7 +68,7 @@ const STEPS = [
   {
     icon: CalendarPlus,
     title: "Connect your calendars",
-    body: "Link Google, Outlook or iCloud in a click. DayOtter learns when you're actually free.",
+    body: "Link Google, Outlook or iCloud in a click. SKALLARS Law learns when you're actually free.",
   },
   {
     icon: Clock,
@@ -114,12 +114,12 @@ export function Manifesto() {
     <section className="mx-auto max-w-6xl px-6 py-20 text-center">
       <Reveal className="mx-auto max-w-3xl">
         <p className="font-display text-3xl leading-[1.3] tracking-[-0.01em] sm:text-[2.6rem]">
-          We built DayOtter because your time is the one thing you can't get back.{" "}
+          We built SKALLARS Law because your time is the one thing you can't get back.{" "}
           <em className="text-[var(--color-accent)]">
             It deserves software that treats it that way.
           </em>
         </p>
-        <p className="eyebrow mt-8">The DayOtter team</p>
+        <p className="eyebrow mt-8">The SKALLARS Law team</p>
       </Reveal>
     </section>
   );
@@ -128,14 +128,14 @@ export function Manifesto() {
 const HOME_FAQ = [
   {
     q: "Do I have to talk to the AI to use it?",
-    a: "Not at all. DayOtter is a complete scheduling tool on its own - booking pages, team round-robin, reminders, calendar sync. Otter is there when you want it: ask it to book, reschedule or hold focus time and it drafts the change for you. Never the other way around.",
+    a: "Not at all. SKALLARS Law is a complete scheduling tool on its own - booking pages, team round-robin, reminders, calendar sync. Otter is there when you want it: ask it to book, reschedule or hold focus time and it drafts the change for you. Never the other way around.",
   },
   {
     q: "Will Otter ever change my calendar on its own?",
     a: "No. Otter is confirm-first by design - it proposes, you approve. Nothing lands on your calendar, and nothing moves, without your explicit OK.",
   },
   {
-    q: "Is DayOtter really free?",
+    q: "Is SKALLARS Law really free?",
     a: "Yes. Individuals get unlimited event types, calendar sync, group polls and reminders free, forever. Teams are $9 a seat each month - and if you self-host, every feature is free.",
   },
   {

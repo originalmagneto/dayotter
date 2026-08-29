@@ -133,7 +133,7 @@ export function TwoFactorManager({ enabled }: { enabled: boolean }) {
     return (
       <form onSubmit={confirmEnable} className="space-y-4">
         <div>
-          <p className="text-sm font-medium">1. Add DayOtter to your authenticator app</p>
+          <p className="text-sm font-medium">1. Add SKALLARS Law to your authenticator app</p>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
             In Google Authenticator, 1Password, Authy, etc., add an account by entering this setup
             key manually:

@@ -66,8 +66,8 @@ export default async function CrmSettingsPage({
       <div className="mb-6">
         <h2 className="text-lg font-semibold">CRM sync</h2>
         <p className="mt-1 text-sm text-[var(--color-muted)]">
-          Push every booking to your CRM: DayOtter finds or creates the guest as a contact and logs
-          the meeting as an activity - updated on reschedule, closed on cancel.
+          Push every booking to your CRM: SKALLARS Law finds or creates the guest as a contact and
+          logs the meeting as an activity - updated on reschedule, closed on cancel.
         </p>
       </div>
 

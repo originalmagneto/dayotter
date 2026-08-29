@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About",
   alternates: { canonical: "/about" },
   description:
-    "Why we built DayOtter - every calendar, your booking links, reminders, and an assistant in one calm place.",
+    "Why we built SKALLARS Law - every calendar, your booking links, reminders, and an assistant in one calm place.",
 };
 
 export default function AboutPage() {
@@ -15,7 +15,7 @@ export default function AboutPage() {
       <MarketingHeader
         eyebrow="About"
         title="Software that respects your time"
-        subtitle="DayOtter brings every calendar, your booking links, reminders, and a scheduling assistant into one calm place - built for people who guard their hours."
+        subtitle="SKALLARS Law brings every calendar, your booking links, reminders, and a scheduling assistant into one calm place - built for people who guard their hours."
       />
       <Prose>
         <p>

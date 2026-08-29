@@ -1,9 +1,9 @@
 # @dayotter/plugin-sdk
 
-The public contract for building **DayOtter extensions** - small packages that
+The public contract for building **SKALLARS Law extensions** - small packages that
 add capabilities (Otter tools, booking reactions, connectors) without forking the
 core. This package has **no runtime dependencies** and knows nothing about
-DayOtter's database or internals; the host (`@dayotter/plugin-host`) supplies the
+SKALLARS Law's database or internals; the host (`@dayotter/plugin-host`) supplies the
 runtime context and wires your contributions into the product.
 
 ## Quick start

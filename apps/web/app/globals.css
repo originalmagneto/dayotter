@@ -4,49 +4,58 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * dayotter design language - "editorial calm meets a living calendar."
- * Warm ivory neutrals, rich ink text, a premium violet accent, an editorial
- * Geist sans (display + body) + Geist Mono labels. Light is default.
+ * SKALLARS Law design language - "the firm's calm, on a calendar."
+ * Cool violet-tinted neutrals, deep aubergine ink, the SKALLARS violet held back
+ * for interface use (with the exact brand violet reserved for the mark, hero and
+ * primary CTA), General Sans for display + body, Geist Mono for labels. Light is
+ * default: the booking page is read on a phone, often outdoors.
  */
 @theme {
   /* Surfaces - warm ground, clean panels. surface-2 is the recessed tone: a
      light, faintly cool neutral (leans to the violet accent) rather than a
      muddy beige, so inset blocks read crisp and modern, not dated. */
-  --color-bg: #faf9f6;
+  --color-bg: #f7f6fc;
   --color-surface: #ffffff;
-  --color-surface-2: #f3f2f8;
+  --color-surface-2: #eeecf8;
   --color-elevated: #ffffff;
 
   /* Lines - clean, low-contrast neutrals that match the panels. */
-  --color-border: #e7e6ef;
-  --color-border-strong: #d7d5e1;
+  --color-border: #e3e0f2;
+  --color-border-strong: #cdc7e6;
 
   /* Text - warm near-black. muted = body/secondary, faint = tertiary/labels.
      Kept richer (darker + warmer) than a flat grey so nothing reads washed-out. */
-  --color-text: #191720;
-  --color-muted: #55504a;
-  --color-faint: #837d72;
+  --color-text: #18092b;
+  --color-muted: #4a4060;
+  --color-faint: #756c8c;
 
-  /* Accent - otter violet (matches the illustration palette) */
-  --color-accent: #6743e6;
-  --color-accent-hover: #5734d6;
+  /* Brand - the exact SKALLARS violet, for the mark, hero and primary CTA only.
+     It is not the UI accent: at this saturation it is punishing across a dense
+     app screen where the accent lands on every button, slot and focus ring. */
+  --color-brand: #5d00ff;
+
+  /* Accent - the same hue held back for interface use. */
+  --color-accent: #5326d9;
+  --color-accent-hover: #451eb8;
   --color-accent-fg: #ffffff;
-  --color-accent-soft: #efeafd;
+  --color-accent-soft: #ece7fe;
 
   /* Event / secondary hues (color-coded calendar) */
-  --color-mint: #16a085;
-  --color-amber: #d98829;
-  --color-coral: #ef6a52;
-  --color-sky: #3b82f6;
-  --color-danger: #e11d48;
-  --color-danger-soft: #fdf1f3;
-  --color-success: #16a085;
+  --color-mint: #0a6e56;
+  --color-amber: #94560c;
+  --color-coral: #b03e28;
+  --color-sky: #1d4ed8;
+  --color-danger: #b51b3e;
+  --color-danger-soft: #fbeaee;
+  --color-success: #0a6e56;
 
-  /* Elevation - soft, layered, warm shadows */
-  --shadow-card: 0 1px 2px rgba(40, 33, 20, 0.04), 0 2px 6px rgba(40, 33, 20, 0.05);
-  --shadow-raise: 0 8px 24px rgba(40, 33, 20, 0.08);
-  --shadow-pop: 0 24px 60px -12px rgba(40, 33, 20, 0.18);
-  --shadow-float: 0 40px 80px -24px rgba(30, 24, 60, 0.28);
+  /* Elevation - soft, layered shadows tinted with the palette's own
+     aubergine, not a warm brown: a warm shadow under cool violet surfaces
+     reads as dirt. */
+  --shadow-card: 0 1px 2px rgba(24, 9, 43, 0.04), 0 2px 6px rgba(24, 9, 43, 0.05);
+  --shadow-raise: 0 8px 24px rgba(24, 9, 43, 0.08);
+  --shadow-pop: 0 24px 60px -12px rgba(24, 9, 43, 0.18);
+  --shadow-float: 0 40px 80px -24px rgba(33, 0, 89, 0.28);
 
   /* Shape scale - use rounded-sm/md/lg/xl utilities, never arbitrary values.
    * sm: chips/badges · md: inputs, buttons, list rows · lg: cards · xl: hero cards */
@@ -74,39 +83,40 @@
 
   /* Spacing rhythm - the canonical gaps/paddings the components compose from.
    * Field gap: space-y-4 · Card padding: p-6 · Section gap: gap-3 · inline: gap-2 */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+  --font-sans: var(--font-general-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif;
   /* Headings use the same family a weight heavier - the modern software look
      (one grotesque doing display + body) rather than a separate serif. */
-  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-general-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .dark {
-  --color-bg: #0b0a10;
-  --color-surface: #141219;
-  --color-surface-2: #1c1a23;
-  --color-elevated: #1c1a23;
+  --color-bg: #110c19;
+  --color-surface: #18092b;
+  --color-surface-2: #1c0f31;
+  --color-elevated: #1c0f31;
 
-  --color-border: #262330;
-  --color-border-strong: #332f3e;
+  --color-border: #2b1c47;
+  --color-border-strong: #3d2a5e;
 
-  --color-text: #edeae3;
-  --color-muted: #9d988f;
-  --color-faint: #6b6678;
+  --color-text: #f7f6fc;
+  --color-muted: #b3a8cc;
+  --color-faint: #8478a0;
 
-  --color-accent: #9079f8;
-  --color-accent-hover: #a390fa;
-  --color-accent-fg: #ffffff;
-  --color-accent-soft: rgba(144, 121, 248, 0.16);
+  --color-brand: #9a66ff;
+  --color-accent: #a98bff;
+  --color-accent-hover: #bda3ff;
+  --color-accent-fg: #18092b;
+  --color-accent-soft: rgba(169, 139, 255, 0.16);
 
-  --color-mint: #2dd4a7;
+  --color-mint: #38f8b8;
   --color-amber: #f0ad4e;
   --color-coral: #ff8266;
   --color-sky: #60a5fa;
   --color-danger: #fb7185;
   --color-danger-soft: rgba(251, 113, 133, 0.12);
-  --color-success: #2dd4a7;
+  --color-success: #38f8b8;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-raise: 0 8px 28px rgba(0, 0, 0, 0.5);

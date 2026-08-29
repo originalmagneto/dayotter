@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
@@ -28,8 +28,7 @@ export function MarketingNav() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
         <Link href="/" className="flex items-center gap-2">
-          <BrandMark size={34} />
-          <span className="text-subhead font-semibold tracking-tight">Day{" "}Otter</span>
+          <BrandLockup height={24} />
         </Link>
         <nav className="hidden items-center gap-7 text-sm text-[var(--color-muted)] md:flex">
           {MARKETING_NAV.map((l) => (

@@ -3,7 +3,7 @@ import { PERSONAS, getPersona } from "@/lib/personas";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "DayOtter for you";
+export const alt = "SKALLARS Law for you";
 
 export function generateStaticParams() {
   return PERSONAS.map((p) => ({ slug: p.slug }));

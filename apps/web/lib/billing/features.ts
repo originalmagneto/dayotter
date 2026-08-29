@@ -25,14 +25,14 @@ export type Feature =
   | "developer" // API keys, webhooks, embed
   | "crm_sync" // native Salesforce / HubSpot sync
   // Cloud-only (ee/, commercial license)
-  | "managed_ai" // AI with DayOtter's key - no BYO key
+  | "managed_ai" // AI with SKALLARS Law's key - no BYO key
   | "sso" // SAML / Google Workspace sign-in
   | "white_label" // remove branding + custom booking domain
-  | "hosted_messaging"; // SMS/WhatsApp via DayOtter's Twilio credits
+  | "hosted_messaging"; // SMS/WhatsApp via SKALLARS Law's Twilio credits
 
 export const FEATURE_TIER: Record<Feature, FeatureTier> = {
   // Otter (AI scheduling + NL command + the assistant chat) is a core USP - free
-  // for everyone, on cloud too. Cloud simply uses DayOtter's managed key (see
+  // for everyone, on cloud too. Cloud simply uses SKALLARS Law's managed key (see
   // managed_ai / lib/ee) so free users need no BYO key.
   ai: "free",
   automation: "pro",

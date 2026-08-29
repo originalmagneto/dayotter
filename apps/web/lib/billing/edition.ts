@@ -1,5 +1,5 @@
 /**
- * DayOtter ships in two editions:
+ * SKALLARS Law ships in two editions:
  *
  * - **Self-hosted** (the open-source default): every feature is unlocked, no
  *   billing. Cloud-only (`ee/`) features simply don't exist in this build.

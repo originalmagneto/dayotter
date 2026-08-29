@@ -23,10 +23,10 @@ export const generateMetadata = makeSlugMetadata(
       `${p.label.toLowerCase()} booking tool`,
       "AI scheduling",
       "Calendly alternative",
-      "DayOtter",
+      "SKALLARS Law",
     ],
   }),
-  "DayOtter",
+  "SKALLARS Law",
 );
 
 export default async function PersonaPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -79,7 +79,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ slug: 
         {/* The fit */}
         <section className="mt-20">
           <h2 className="font-display text-center text-3xl tracking-[-0.01em]">
-            How DayOtter fits
+            How SKALLARS Law fits
           </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {p.solutions.map((s) => (
@@ -135,7 +135,7 @@ export default async function PersonaPage({ params }: { params: Promise<{ slug: 
 
         {/* Cross-links */}
         <section className="mt-20 border-t border-[var(--color-border)] pt-10">
-          <p className="eyebrow text-center">DayOtter for</p>
+          <p className="eyebrow text-center">SKALLARS Law for</p>
           <div className="mt-5 flex flex-wrap justify-center gap-2.5">
             {others.map((o) => (
               <Link

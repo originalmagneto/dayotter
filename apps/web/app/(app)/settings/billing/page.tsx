@@ -46,7 +46,7 @@ export default async function BillingPage({
   if (!isCloud) {
     return (
       <div>
-        <PageHeader title="Billing" description="Your DayOtter edition and plan." />
+        <PageHeader title="Billing" description="Your SKALLARS Law edition and plan." />
         <Card className="max-w-2xl">
           <CardBody className="space-y-4 p-6">
             <div className="flex items-center gap-2 font-medium">
@@ -96,7 +96,7 @@ export default async function BillingPage({
 
   return (
     <div>
-      <PageHeader title="Billing" description="Manage your DayOtter plan." />
+      <PageHeader title="Billing" description="Manage your SKALLARS Law plan." />
       <Card className="max-w-2xl">
         <CardBody className="space-y-5 p-6">
           <div className="flex items-baseline justify-between">

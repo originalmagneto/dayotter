@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ token: string }>;
 }): Promise<Metadata> {
   const poll = await getPollByToken((await params).token);
-  return { title: poll ? `Vote: ${poll.title} - DayOtter` : "Poll - DayOtter" };
+  return { title: poll ? `Vote: ${poll.title} - SKALLARS Law` : "Poll - SKALLARS Law" };
 }
 
 export default async function PublicPollPage({ params }: { params: Promise<{ token: string }> }) {
@@ -64,7 +64,7 @@ export default async function PublicPollPage({ params }: { params: Promise<{ tok
       <p className="mt-6 text-center text-xs text-[var(--color-faint)]">
         Powered by{" "}
         <Link href="/" className="hover:text-[var(--color-text)]">
-          DayOtter
+          SKALLARS Law
         </Link>
       </p>
     </main>

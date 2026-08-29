@@ -429,7 +429,7 @@ export function CompareTeaser() {
                 </th>
                 <th className="bg-[var(--color-accent-soft)]/40 px-4 py-3.5 text-left text-sm font-semibold">
                   <span className="flex items-center gap-1.5">
-                    <BrandMark size={16} /> DayOtter
+                    <BrandMark size={16} /> SKALLARS Law
                   </span>
                 </th>
                 <th className="px-4 py-3.5 text-left text-sm font-semibold text-[var(--color-muted)]">

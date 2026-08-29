@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Security",
   alternates: { canonical: "/security" },
-  description: "How DayOtter protects your data.",
+  description: "How SKALLARS Law protects your data.",
 };
 
 export default function SecurityPage() {

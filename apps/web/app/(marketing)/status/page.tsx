@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Status",
   alternates: { canonical: "/status" },
-  description: "DayOtter system status.",
+  description: "SKALLARS Law system status.",
 };
 
 const SYSTEMS = [
@@ -36,7 +36,7 @@ export default function StatusPage() {
           ))}
         </ul>
         <p className="mt-6 text-center text-xs text-[var(--color-faint)]">
-          Self-hosting DayOtter? This page reflects the hosted cloud only.
+          Self-hosting SKALLARS Law? This page reflects the hosted cloud only.
         </p>
       </section>
     </>

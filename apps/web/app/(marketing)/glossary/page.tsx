@@ -17,7 +17,7 @@ export default function GlossaryHub() {
       <MarketingHeader
         eyebrow="Glossary"
         title="The scheduling glossary"
-        subtitle="Every term you'll meet in modern scheduling, defined plainly - and how DayOtter does each one."
+        subtitle="Every term you'll meet in modern scheduling, defined plainly - and how SKALLARS Law does each one."
       />
       <section className="mx-auto max-w-5xl px-6 py-16">
         {GLOSSARY_CATEGORIES.map((cat) => {

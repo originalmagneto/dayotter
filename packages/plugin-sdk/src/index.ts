@@ -1,5 +1,5 @@
 /**
- * DayOtter Plugin SDK - the public contract third parties build against.
+ * SKALLARS Law Plugin SDK - the public contract third parties build against.
  *
  * A plugin is a small package that default-exports `definePlugin({...})` and
  * contributes capabilities without forking the core: new Otter tools (AI
@@ -7,7 +7,7 @@
  * context - persistent storage and a safe HTTP client for connecting to
  * external services.
  *
- * This package has NO runtime dependencies and knows nothing about DayOtter's
+ * This package has NO runtime dependencies and knows nothing about SKALLARS Law's
  * database or internals. The host (@dayotter/plugin-host) supplies the runtime
  * context and wires contributions into the product. Keeping the contract here,
  * separate and stable, is what makes the system safe to extend.

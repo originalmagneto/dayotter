@@ -14,7 +14,7 @@ const STEPS = [
   {
     sel: '[data-tour="hours"]',
     title: "Set your hours",
-    body: "Tell DayOtter when you're open, so it only ever offers times that work for you.",
+    body: "Tell SKALLARS Law when you're open, so it only ever offers times that work for you.",
   },
   {
     sel: '[data-tour="types"]',

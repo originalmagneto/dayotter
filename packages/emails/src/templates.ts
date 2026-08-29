@@ -116,13 +116,13 @@ export function guardrailAlert(d: GuardrailAlertData): Rendered {
   const hello = d.ownerName ? `Hi ${d.ownerName}, ` : "";
   const summary =
     d.count > 1
-      ? `${hello}the DayOtter assistant blocked ${d.count} suspicious requests in ${d.sourceLabel}. The most recent was at ${d.when}.`
-      : `${hello}the DayOtter assistant blocked a suspicious request in ${d.sourceLabel} at ${d.when}.`;
+      ? `${hello}the SKALLARS Law assistant blocked ${d.count} suspicious requests in ${d.sourceLabel}. The most recent was at ${d.when}.`
+      : `${hello}the SKALLARS Law assistant blocked a suspicious request in ${d.sourceLabel} at ${d.when}.`;
   return {
     subject:
       d.count > 1
-        ? `DayOtter security: ${d.count} requests blocked by the assistant`
-        : "DayOtter security: the assistant blocked a suspicious request",
+        ? `SKALLARS Law security: ${d.count} requests blocked by the assistant`
+        : "SKALLARS Law security: the assistant blocked a suspicious request",
     text: `${summary}\n\nThe assistant refused automatically - nothing was changed on your calendar and no action is needed. This note is just so you have visibility.\n\nMost recent input:\n"${d.sample}"\n\nReview the security log: ${d.reviewUrl}`,
     html: shell(
       "The assistant blocked a suspicious request",
@@ -403,8 +403,8 @@ export function dailyBriefing(d: DailyBriefingData): Rendered {
       : d.meetings.map((m) => `${m.time} - ${m.title}`).join("\n");
   return {
     subject,
-    text: `${d.dateLabel}\n${textBody}${d.focusLabel ? `\n${d.focusLabel}` : ""}\n\nOpen DayOtter: ${d.manageUrl}`,
-    html: shell("Your morning briefing", lines, { label: "Open DayOtter", url: d.manageUrl }),
+    text: `${d.dateLabel}\n${textBody}${d.focusLabel ? `\n${d.focusLabel}` : ""}\n\nOpen SKALLARS Law: ${d.manageUrl}`,
+    html: shell("Your morning briefing", lines, { label: "Open SKALLARS Law", url: d.manageUrl }),
   };
 }
 
@@ -448,8 +448,11 @@ export function teamBriefing(d: TeamBriefingData): Rendered {
     .join("\n");
   return {
     subject,
-    text: `${d.teamName} - ${d.dateLabel}\n${d.totalMeetings} meetings today\n${textBody}${d.focusLabel ? `\n${d.focusLabel}` : ""}\n\nOpen DayOtter: ${d.manageUrl}`,
-    html: shell(`${esc(d.teamName)} - today`, lines, { label: "Open DayOtter", url: d.manageUrl }),
+    text: `${d.teamName} - ${d.dateLabel}\n${d.totalMeetings} meetings today\n${textBody}${d.focusLabel ? `\n${d.focusLabel}` : ""}\n\nOpen SKALLARS Law: ${d.manageUrl}`,
+    html: shell(`${esc(d.teamName)} - today`, lines, {
+      label: "Open SKALLARS Law",
+      url: d.manageUrl,
+    }),
   };
 }
 
@@ -471,7 +474,7 @@ export interface MeetingRecapData {
 /**
  * Post-meeting recap ("Scribe") - sent to the HOST shortly after a meeting ends.
  * A calm prompt to capture notes and take the obvious next steps, with one-tap
- * links into the actions DayOtter already supports.
+ * links into the actions SKALLARS Law already supports.
  */
 export function meetingRecap(d: MeetingRecapData): Rendered {
   const when = fmt(d.start, d.timezone);

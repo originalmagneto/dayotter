@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Everything DayOtter does - AI scheduling with Otter, weighted round-robin, routing forms, focus-time protection, calendar sync, reminders, payments, and more. Open source.",
+    "Everything SKALLARS Law does - AI scheduling with Otter, weighted round-robin, routing forms, focus-time protection, calendar sync, reminders, payments, and more. Open source.",
   alternates: { canonical: "/features" },
 };
 

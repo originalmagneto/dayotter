@@ -44,16 +44,16 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "DayOtter turns the calendars you already keep into a link other people can book - without the email tennis, the double-bookings, or the timezone math. This guide walks the whole path once, so you know where everything lives before you go deeper on any one piece.",
-          "There are two ways to use DayOtter, and you can mix them freely: share a link and let people book themselves, or just tell Otter (the built-in assistant) what you want and approve the draft. Nothing here requires the AI - it's there when you want it.",
+          "SKALLARS Law turns the calendars you already keep into a link other people can book - without the email tennis, the double-bookings, or the timezone math. This guide walks the whole path once, so you know where everything lives before you go deeper on any one piece.",
+          "There are two ways to use SKALLARS Law, and you can mix them freely: share a link and let people book themselves, or just tell Otter (the built-in assistant) what you want and approve the draft. Nothing here requires the AI - it's there when you want it.",
         ],
       },
       {
         heading: "The five-minute setup",
         steps: [
           "Create your account at /sign-up with email, Google, or your phone number.",
-          "Connect a calendar (Settings → Calendars) so DayOtter can see when you're already busy. This is what prevents double-bookings.",
-          "Set the hours you're open under Availability - the only times DayOtter will ever offer.",
+          "Connect a calendar (Settings → Calendars) so SKALLARS Law can see when you're already busy. This is what prevents double-bookings.",
+          "Set the hours you're open under Availability - the only times SKALLARS Law will ever offer.",
           "Create a booking type under Booking Types - say, a 30-minute intro call - with its length, location, and any questions you want answered up front.",
           "Copy your booking link from the dashboard and share it, or add it to your email signature and website.",
         ],
@@ -105,7 +105,7 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "DayOtter never invents availability - it reads your real calendars. Connecting every calendar that holds commitments is the single most important setup step: it's what guarantees a booking can never land on top of something you've already got.",
+          "SKALLARS Law never invents availability - it reads your real calendars. Connecting every calendar that holds commitments is the single most important setup step: it's what guarantees a booking can never land on top of something you've already got.",
           "A connection does two jobs: it reads your busy times (so conflicts are respected) and it can write new bookings back (so meetings show up where you actually look). You control which calendar each new booking is written to, and which calendars only count for conflicts.",
         ],
       },
@@ -123,20 +123,20 @@ export const GUIDES: DocGuide[] = [
         steps: [
           "Go to Settings → Calendars.",
           "Pick your provider and approve access. For Apple, generate an app-specific password at appleid.apple.com first, then paste it in.",
-          "Choose which of that account's calendars DayOtter should check for conflicts - tick every calendar that represents real commitments.",
+          "Choose which of that account's calendars SKALLARS Law should check for conflicts - tick every calendar that represents real commitments.",
           "Pick the target calendar new bookings are written to (usually your main work calendar).",
         ],
       },
       {
         tip: {
           kind: "note",
-          text: "Connect more than one account if your life is split across them - a work Google and a personal iCloud, say. DayOtter merges them into one honest view of when you're free, so a dentist appointment in your personal calendar still blocks a work slot.",
+          text: "Connect more than one account if your life is split across them - a work Google and a personal iCloud, say. SKALLARS Law merges them into one honest view of when you're free, so a dentist appointment in your personal calendar still blocks a work slot.",
         },
       },
       {
         heading: "Busy, not private",
         paragraphs: [
-          "DayOtter only reads that you're busy at a given time - never the titles, attendees, or notes of your events. The calendars you mark read-only are used purely for conflict checks and are never written to.",
+          "SKALLARS Law only reads that you're busy at a given time - never the titles, attendees, or notes of your events. The calendars you mark read-only are used purely for conflict checks and are never written to.",
           "Connection tokens are encrypted at rest (AES-256-GCM). You can disconnect any account at any time from the same screen, which immediately stops all reading and writing for it.",
         ],
       },
@@ -144,7 +144,7 @@ export const GUIDES: DocGuide[] = [
         heading: "If availability looks wrong",
         bullets: [
           "A slot you expected to be blocked is offered → the conflicting event lives in a calendar you didn't tick for conflict-checking. Add it under Settings → Calendars.",
-          "Bookings aren't appearing in your calendar → check which account is set as the write target, and that DayOtter still has access (re-approve if you changed your password).",
+          "Bookings aren't appearing in your calendar → check which account is set as the write target, and that SKALLARS Law still has access (re-approve if you changed your password).",
           "Apple stopped syncing → app-specific passwords can be revoked from your Apple ID; generate a new one and reconnect.",
         ],
       },
@@ -199,8 +199,8 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "Connect Zoom once and you never create or paste a meeting link by hand again. Whenever someone books a meeting on a booking type whose location is set to Zoom, DayOtter creates a scheduled Zoom meeting on your account and drops the join link into the confirmation email and the calendar invite - for you and for the person booking.",
-          "Zoom is optional and per-booking-type: connect it if you host on Zoom, leave it off if you don't. Nothing else about DayOtter depends on it.",
+          "Connect Zoom once and you never create or paste a meeting link by hand again. Whenever someone books a meeting on a booking type whose location is set to Zoom, SKALLARS Law creates a scheduled Zoom meeting on your account and drops the join link into the confirmation email and the calendar invite - for you and for the person booking.",
+          "Zoom is optional and per-booking-type: connect it if you host on Zoom, leave it off if you don't. Nothing else about SKALLARS Law depends on it.",
         ],
       },
       {
@@ -209,7 +209,7 @@ export const GUIDES: DocGuide[] = [
           "Go to Settings → Calendars.",
           "Find the Zoom card (“Connect Zoom to auto-create a meeting for every Zoom booking”) and click Connect.",
           "You're sent to Zoom's authorization screen. Review the access it asks for and click Allow.",
-          "You land back in DayOtter with Zoom shown as connected.",
+          "You land back in SKALLARS Law with Zoom shown as connected.",
         ],
       },
       {
@@ -217,7 +217,7 @@ export const GUIDES: DocGuide[] = [
         steps: [
           "Open a booking type under Booking Types, or create one.",
           "Set its Location to Zoom and save.",
-          "That's it - the next time someone books that type, DayOtter creates the Zoom meeting and adds the join link to the confirmation, the reminders, and the calendar event.",
+          "That's it - the next time someone books that type, SKALLARS Law creates the Zoom meeting and adds the join link to the confirmation, the reminders, and the calendar event.",
         ],
       },
       {
@@ -227,17 +227,17 @@ export const GUIDES: DocGuide[] = [
         },
       },
       {
-        heading: "What DayOtter can access",
+        heading: "What SKALLARS Law can access",
         paragraphs: [
-          "DayOtter requests only what the integration needs: it reads your basic Zoom profile to identify the connected account, and it creates meetings on your behalf. It does not read your existing meetings, recordings, or contacts.",
+          "SKALLARS Law requests only what the integration needs: it reads your basic Zoom profile to identify the connected account, and it creates meetings on your behalf. It does not read your existing meetings, recordings, or contacts.",
           "Your Zoom tokens are encrypted at rest (AES-256-GCM), and the data is used solely to provide this scheduling feature - never for advertising, and never to train AI models.",
         ],
       },
       {
         heading: "Disconnect or remove Zoom",
         steps: [
-          "In DayOtter: go to Settings → Calendars, find the Zoom card, and click Disconnect. DayOtter stops creating Zoom meetings immediately and deletes its stored token for your account.",
-          "In Zoom, to fully revoke access: sign in to the Zoom App Marketplace, open Manage → Added Apps, find DayOtter, and click Remove.",
+          "In SKALLARS Law: go to Settings → Calendars, find the Zoom card, and click Disconnect. SKALLARS Law stops creating Zoom meetings immediately and deletes its stored token for your account.",
+          "In Zoom, to fully revoke access: sign in to the Zoom App Marketplace, open Manage → Added Apps, find SKALLARS Law, and click Remove.",
         ],
       },
       {
@@ -320,7 +320,7 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "Availability is the outer boundary of when you'll ever be offered. DayOtter then subtracts your real calendar busy times from inside those hours, so what invitees see is the intersection: open hours, minus everything you've already got on.",
+          "Availability is the outer boundary of when you'll ever be offered. SKALLARS Law then subtracts your real calendar busy times from inside those hours, so what invitees see is the intersection: open hours, minus everything you've already got on.",
         ],
       },
       {
@@ -340,7 +340,7 @@ export const GUIDES: DocGuide[] = [
         heading: "Defenses that hold",
         bullets: [
           "Focus blocks - reserve deep-work time that's off-limits to bookings. Ask Otter to find and hold them for you.",
-          "Adaptive availability - cap meetings per day; once a day hits the cap, DayOtter stops offering slots that day even if hours remain.",
+          "Adaptive availability - cap meetings per day; once a day hits the cap, SKALLARS Law stops offering slots that day even if hours remain.",
           "Travel buffers - automatically reserve time around in-person meetings so back-to-back locations don't collide.",
           "Protected lunch - a daily window that never gets booked over.",
           "Reclaim cancelled time - when a meeting is cancelled, optionally turn the freed slot into a focus block instead of re-opening it.",
@@ -412,7 +412,7 @@ export const GUIDES: DocGuide[] = [
         bullets: [
           "Slack - reminders and Otter's nudges in a channel or DM, via an incoming webhook.",
           "SMS and WhatsApp - text reminders (and two-way “talk to Otter” messaging) via Twilio.",
-          "Mobile push - through the DayOtter app.",
+          "Mobile push - through the SKALLARS Law app.",
           "Browser (web) push - desktop reminders even when the tab is closed.",
         ],
       },
@@ -421,7 +421,7 @@ export const GUIDES: DocGuide[] = [
         steps: [
           "Go to Settings → Notifications.",
           "Add a channel and enter its destination (Slack webhook URL, phone number, etc.).",
-          "DayOtter sends a test so you can confirm it works before relying on it.",
+          "SKALLARS Law sends a test so you can confirm it works before relying on it.",
           "Choose default lead times - e.g. a day before to plan and an hour before to get moving.",
         ],
       },
@@ -451,14 +451,14 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "Teams let several people share a single booking link. DayOtter picks the right host and time based on how you've set the team up - so no one carries all the meetings, and invitees never see the machinery.",
+          "Teams let several people share a single booking link. SKALLARS Law picks the right host and time based on how you've set the team up - so no one carries all the meetings, and invitees never see the machinery.",
         ],
       },
       {
         heading: "Create a team",
         steps: [
           "Go to Teams and create a team.",
-          "Add members by email (they receive an invitation; they'll need a DayOtter account to host).",
+          "Add members by email (they receive an invitation; they'll need a SKALLARS Law account to host).",
           "Give each member a weight - higher gets booked more often; set 0 to pause someone who's away.",
           "Create a team booking type and choose how it schedules.",
         ],
@@ -552,7 +552,7 @@ export const GUIDES: DocGuide[] = [
       {
         tip: {
           kind: "note",
-          text: "Unlike a bare poll tool, finalising a DayOtter poll creates the actual calendar event for everyone and sends reminders - there's no separate “now go book it” step, and no ads on your invitees.",
+          text: "Unlike a bare poll tool, finalising a SKALLARS Law poll creates the actual calendar event for everyone and sends reminders - there's no separate “now go book it” step, and no ads on your invitees.",
         },
       },
     ],
@@ -604,7 +604,7 @@ export const GUIDES: DocGuide[] = [
       {
         heading: "Turning it on",
         paragraphs: [
-          "On the DayOtter cloud, Otter is ready the moment you sign in. Self-hosting? Add your own ANTHROPIC_API_KEY to the environment and it turns on - no metered per-use cost, it's your key.",
+          "On the SKALLARS Law cloud, Otter is ready the moment you sign in. Self-hosting? Add your own ANTHROPIC_API_KEY to the environment and it turns on - no metered per-use cost, it's your key.",
         ],
       },
     ],
@@ -631,7 +631,7 @@ export const GUIDES: DocGuide[] = [
       {
         heading: "The AI voice receptionist",
         paragraphs: [
-          "Point a Twilio phone number's voice webhook at DayOtter and Otter can answer calls for one host - understand what the caller needs, answer from a knowledge source you provide, and hand them a booking link (or text it) to lock in a time. Set VOICE_RECEPTIONIST_HANDLE to the host it answers for.",
+          "Point a Twilio phone number's voice webhook at SKALLARS Law and Otter can answer calls for one host - understand what the caller needs, answer from a knowledge source you provide, and hand them a booking link (or text it) to lock in a time. Set VOICE_RECEPTIONIST_HANDLE to the host it answers for.",
         ],
       },
       {
@@ -667,7 +667,7 @@ export const GUIDES: DocGuide[] = [
       {
         heading: "Calendar automations",
         paragraphs: [
-          "Write rules like “every interview → hold a 15-minute prep block before it,” or “every in-person meeting → reserve travel time around it.” When a booking matches, DayOtter creates the time block automatically. Recurring weekly blocks are materialised ahead of time so they're always there.",
+          "Write rules like “every interview → hold a 15-minute prep block before it,” or “every in-person meeting → reserve travel time around it.” When a booking matches, SKALLARS Law creates the time block automatically. Recurring weekly blocks are materialised ahead of time so they're always there.",
         ],
       },
       {
@@ -753,7 +753,7 @@ export const GUIDES: DocGuide[] = [
       {
         tip: {
           kind: "note",
-          text: "On the DayOtter cloud, accepting payments is part of Pro. Self-hosting? It's free - you just bring your own Stripe keys.",
+          text: "On the SKALLARS Law cloud, accepting payments is part of Pro. Self-hosting? It's free - you just bring your own Stripe keys.",
         },
       },
     ],
@@ -770,15 +770,15 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "Native CRM sync means every booking becomes a record in Salesforce or HubSpot without anyone typing it in. DayOtter finds or creates the guest as a contact and logs the meeting as an activity against them - updated when the booking moves, closed when it's cancelled.",
+          "Native CRM sync means every booking becomes a record in Salesforce or HubSpot without anyone typing it in. SKALLARS Law finds or creates the guest as a contact and logs the meeting as an activity against them - updated when the booking moves, closed when it's cancelled.",
         ],
       },
       {
         heading: "Connect",
         steps: [
           "Register an OAuth app with your CRM (redirect: ${APP_URL}/api/integrations/crm/<provider>/callback).",
-          "Set the provider's client id and secret in DayOtter's environment.",
-          "Go to Settings → CRM and connect - one click, no keys to paste into DayOtter itself.",
+          "Set the provider's client id and secret in SKALLARS Law's environment.",
+          "Go to Settings → CRM and connect - one click, no keys to paste into SKALLARS Law itself.",
         ],
       },
       {
@@ -807,7 +807,7 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "DayOtter is API-first: everything the UI does, it does through the same endpoints you can call. Use the REST API to read and write bookings, event types, and availability; webhooks to react to events; and the embed widget to put booking on your own site.",
+          "SKALLARS Law is API-first: everything the UI does, it does through the same endpoints you can call. Use the REST API to read and write bookings, event types, and availability; webhooks to react to events; and the embed widget to put booking on your own site.",
         ],
       },
       {
@@ -840,7 +840,7 @@ export const GUIDES: DocGuide[] = [
   },
   {
     slug: "self-hosting",
-    title: "Self-hosting DayOtter",
+    title: "Self-hosting SKALLARS Law",
     summary: "Run the whole platform on your own infrastructure, with every feature unlocked.",
     category: "Build & self-host",
     readMinutes: 5,
@@ -848,7 +848,7 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "DayOtter's core is open-source (AGPLv3) and ships with Docker. Self-hosted, every Pro feature is free - teams, routing, AI, payments, CRM - because the paywall only exists on the hosted cloud. You bring the keys for the integrations you want; everything else just works.",
+          "SKALLARS Law's core is open-source (AGPLv3) and ships with Docker. Self-hosted, every Pro feature is free - teams, routing, AI, payments, CRM - because the paywall only exists on the hosted cloud. You bring the keys for the integrations you want; everything else just works.",
         ],
       },
       {
@@ -893,8 +893,8 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "Some needs are too specific to live in the core - a note-taker wired to your wiki, a scribe that kicks off transcription, a connector to an internal tool. DayOtter's plugin system lets you add those as small, separate packages that work in tandem with the product, so you never fork the core to cover an edge case.",
-          "A plugin is a package that default-exports `definePlugin({...})` and contributes capabilities. It's built against `@dayotter/plugin-sdk`, which has no dependency on DayOtter's internals - the host supplies everything at runtime.",
+          "Some needs are too specific to live in the core - a note-taker wired to your wiki, a scribe that kicks off transcription, a connector to an internal tool. SKALLARS Law's plugin system lets you add those as small, separate packages that work in tandem with the product, so you never fork the core to cover an edge case.",
+          "A plugin is a package that default-exports `definePlugin({...})` and contributes capabilities. It's built against `@dayotter/plugin-sdk`, which has no dependency on SKALLARS Law's internals - the host supplies everything at runtime.",
         ],
       },
       {
@@ -943,7 +943,7 @@ export const GUIDES: DocGuide[] = [
       {
         tip: {
           kind: "warning",
-          text: "Plugins run in-process with real access - only enable ones you trust. On the DayOtter cloud, plugins are a curated set; self-hosters choose exactly what to install and enable.",
+          text: "Plugins run in-process with real access - only enable ones you trust. On the SKALLARS Law cloud, plugins are a curated set; self-hosters choose exactly what to install and enable.",
         },
       },
     ],
@@ -961,7 +961,7 @@ export const GUIDES: DocGuide[] = [
     body: [
       {
         paragraphs: [
-          "DayOtter ships with an optional analytics layer so you can understand how people use your instance. It is OFF by default and provider-agnostic: nothing loads and nothing is captured until you wire up at least one provider. Local dev and privacy-first self-hosters run analytics-free without doing anything.",
+          "SKALLARS Law ships with an optional analytics layer so you can understand how people use your instance. It is OFF by default and provider-agnostic: nothing loads and nothing is captured until you wire up at least one provider. Local dev and privacy-first self-hosters run analytics-free without doing anything.",
           "Three providers are supported and fully independent - enable one, two, or all three: Mixpanel, Google Analytics 4, and PostHog.",
         ],
       },
@@ -995,7 +995,7 @@ export const GUIDES: DocGuide[] = [
         heading: "What's captured",
         bullets: [
           "Page views on navigation, and meaningful product events (flow completions, key actions) - not keystrokes or form contents.",
-          "On sign-in, the signed-in user id is associated so sessions stitch together; DayOtter never sends calendar contents, event titles, or attendee details to analytics.",
+          "On sign-in, the signed-in user id is associated so sessions stitch together; SKALLARS Law never sends calendar contents, event titles, or attendee details to analytics.",
           "Analytics can never break the app: every provider call is wrapped, so an outage or blocker just means the event is dropped.",
         ],
       },
@@ -1081,7 +1081,7 @@ export const GUIDES: DocGuide[] = [
         ],
         tip: {
           kind: "note",
-          text: "The webhook flips an org to Pro after payment and tracks seat/cancel changes. DayOtter also reconciles the plan on the checkout-success redirect, so a single missed webhook won't leave you stuck - but configure the webhook for ongoing changes.",
+          text: "The webhook flips an org to Pro after payment and tracks seat/cancel changes. SKALLARS Law also reconciles the plan on the checkout-success redirect, so a single missed webhook won't leave you stuck - but configure the webhook for ongoing changes.",
         },
       },
       {
@@ -1097,7 +1097,7 @@ export const GUIDES: DocGuide[] = [
         steps: [
           "Resend → API Keys → create one → RESEND_API_KEY.",
           "Domains → Add domain, add the DNS records, and wait for Verified.",
-          'Set EMAIL_FROM to an address ON that verified domain, e.g. "DayOtter <no-reply@yourdomain.com>".',
+          'Set EMAIL_FROM to an address ON that verified domain, e.g. "SKALLARS Law <no-reply@yourdomain.com>".',
         ],
         tip: {
           kind: "warning",

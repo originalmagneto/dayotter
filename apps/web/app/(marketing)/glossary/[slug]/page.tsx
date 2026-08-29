@@ -22,7 +22,7 @@ export const generateMetadata = makeSlugMetadata(
       `what is ${t.term.toLowerCase()}`,
       `${t.term.toLowerCase()} scheduling`,
       "scheduling glossary",
-      "DayOtter",
+      "SKALLARS Law",
     ],
   }),
   "Glossary",
@@ -60,8 +60,8 @@ export default async function GlossaryTermPage({
         </section>
 
         <section className="mt-10 rounded-[var(--radius-lg)] border border-[var(--color-accent)]/40 bg-[var(--color-surface)] p-5 shadow-[var(--shadow-raise)]">
-          <p className="text-sm font-semibold text-[var(--color-accent)]">In DayOtter</p>
-          <p className="mt-2 text-sm leading-relaxed text-[var(--color-text)]">{t.inDayOtter}</p>
+          <p className="text-sm font-semibold text-[var(--color-accent)]">In SKALLARS Law</p>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--color-text)]">{t.inProduct}</p>
         </section>
 
         {t.seeAlso && t.seeAlso.length > 0 ? (
@@ -83,7 +83,7 @@ export default async function GlossaryTermPage({
 
         <section className="mt-12 flex flex-wrap items-center gap-3">
           <Link href="/sign-up" className={buttonVariants({ variant: "primary" })}>
-            Try DayOtter free
+            Try SKALLARS Law free
           </Link>
           <Link href="/glossary" className={buttonVariants({ variant: "outline" })}>
             All terms

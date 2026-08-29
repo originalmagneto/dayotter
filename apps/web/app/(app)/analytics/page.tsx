@@ -3,7 +3,7 @@ import { InsightsTabs } from "@/components/insights-tabs";
 import { PageHeader } from "@/components/page-header";
 import { ProGate } from "@/components/upgrade-prompt";
 
-export const metadata = { title: "Analytics - DayOtter" };
+export const metadata = { title: "Analytics - SKALLARS Law" };
 
 export default function AnalyticsPage() {
   return (

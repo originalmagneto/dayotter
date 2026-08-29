@@ -64,7 +64,7 @@ const TIERS: Tier[] = [
     name: "Self-hosted",
     price: "Free",
     cadence: "open source",
-    tagline: "Run DayOtter on your own infrastructure - every feature, unlocked.",
+    tagline: "Run SKALLARS Law on your own infrastructure - every feature, unlocked.",
     features: [
       "Every Pro feature, free forever",
       "Your data on your servers",
@@ -78,11 +78,11 @@ const TIERS: Tier[] = [
 
 const FAQ = [
   {
-    q: "How does DayOtter compare to Calendly or Cal.com?",
+    q: "How does SKALLARS Law compare to Calendly or Cal.com?",
     a: "You get the scheduling table stakes both have - team round-robin & collective, routing forms, recurring meetings, group polls, workflows, payments and calendar sync - at $9/seat, below Calendly ($10–20) and Cal.com's team plan. Our free plan is genuinely usable (unlimited event types) instead of one-event-only. And we add what neither does: Otter, a proactive AI assistant that protects your focus time and flags overflow - plus an open-source core you can self-host.",
   },
   {
-    q: "Is DayOtter really free?",
+    q: "Is SKALLARS Law really free?",
     a: "Yes. Individuals get a genuinely useful free plan on the cloud, and if you self-host, every feature - including the Pro ones - is free forever. You only pay for Pro on our hosted product.",
   },
   {

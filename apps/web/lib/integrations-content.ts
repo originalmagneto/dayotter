@@ -1,7 +1,7 @@
 /**
  * Integration landing pages, rendered at /integrations and /integrations/[slug].
  * One page per integration - Calendly's highest-volume programmatic-SEO play
- * ("DayOtter + Outlook", etc.). Each targets "<tool> scheduling / integration"
+ * ("SKALLARS Law + Outlook", etc.). Each targets "<tool> scheduling / integration"
  * search intent and links into the product.
  */
 
@@ -23,9 +23,9 @@ export const INTEGRATIONS: Integration[] = [
     category: "Calendar",
     blurb: "Two-way, real-time sync with your Google Calendar.",
     subtitle:
-      "Connect Google Calendar and DayOtter keeps your availability honest and writes every booking back - in real time.",
+      "Connect Google Calendar and SKALLARS Law keeps your availability honest and writes every booking back - in real time.",
     intro: [
-      "DayOtter reads your Google Calendar busy times so you're never double-booked, and writes new bookings straight to your calendar with a Google Meet link attached. Sync is real-time via Google's push notifications.",
+      "SKALLARS Law reads your Google Calendar busy times so you're never double-booked, and writes new bookings straight to your calendar with a Google Meet link attached. Sync is real-time via Google's push notifications.",
       "It's a scheduling layer on top of Google Calendar, not a replacement - everything stays in the calendar you already live in.",
     ],
     points: [
@@ -44,7 +44,7 @@ export const INTEGRATIONS: Integration[] = [
     ],
     faq: [
       {
-        q: "Does DayOtter replace Google Calendar?",
+        q: "Does SKALLARS Law replace Google Calendar?",
         a: "No - it works with it. Your bookings show up in the Google Calendar you already use.",
       },
     ],
@@ -55,9 +55,9 @@ export const INTEGRATIONS: Integration[] = [
     category: "Calendar",
     blurb: "Sync availability and bookings with Microsoft 365 / Outlook.",
     subtitle:
-      "Connect Microsoft 365 and DayOtter syncs your Outlook calendar both ways, with Teams links on every booking.",
+      "Connect Microsoft 365 and SKALLARS Law syncs your Outlook calendar both ways, with Teams links on every booking.",
     intro: [
-      "DayOtter reads your Outlook / Microsoft 365 busy times and writes bookings back via Microsoft Graph, kept fresh in real time with Graph subscriptions.",
+      "SKALLARS Law reads your Outlook / Microsoft 365 busy times and writes bookings back via Microsoft Graph, kept fresh in real time with Graph subscriptions.",
       "Great for teams standardized on Microsoft who want modern scheduling without leaving Outlook.",
     ],
     points: [
@@ -71,7 +71,7 @@ export const INTEGRATIONS: Integration[] = [
     faq: [
       {
         q: "Does it work with Microsoft 365 and Outlook.com?",
-        a: "Yes - connect your Microsoft account and DayOtter syncs your calendar via Microsoft Graph.",
+        a: "Yes - connect your Microsoft account and SKALLARS Law syncs your calendar via Microsoft Graph.",
       },
     ],
   },
@@ -83,8 +83,8 @@ export const INTEGRATIONS: Integration[] = [
     subtitle:
       "Connect Apple iCloud via CalDAV and keep your availability accurate - a calendar some competitors stopped supporting.",
     intro: [
-      "DayOtter syncs your Apple iCloud calendar over CalDAV using an app-specific password. Your iCloud busy times count toward your availability, and bookings land where you want them.",
-      "Unlike some scheduling tools that dropped iCloud support, DayOtter keeps it - one honest view across Google, Outlook, and Apple.",
+      "SKALLARS Law syncs your Apple iCloud calendar over CalDAV using an app-specific password. Your iCloud busy times count toward your availability, and bookings land where you want them.",
+      "Unlike some scheduling tools that dropped iCloud support, SKALLARS Law keeps it - one honest view across Google, Outlook, and Apple.",
     ],
     points: [
       { title: "CalDAV sync", body: "Connect with an app-specific password; no extra app needed." },
@@ -97,7 +97,7 @@ export const INTEGRATIONS: Integration[] = [
     faq: [
       {
         q: "How do I connect Apple/iCloud?",
-        a: "Generate an app-specific password in your Apple ID settings and add it in DayOtter - that's it.",
+        a: "Generate an app-specific password in your Apple ID settings and add it in SKALLARS Law - that's it.",
       },
     ],
   },
@@ -107,7 +107,7 @@ export const INTEGRATIONS: Integration[] = [
     category: "Video",
     blurb: "Auto-create a Zoom meeting for every booking.",
     subtitle:
-      "Connect Zoom and DayOtter generates a Zoom meeting link for each booking, added to the calendar invite automatically.",
+      "Connect Zoom and SKALLARS Law generates a Zoom meeting link for each booking, added to the calendar invite automatically.",
     intro: [
       "Set an event type's location to Zoom and every booking gets a fresh Zoom meeting created and attached to the invite - no manual link-copying.",
       "Works alongside Google Meet and Teams; pick per event type.",
@@ -135,9 +135,9 @@ export const INTEGRATIONS: Integration[] = [
     category: "Video",
     blurb: "Google Meet links on every Google-calendar booking, automatically.",
     subtitle:
-      "With Google Calendar connected, DayOtter attaches a Google Meet link to every booking - no configuration needed.",
+      "With Google Calendar connected, SKALLARS Law attaches a Google Meet link to every booking - no configuration needed.",
     intro: [
-      "Google Meet works out of the box with a connected Google Calendar: set the location to Meet and DayOtter attaches a video link to each booking automatically.",
+      "Google Meet works out of the box with a connected Google Calendar: set the location to Meet and SKALLARS Law attaches a video link to each booking automatically.",
       "The simplest video option if your team is on Google Workspace.",
     ],
     points: [
@@ -157,7 +157,7 @@ export const INTEGRATIONS: Integration[] = [
     category: "Messaging",
     blurb: "Get booking reminders and nudges in Slack.",
     subtitle:
-      "Add a Slack channel and DayOtter can send you reminders and running-late nudges where your team already works.",
+      "Add a Slack channel and SKALLARS Law can send you reminders and running-late nudges where your team already works.",
     intro: [
       "Connect Slack via an incoming webhook and receive meeting reminders and Otter's nudges in Slack - alongside email, SMS, WhatsApp, and push.",
       "Handy for staying on top of your day without another inbox.",
@@ -175,7 +175,7 @@ export const INTEGRATIONS: Integration[] = [
     faq: [
       {
         q: "How does the Slack connection work?",
-        a: "You add a Slack incoming webhook URL in settings; DayOtter posts your notifications there.",
+        a: "You add a Slack incoming webhook URL in settings; SKALLARS Law posts your notifications there.",
       },
     ],
   },
@@ -187,7 +187,7 @@ export const INTEGRATIONS: Integration[] = [
     subtitle:
       "Connect Stripe to require payment or a deposit before a slot is held, and to sell prepaid session packages.",
     intro: [
-      "With Stripe connected, DayOtter can charge the full price or a deposit as part of booking via Stripe Checkout - the slot confirms only once payment succeeds.",
+      "With Stripe connected, SKALLARS Law can charge the full price or a deposit as part of booking via Stripe Checkout - the slot confirms only once payment succeeds.",
       "You can also sell prepaid session bundles that clients buy once and spend as they book.",
     ],
     points: [
@@ -213,7 +213,7 @@ export const INTEGRATIONS: Integration[] = [
     subtitle:
       "Send booking reminders over WhatsApp, and let people chat with Otter to book and reschedule right from WhatsApp.",
     intro: [
-      "With Twilio configured, DayOtter delivers reminders over WhatsApp - where response rates beat email. And Otter is available inbound: text it to book, reschedule, or check your day, confirm-first.",
+      "With Twilio configured, SKALLARS Law delivers reminders over WhatsApp - where response rates beat email. And Otter is available inbound: text it to book, reschedule, or check your day, confirm-first.",
       "A differentiator neither Calendly nor Cal.com offers.",
     ],
     points: [
@@ -239,7 +239,7 @@ export const INTEGRATIONS: Integration[] = [
     category: "Video",
     blurb: "Teams meeting links on every Microsoft-calendar booking.",
     subtitle:
-      "With Microsoft 365 connected, DayOtter attaches a Microsoft Teams meeting link to each booking automatically.",
+      "With Microsoft 365 connected, SKALLARS Law attaches a Microsoft Teams meeting link to each booking automatically.",
     intro: [
       "Set an event type's location to Teams and every booking gets a Teams meeting link created via Microsoft Graph and added to the invite.",
       "The natural video option for teams on Microsoft 365.",
@@ -267,9 +267,9 @@ export const INTEGRATIONS: Integration[] = [
     category: "CRM",
     blurb: "Log every booking to Salesforce as an Event on the right Contact (beta).",
     subtitle:
-      "Connect Salesforce and DayOtter finds or creates the guest as a Contact and logs the meeting as an Event - updated on reschedule, removed on cancel.",
+      "Connect Salesforce and SKALLARS Law finds or creates the guest as a Contact and logs the meeting as an Event - updated on reschedule, removed on cancel.",
     intro: [
-      "When someone books, DayOtter matches them to a Salesforce Contact by email (creating one if needed) and writes the meeting as an Event linked to that Contact. Reschedules update the same Event; cancellations remove it - so your CRM reflects reality without manual logging.",
+      "When someone books, SKALLARS Law matches them to a Salesforce Contact by email (creating one if needed) and writes the meeting as an Event linked to that Contact. Reschedules update the same Event; cancellations remove it - so your CRM reflects reality without manual logging.",
       "It's a native, first-party sync over the Salesforce REST API - no Zapier in the middle. Currently in beta.",
     ],
     points: [
@@ -288,7 +288,7 @@ export const INTEGRATIONS: Integration[] = [
     ],
     faq: [
       {
-        q: "Does DayOtter create Salesforce Contacts?",
+        q: "Does SKALLARS Law create Salesforce Contacts?",
         a: "Yes - it matches the guest to an existing Contact by email, or creates one, then logs the meeting as an Event against it.",
       },
       {
@@ -303,7 +303,7 @@ export const INTEGRATIONS: Integration[] = [
     category: "CRM",
     blurb: "Create the HubSpot contact and log the meeting on every booking (beta).",
     subtitle:
-      "Connect HubSpot and DayOtter creates or matches the contact and logs the booking as a meeting engagement - kept in sync as things change.",
+      "Connect HubSpot and SKALLARS Law creates or matches the contact and logs the booking as a meeting engagement - kept in sync as things change.",
     intro: [
       "Every booking finds or creates the guest as a HubSpot contact and logs a meeting engagement associated with them. Reschedules update the same meeting; cancellations close it out - so your pipeline activity stays accurate automatically.",
       "A native sync over HubSpot's CRM v3 API, connected with one click. Currently in beta.",

@@ -8,7 +8,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "In-depth guides for setting up, scheduling with, automating, and building on DayOtter - from your first booking link to CRM sync, the API, and self-hosting.",
+    "In-depth guides for setting up, scheduling with, automating, and building on SKALLARS Law - from your first booking link to CRM sync, the API, and self-hosting.",
   alternates: { canonical: "/docs" },
 };
 
@@ -71,7 +71,7 @@ export default function DocsPage() {
           );
         })}
 
-        <p className="eyebrow mb-4">Build on DayOtter</p>
+        <p className="eyebrow mb-4">Build on SKALLARS Law</p>
         <div className="grid gap-4 sm:grid-cols-3">
           {BUILD_LINKS.map((l) => {
             const inner = (

@@ -61,7 +61,7 @@ export interface DayOtterBookerProps extends EmbedOptions {
 }
 
 /**
- * Inline embedded DayOtter booker. Renders the booking flow in an iframe that
+ * Inline embedded SKALLARS Law booker. Renders the booking flow in an iframe that
  * auto-resizes to its content (via postMessage) and reports booking success.
  */
 export function DayOtterBooker({
@@ -113,7 +113,7 @@ export function DayOtterBooker({
     <iframe
       ref={ref}
       src={src}
-      title="DayOtter booking"
+      title="SKALLARS Law booking"
       loading="lazy"
       allow="payment"
       className={className}
@@ -150,7 +150,7 @@ export function openDayOtterPopup(opts: PopupOptions): { close: () => void } {
 
   const frame = document.createElement("iframe");
   frame.src = src;
-  frame.title = "DayOtter booking";
+  frame.title = "SKALLARS Law booking";
   frame.setAttribute("allow", "payment");
   frame.style.cssText = "border:0;width:100%;height:100%";
 

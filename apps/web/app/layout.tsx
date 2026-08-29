@@ -2,55 +2,51 @@ import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { BRAND } from "@/lib/marketing";
 import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-// Geist (Vercel) - a clean, modern grotesque sans used across professional
-// software products. One family carries body + headings; Geist Mono handles the
-// small uppercase eyebrow labels. Self-hosted via the `geist` package (no runtime
-// network request).
+// General Sans (Indian Type Foundry) - the SKALLARS house grotesque, the same
+// face the firm's site and document templates use, so the booking link reads as
+// a continuation of the brand rather than a different product. One variable file
+// carries every weight; Geist Mono still handles the small uppercase eyebrow
+// labels. Both self-hosted - no runtime network request.
+const generalSans = localFont({
+  src: "./fonts/GeneralSans-Variable.woff2",
+  variable: "--font-general-sans",
+  weight: "200 700",
+  display: "swap",
+});
 
 const DESCRIPTION =
-  "DayOtter is the AI-native, open-source scheduling platform. Otter books meetings, protects your focus, and clears the back-and-forth - confirm-first. Sync every calendar, run your team, self-host it all under AGPLv3.";
+  "Book a time with SKALLARS Law. Pick a slot that suits you - no back-and-forth, confirmation by email.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BRAND.url),
   title: {
-    default: "DayOtter - the AI-native, open-source scheduling platform",
-    template: "%s - DayOtter",
+    default: "SKALLARS Law - booking",
+    template: "%s - SKALLARS Law",
   },
   description: DESCRIPTION,
   applicationName: BRAND.name,
-  keywords: [
-    "AI scheduling",
-    "open source scheduling",
-    "Calendly alternative",
-    "Cal.com alternative",
-    "team scheduling",
-    "round robin scheduling",
-    "booking page",
-    "self-hosted scheduling",
-    "AI calendar assistant",
-    "focus time",
-  ],
+  keywords: ["SKALLARS", "advokátska kancelária", "booking", "konzultácia", "rezervácia termínu"],
   authors: [{ name: BRAND.name, url: BRAND.url }],
   creator: BRAND.name,
   publisher: BRAND.name,
   alternates: { canonical: "/" },
-  icons: { icon: "/brand/dayotter-icon.svg", apple: "/brand/dayotter-icon.svg" },
+  icons: { icon: "/brand/skallars-icon.svg", apple: "/brand/skallars-icon.svg" },
   openGraph: {
     type: "website",
     siteName: BRAND.name,
-    title: "DayOtter - the AI-native, open-source scheduling platform",
+    title: "SKALLARS Law - the AI-native, open-source scheduling platform",
     description: DESCRIPTION,
     url: BRAND.url,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DayOtter - the AI-native, open-source scheduling platform",
+    title: "SKALLARS Law - the AI-native, open-source scheduling platform",
     description: DESCRIPTION,
     creator: "@dayotter",
   },
@@ -68,7 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${generalSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <head>

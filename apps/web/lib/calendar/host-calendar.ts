@@ -111,7 +111,7 @@ export async function deleteBookingFromCalendar(bookingId: string): Promise<void
       const adapter = await adapterForConnection(ref.calendar.connection);
       await adapter.deleteEvent(ref.calendar.externalId, ref.externalEventId);
     } catch {
-      // Non-fatal: the booking is cancelled in DayOtter regardless.
+      // Non-fatal: the booking is cancelled in SKALLARS Law regardless.
     }
   }
 }

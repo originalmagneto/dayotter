@@ -67,7 +67,7 @@ export async function sendEmail(input: OutboundEmail): Promise<void> {
     subject: oneLine(input.subject),
     replyTo: input.replyTo ? oneLine(input.replyTo) : undefined,
   };
-  const from = process.env.EMAIL_FROM ?? "DayOtter <no-reply@example.com>";
+  const from = process.env.EMAIL_FROM ?? "SKALLARS Law <no-reply@example.com>";
 
   // The placeholder example.com sender is unverified everywhere, so EVERY email
   // (booking confirmations, reminders) will be rejected (Resend 550). Warn once so
