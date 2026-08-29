@@ -2,11 +2,14 @@
 import { FormError } from "@/components/ui/form";
 
 import { Button } from "@/components/ui/button";
+import { t } from "@/lib/i18n/booking";
+import { useBookingLocale } from "@/lib/i18n/use-locale";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function CancelButton({ uid, isRecurring = false }: { uid: string; isRecurring?: boolean }) {
   const router = useRouter();
+  const locale = useBookingLocale();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [reason, setReason] = useState("");
@@ -25,7 +28,7 @@ export function CancelButton({ uid, isRecurring = false }: { uid: string; isRecu
     });
     if (!res.ok) {
       setLoading(false);
-      setError("Could not cancel - it may already be cancelled.");
+      setError(t(locale, "cancelFailed"));
       return;
     }
     router.push(`/booking/${uid}`);
@@ -36,7 +39,7 @@ export function CancelButton({ uid, isRecurring = false }: { uid: string; isRecu
     <div className="space-y-3">
       <div>
         <label htmlFor="cancel-reason" className="mb-1.5 block text-sm font-medium">
-          Reason <span className="font-normal text-[var(--color-faint)]">(optional)</span>
+          {t(locale, "reasonOptional")}
         </label>
         <textarea
           id="cancel-reason"
@@ -44,7 +47,7 @@ export function CancelButton({ uid, isRecurring = false }: { uid: string; isRecu
           onChange={(e) => setReason(e.target.value)}
           rows={3}
           maxLength={500}
-          placeholder="Add a note - it's included in the cancellation email everyone gets."
+          placeholder={t(locale, "cancelNotePlaceholder")}
           className="w-full rounded-md border border-[var(--color-border-strong)] bg-[var(--color-bg)] px-3 py-2 text-sm text-[var(--color-text)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
         />
       </div>
@@ -56,15 +59,13 @@ export function CancelButton({ uid, isRecurring = false }: { uid: string; isRecu
             onChange={(e) => setWholeSeries(e.target.checked)}
             className="h-4 w-4 rounded border-[var(--color-border-strong)] text-[var(--color-accent)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           />
-          Cancel this and all later occurrences
+          {t(locale, "cancelSeriesLabel")}
         </label>
       ) : null}
       <Button variant="danger" className="w-full" onClick={cancel} disabled={loading}>
         {loading
-          ? "Cancelling…"
-          : isRecurring && wholeSeries
-            ? "Yes, cancel the whole series"
-            : "Yes, cancel this booking"}
+          ? t(locale, "cancelling")
+          : t(locale, isRecurring && wholeSeries ? "cancelConfirmSeries" : "cancelConfirmOne")}
       </Button>
       <FormError>{error}</FormError>
     </div>
