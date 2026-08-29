@@ -1,4 +1,5 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   description: "How SKALLARS Law protects your data.",
 };
 
-export default function SecurityPage() {
+export default async function SecurityPage() {
+  const tenant = await getTenant();
   return (
     <>
       <MarketingHeader
@@ -46,14 +48,14 @@ export default function SecurityPage() {
 
         <h2>Self-hosting</h2>
         <p>
-          Prefer full control? Self-host {BRAND.name} and your data never leaves your
+          Prefer full control? Self-host {tenant.name} and your data never leaves your
           infrastructure. See the <a href="/self-hosting">self-hosting guide</a>.
         </p>
 
         <h2>Reporting a vulnerability</h2>
         <p>
           Found something? We appreciate responsible disclosure - email{" "}
-          <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a> and we'll respond promptly.
+          <a href={`mailto:${tenant.email}`}>{tenant.email}</a> and we'll respond promptly.
         </p>
       </Prose>
     </>

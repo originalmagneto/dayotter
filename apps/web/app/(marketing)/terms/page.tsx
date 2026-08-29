@@ -1,4 +1,5 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   description: "The terms that govern your use of SKALLARS Law.",
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const tenant = await getTenant();
   return (
     <>
       <MarketingHeader
@@ -18,14 +20,14 @@ export default function TermsPage() {
       />
       <Prose>
         <p>
-          These Terms of Service ("Terms") govern your access to and use of {BRAND.name} (the
+          These Terms of Service ("Terms") govern your access to and use of {tenant.name} (the
           "Service"). By creating an account or using the Service, you agree to these Terms. If you
           are using the Service on behalf of an organization, you agree on its behalf.
         </p>
 
         <h2>1. The Service</h2>
         <p>
-          {BRAND.name} is a scheduling platform that connects your calendars, shares your
+          {tenant.name} is a scheduling platform that connects your calendars, shares your
           availability, and lets people book time with you. We offer a hosted cloud edition and an
           open-source edition you can self-host. These Terms cover the hosted edition; the
           self-hosted edition is governed by its open-source license.
@@ -79,7 +81,7 @@ export default function TermsPage() {
 
         <h2>8. AI features</h2>
         <p>
-          {BRAND.name} includes an AI assistant ("Otter") that drafts events, suggestions, and
+          {tenant.name} includes an AI assistant ("Otter") that drafts events, suggestions, and
           replies. Otter is confirm-first - it proposes actions and only carries them out after you
           confirm. AI output can be inaccurate or incomplete, so you are responsible for reviewing
           any draft before confirming it. Don't rely on AI output as professional advice.
@@ -88,7 +90,7 @@ export default function TermsPage() {
         <h2>9. Disclaimers & liability</h2>
         <p>
           The Service is provided "as is" without warranties of any kind. To the maximum extent
-          permitted by law, {BRAND.name} is not liable for indirect, incidental, or consequential
+          permitted by law, {tenant.name} is not liable for indirect, incidental, or consequential
           damages, and our total liability is limited to the amount you paid in the twelve months
           before the claim.
         </p>
@@ -101,7 +103,7 @@ export default function TermsPage() {
 
         <h2>11. Contact</h2>
         <p>
-          Questions about these Terms? Email <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>.
+          Questions about these Terms? Email <a href={`mailto:${tenant.email}`}>{tenant.email}</a>.
         </p>
 
         <hr />

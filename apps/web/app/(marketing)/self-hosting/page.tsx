@@ -1,4 +1,5 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
@@ -8,7 +9,8 @@ export const metadata: Metadata = {
   description: "Run SKALLARS Law on your own infrastructure. Every feature, free forever.",
 };
 
-export default function SelfHostingPage() {
+export default async function SelfHostingPage() {
+  const tenant = await getTenant();
   return (
     <>
       <MarketingHeader
@@ -18,7 +20,7 @@ export default function SelfHostingPage() {
       />
       <Prose>
         <p>
-          The open-source edition of {BRAND.name} is the whole product. There's no license key and
+          The open-source edition of {tenant.name} is the whole product. There's no license key and
           no paywall - the differentiator features (AI, automations, analytics, and more) are all
           free when you run it yourself. Just leave the cloud edition off.
         </p>

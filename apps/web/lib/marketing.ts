@@ -1,13 +1,17 @@
-import { TENANT } from "@/lib/brand/tenants";
-
 /** Brand + marketing constants. One place for links, contact, and footer nav. */
 
+/**
+ * Links and constants that are the same for every firm on this deployment.
+ *
+ * The name, tagline and contact address deliberately do NOT live here any more:
+ * one deployment serves three firms, so those are request-scoped. Use
+ * `getTenant()` in server code and `useTenant()` in client components - if this
+ * object still carried a name, every caller would silently get whichever firm
+ * happened to be the default.
+ */
 export const BRAND = {
-  name: TENANT.name,
-  tagline: TENANT.tagline,
   /** Canonical site origin - drives metadataBase, sitemap, canonical URLs, JSON-LD. */
   url: process.env.NEXT_PUBLIC_APP_URL ?? "https://cal.humanintheloop.sk",
-  email: TENANT.email,
   /**
    * The fork this instance runs. Not vanity: SKALLARS Law is AGPLv3, and section 13
    * requires that people who interact with a modified version over a network be

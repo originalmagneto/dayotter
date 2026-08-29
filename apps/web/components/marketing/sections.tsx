@@ -3,6 +3,7 @@
 import { BrandMark } from "@/components/brand-mark";
 import { Reveal } from "@/components/marketing/motion";
 import { buttonVariants } from "@/components/ui/button";
+import { useTenant } from "@/lib/brand/context";
 import { BRAND, FOOTER_COLUMNS } from "@/lib/marketing";
 import { CalendarPlus, Check, Clock, LinkIcon, Plus, X } from "lucide-react";
 import Link from "next/link";
@@ -217,6 +218,7 @@ export function CTA() {
 }
 
 export function Footer() {
+  const tenant = useTenant();
   return (
     <footer className="border-t border-[var(--color-border)]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 sm:grid-cols-3 md:grid-cols-[1.4fr_repeat(5,1fr)]">
@@ -225,7 +227,7 @@ export function Footer() {
             <BrandMark size={28} />
             <span className="text-subhead font-semibold tracking-tight">Day{" "}Otter</span>
           </Link>
-          <p className="mt-3 max-w-[240px] text-sm text-[var(--color-muted)]">{BRAND.tagline}</p>
+          <p className="mt-3 max-w-[240px] text-sm text-[var(--color-muted)]">{tenant.tagline}</p>
           <div className="mt-4 flex gap-3 text-sm text-[var(--color-muted)]">
             <a
               href={BRAND.github}
@@ -277,7 +279,7 @@ export function Footer() {
       <div className="border-t border-[var(--color-border)]">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-[var(--color-faint)] sm:flex-row">
           <span>
-            © {BRAND.copyrightYear} {BRAND.name} · AGPLv3
+            © {BRAND.copyrightYear} {tenant.name} · AGPLv3
           </span>
           <span>Made for people who value their time.</span>
         </div>

@@ -16,8 +16,13 @@ export interface Tenant {
   name: string;
   tagline: string;
   email: string;
+  /**
+   * Hostnames this firm answers on. One deployment serves all three, so the
+   * request's Host is what decides the identity - not a build-time flag.
+   */
+  domains: readonly string[];
   /** Which lockup `<BrandLockup>` draws. */
-  mark: "skallars" | "wordmark";
+  mark: "skallars" | "hitl" | "wordmark";
   /**
    * Favicon and the small square used in booking footers and JSON-LD.
    * A letter tile for firms without a vector mark - it is a placeholder a
@@ -42,6 +47,7 @@ export interface Tenant {
 export const TENANTS: Record<string, Tenant> = {
   skallars: {
     name: "SKALLARS Law",
+    domains: ["cal.skallars.com", "cal.skallars.co"],
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
     mark: "skallars",
@@ -52,16 +58,18 @@ export const TENANTS: Record<string, Tenant> = {
   },
   hitl: {
     name: "Human in the Loop",
+    domains: ["cal.humanintheloop.sk", "localhost:3000"],
     icon: "/brand/hitl-icon.svg",
     tagline: "Book a slot.",
     email: "marian.cuprik@icloud.com",
-    mark: "wordmark",
+    mark: "hitl",
     locales: ["en", "sk"],
     locale: "en",
     defaultTheme: "light",
   },
   lawoss: {
     name: "LAWOSS",
+    domains: ["cal.lawoss.app"],
     tagline: "Book a slot.",
     email: "majo@lawoss.app",
     mark: "wordmark",
@@ -72,17 +80,25 @@ export const TENANTS: Record<string, Tenant> = {
   },
 };
 
-export const TENANT_ID = process.env.NEXT_PUBLIC_TENANT ?? "skallars";
+/** Default when a Host matches nothing - the gate's own identity. */
+export const FALLBACK_TENANT_ID = "hitl";
 
 /**
- * The active tenant. A typo in NEXT_PUBLIC_TENANT throws here rather than
- * quietly falling back: serving one firm's identity on another firm's domain is
- * the worst failure this file can have, and it is silent unless we make it loud.
+ * Which firm a request belongs to, from its Host header.
+ *
+ * Port is kept in the comparison so localhost:3000 can stand in for a tenant in
+ * development; everything else matches on the bare hostname.
  */
-const resolved = TENANTS[TENANT_ID];
-if (!resolved) {
-  throw new Error(
-    `Unknown NEXT_PUBLIC_TENANT "${TENANT_ID}". Known tenants: ${Object.keys(TENANTS).join(", ")}.`,
-  );
+export function tenantIdFromHost(host: string | null | undefined): string {
+  if (!host) return FALLBACK_TENANT_ID;
+  const h = host.toLowerCase().trim();
+  const bare = h.split(":")[0] ?? h;
+  for (const [id, t] of Object.entries(TENANTS)) {
+    if (t.domains.some((d) => d === h || d === bare)) return id;
+  }
+  return FALLBACK_TENANT_ID;
 }
-export const TENANT: Tenant = resolved;
+
+export function tenantFromHost(host: string | null | undefined): Tenant {
+  return TENANTS[tenantIdFromHost(host)] ?? TENANTS[FALLBACK_TENANT_ID]!;
+}

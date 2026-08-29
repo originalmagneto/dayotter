@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/marketing/contact-form";
 import { MarketingHeader } from "@/components/marketing/page-shell";
+import { getTenant } from "@/lib/brand/server";
 import { BRAND } from "@/lib/marketing";
 import { Github, Mail, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   description: "Get in touch with the SKALLARS Law team.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const tenant = await getTenant();
   return (
     <>
       <MarketingHeader
@@ -20,7 +22,7 @@ export default function ContactPage() {
       />
       <section className="mx-auto grid max-w-4xl gap-10 px-6 py-16 md:grid-cols-2">
         <div className="space-y-6">
-          <Item icon={Mail} title="Email us" body={BRAND.email} href={`mailto:${BRAND.email}`} />
+          <Item icon={Mail} title="Email us" body={tenant.email} href={`mailto:${tenant.email}`} />
           <Item
             icon={Github}
             title="Open an issue"
@@ -32,7 +34,7 @@ export default function ContactPage() {
             icon={MessageSquare}
             title="Sales & teams"
             body="Rolling SKALLARS Law out to your team? We'll help."
-            href={`mailto:${BRAND.email}`}
+            href={`mailto:${tenant.email}`}
           />
         </div>
         <ContactForm />
