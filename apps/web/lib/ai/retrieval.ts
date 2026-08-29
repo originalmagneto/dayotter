@@ -37,7 +37,7 @@ export interface CalendarContext {
   /** Busy events synced from the host's connected calendars (Google / Microsoft /
    * Apple), next ~14 days. Read-only - the AI can see them to answer "how's my
    * calendar looking" but can't act on them. Without these the assistant is blind
-   * to everything except DayOtter's own bookings. */
+   * to everything except SKALLARS Law's own bookings. */
   externalEvents: { title: string; startsAt: Date; endsAt: Date }[];
 }
 
@@ -162,7 +162,7 @@ export async function retrieveCalendarContext(
     }),
     // The host's real synced calendar (Google/Microsoft/Apple) for the next 2 weeks
     // - so "how's my calendar looking?" reflects their whole schedule, not just
-    // DayOtter bookings.
+    // SKALLARS Law bookings.
     syncedExternalEvents(userId, now, in14Days, 40),
   ]);
 

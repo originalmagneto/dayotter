@@ -16,7 +16,7 @@ export default async function AppsSettingsPage() {
       <div className="mb-6">
         <h2 className="text-lg font-semibold">Apps</h2>
         <p className="mt-1 text-sm text-[var(--color-muted)]">
-          Everything DayOtter connects to - calendars, video, CRM, payments, messaging and
+          Everything SKALLARS Law connects to - calendars, video, CRM, payments, messaging and
           automation. Anything marked <em>Not configured</em> needs credentials set on this server.
         </p>
       </div>

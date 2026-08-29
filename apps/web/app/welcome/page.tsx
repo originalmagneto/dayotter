@@ -9,7 +9,7 @@ import { useState } from "react";
 const SLIDES = [
   {
     img: "/brand/illustrations/otter-plan.png",
-    title: "Welcome to DayOtter",
+    title: "Welcome to SKALLARS Law",
     body: "The calm home for your time - scheduling that respects every calendar you own.",
   },
   {

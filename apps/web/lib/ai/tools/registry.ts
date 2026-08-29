@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * The DayOtter AI tool registry. Declarative definitions the chat assistant can
+ * The SKALLARS Law AI tool registry. Declarative definitions the chat assistant can
  * call to READ and CONTROL the app. This module is isomorphic (no server-only
  * imports) so the descriptions/schemas can be shared; execution lives in
  * `./exec` (server-only).
@@ -46,7 +46,7 @@ export const TOOLS: AiToolDef[] = [
   {
     name: "get_agenda",
     description:
-      "Get the host's real agenda for a date range: their DayOtter bookings AND the busy events synced from their connected Google / Outlook / Apple calendars, merged in time order. This is the source of truth for 'what's on my calendar', 'how busy is Tuesday', 'when's my next meeting', or 'am I free on the 14th'. The per-turn context already lists the next ~2 weeks; call this to look further ahead or to double-check a specific window. Times are ISO-8601; omit them to default to the next 7 days.",
+      "Get the host's real agenda for a date range: their SKALLARS Law bookings AND the busy events synced from their connected Google / Outlook / Apple calendars, merged in time order. This is the source of truth for 'what's on my calendar', 'how busy is Tuesday', 'when's my next meeting', or 'am I free on the 14th'. The per-turn context already lists the next ~2 weeks; call this to look further ahead or to double-check a specific window. Times are ISO-8601; omit them to default to the next 7 days.",
     kind: "read",
     confirmLevel: "none",
     schema: {
@@ -114,7 +114,7 @@ export const TOOLS: AiToolDef[] = [
   {
     name: "check_availability",
     description:
-      "Check whether the host is free over a specific window and list what would conflict - their DayOtter bookings, synced calendar events, and held focus blocks. Use this to answer 'am I free Friday at 2pm?' or 'is Tuesday afternoon open?'. This reports what's ALREADY on the calendar; to find bookable openings that respect working hours, use find_free_slots instead.",
+      "Check whether the host is free over a specific window and list what would conflict - their SKALLARS Law bookings, synced calendar events, and held focus blocks. Use this to answer 'am I free Friday at 2pm?' or 'is Tuesday afternoon open?'. This reports what's ALREADY on the calendar; to find bookable openings that respect working hours, use find_free_slots instead.",
     kind: "read",
     confirmLevel: "none",
     schema: {
@@ -162,7 +162,7 @@ export const TOOLS: AiToolDef[] = [
   {
     name: "search_knowledge",
     description:
-      "Search DayOtter's built-in knowledge base for how-to and best-practice guidance (protecting focus time, reducing no-shows, availability & time off, designing booking types, automations vs workflows, connecting calendars, team scheduling). Call this whenever the host asks 'how do I...', 'what's the best way to...', or 'can DayOtter...' - then answer from the returned article(s) instead of guessing.",
+      "Search SKALLARS Law's built-in knowledge base for how-to and best-practice guidance (protecting focus time, reducing no-shows, availability & time off, designing booking types, automations vs workflows, connecting calendars, team scheduling). Call this whenever the host asks 'how do I...', 'what's the best way to...', or 'can SKALLARS Law...' - then answer from the returned article(s) instead of guessing.",
     kind: "read",
     confirmLevel: "none",
     schema: {
@@ -333,7 +333,7 @@ export const TOOLS: AiToolDef[] = [
   {
     name: "add_team_member",
     description:
-      "Add a member to one of the host's teams by email. The person must already have a DayOtter account. The host must own or admin the team.",
+      "Add a member to one of the host's teams by email. The person must already have a SKALLARS Law account. The host must own or admin the team.",
     kind: "write",
     confirmLevel: "confirm",
     schema: {

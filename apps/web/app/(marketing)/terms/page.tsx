@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Service",
   alternates: { canonical: "/terms" },
-  description: "The terms that govern your use of DayOtter.",
+  description: "The terms that govern your use of SKALLARS Law.",
 };
 
 export default function TermsPage() {

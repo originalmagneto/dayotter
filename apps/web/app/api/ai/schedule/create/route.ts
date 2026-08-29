@@ -38,7 +38,7 @@ const body = z.object({
 });
 
 /**
- * Write a confirmed AI draft as a real DayOtter booking. This is the
+ * Write a confirmed AI draft as a real SKALLARS Law booking. This is the
  * human-confirmed step - the AI never reaches here on its own. Goes through the
  * host-booking engine so the meeting shows in the app and gets reminders,
  * overflow and scribe (not just a raw calendar event).

@@ -27,10 +27,10 @@ function uniqueSlug(base: string, taken: Set<string>): string {
 }
 
 /**
- * Persist a fetched Calendly export into the user's DayOtter workspace: recreate
+ * Persist a fetched Calendly export into the user's SKALLARS Law workspace: recreate
  * their availability schedules and event types. Idempotent-ish - re-running
  * imports again under de-duplicated slugs rather than overwriting, so it never
- * clobbers existing DayOtter data (imported schedules are added, never made the
+ * clobbers existing SKALLARS Law data (imported schedules are added, never made the
  * default; event types with a colliding slug get a `-2` suffix).
  */
 export async function importCalendlyExport(
@@ -91,7 +91,7 @@ export async function importCalendlyExport(
 
   // Event types point at the imported "default" schedule when we recreated one,
   // so bookings honour the availability the user actually had on Calendly;
-  // otherwise they fall back to the DayOtter default schedule.
+  // otherwise they fall back to the SKALLARS Law default schedule.
   const targetScheduleId = importedDefaultScheduleId ?? defaultScheduleId;
 
   // 2. Event types. Dedupe slugs against the user's existing ones + this run.
@@ -195,7 +195,7 @@ export interface CalcomImportSummary {
 }
 
 /**
- * Persist mapped Cal.com event types into the user's DayOtter workspace. Mirrors
+ * Persist mapped Cal.com event types into the user's SKALLARS Law workspace. Mirrors
  * the Calendly event-type path: slugs are deduped against the user's existing
  * ones + this run, and rows are batch-inserted with a per-row fallback. Cal.com
  * has no exportable availability schedules via the v1 event-types endpoint, so we

@@ -19,14 +19,14 @@ export const generateMetadata = makeSlugMetadata(
     path: `/vs/${c.slug}`,
     keywords: [
       `${c.name} alternative`,
-      `DayOtter vs ${c.name}`,
-      `${c.name} vs DayOtter`,
+      `SKALLARS Law vs ${c.name}`,
+      `${c.name} vs SKALLARS Law`,
       `open source ${c.name} alternative`,
       "AI scheduling",
-      "DayOtter",
+      "SKALLARS Law",
     ],
   }),
-  "Compare - DayOtter",
+  "Compare - SKALLARS Law",
 );
 
 const EDGE_STYLES = {
@@ -70,7 +70,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             <thead>
               <tr className="bg-[var(--color-surface-2)] text-left">
                 <th className="px-4 py-3 font-semibold text-[var(--color-muted)]">&nbsp;</th>
-                <th className="px-4 py-3 font-semibold text-[var(--color-accent)]">DayOtter</th>
+                <th className="px-4 py-3 font-semibold text-[var(--color-accent)]">SKALLARS Law</th>
                 <th className="px-4 py-3 font-semibold text-[var(--color-muted)]">{c.name}</th>
               </tr>
             </thead>
@@ -86,9 +86,9 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </table>
         </div>
 
-        {/* Why DayOtter */}
+        {/* Why SKALLARS Law */}
         <h2 className="font-display mt-14 text-2xl tracking-[-0.01em] text-[var(--color-text)]">
-          Why teams pick DayOtter
+          Why teams pick SKALLARS Law
         </h2>
         <div className="mt-5 space-y-4">
           {c.whyUs.map((w) => (
@@ -112,7 +112,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </div>
           <div className="rounded-[var(--radius-lg)] border border-[var(--color-accent)]/40 bg-[var(--color-surface)] p-5 shadow-[var(--shadow-raise)]">
             <p className="flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)]">
-              <Check size={15} /> Choose DayOtter if
+              <Check size={15} /> Choose SKALLARS Law if
             </p>
             <p className="mt-2 text-sm leading-relaxed text-[var(--color-text)]">{c.chooseUs}</p>
           </div>
@@ -134,7 +134,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         {/* CTA */}
         <div className="mt-12 flex flex-wrap items-center gap-3">
           <Link href="/sign-up" className={buttonVariants({ variant: "primary" })}>
-            Try DayOtter free
+            Try SKALLARS Law free
           </Link>
           <Link href="/vs" className={buttonVariants({ variant: "outline" })}>
             All comparisons

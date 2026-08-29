@@ -163,9 +163,9 @@ export async function inboxData(userId: string): Promise<InboxData> {
         columns: { externalEventId: true },
       }),
     ]);
-    // A booking DayOtter writes to the host's calendar syncs back as an event -
+    // A booking SKALLARS Law writes to the host's calendar syncs back as an event -
     // that mirror must NOT be flagged as clashing with its own booking. Drop every
-    // booking mirror from the conflict candidates (genuinely overlapping DayOtter
+    // booking mirror from the conflict candidates (genuinely overlapping SKALLARS Law
     // bookings are already prevented by the DB's no-overlap constraint).
     const mirrorIds = new Set(refs.map((r) => r.externalEventId));
     const relevant = events.filter(

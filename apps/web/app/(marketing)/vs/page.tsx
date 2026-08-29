@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DayOtter vs the alternatives - honest comparisons",
+  title: "SKALLARS Law vs the alternatives - honest comparisons",
   description:
-    "How DayOtter compares to Calendly, Cal.com, Acuity, SavvyCal, Motion, Reclaim, Clockwise, Doodle and more. Where each one wins, plainly told.",
+    "How SKALLARS Law compares to Calendly, Cal.com, Acuity, SavvyCal, Motion, Reclaim, Clockwise, Doodle and more. Where each one wins, plainly told.",
   alternates: { canonical: "/vs" },
 };
 
@@ -17,7 +17,7 @@ export default function ComparisonsHub() {
       <MarketingHeader
         eyebrow="Compare"
         title="Honest comparisons"
-        subtitle="No hand-waving. Here's where each tool wins - and where DayOtter is the better call."
+        subtitle="No hand-waving. Here's where each tool wins - and where SKALLARS Law is the better call."
       />
       <section className="mx-auto max-w-5xl px-6 py-16">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -27,7 +27,7 @@ export default function ComparisonsHub() {
               href={`/vs/${c.slug}`}
               className="group flex flex-col rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-[var(--shadow-card)] transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-raise)]"
             >
-              <p className="text-sm font-semibold text-[var(--color-faint)]">DayOtter vs</p>
+              <p className="text-sm font-semibold text-[var(--color-faint)]">SKALLARS Law vs</p>
               <h2 className="font-display mt-1 text-2xl tracking-[-0.01em]">{c.name}</h2>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">
                 {c.blurb}

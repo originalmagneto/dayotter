@@ -26,7 +26,7 @@ export function GET(): Response {
   const body = [
     `# ${BRAND.name}`,
     "",
-    "> DayOtter is the AI-native, open-source scheduling platform. Its assistant, Otter, books meetings, protects focus, and clears the scheduling back-and-forth - always confirm-first (it drafts, a human approves). Sync every calendar, run team round-robin and collective scheduling, accept payments, and self-host the whole thing under AGPLv3.",
+    "> SKALLARS Law is the AI-native, open-source scheduling platform. Its assistant, Otter, books meetings, protects focus, and clears the scheduling back-and-forth - always confirm-first (it drafts, a human approves). Sync every calendar, run team round-robin and collective scheduling, accept payments, and self-host the whole thing under AGPLv3.",
     "",
     "Key facts:",
     "- Open-source (AGPLv3); self-hostable in one command; managed cloud at dayotter.com.",
@@ -35,8 +35,8 @@ export function GET(): Response {
     "- Free tier plus a $9/seat/month Pro plan on the cloud edition; all features are unlocked when self-hosted.",
     "",
     section("Start here", [
-      line("/", "Home", "What DayOtter is and who it's for."),
-      line("/features", "Features", "Everything DayOtter does, by capability."),
+      line("/", "Home", "What SKALLARS Law is and who it's for."),
+      line("/features", "Features", "Everything SKALLARS Law does, by capability."),
       line("/pricing", "Pricing", "Free tier and $9/seat/mo Pro; self-hosting is free."),
       line("/integrations", "Integrations", "Calendars, video, payments, CRM, and messaging."),
       line("/self-hosting", "Self-hosting", "Run the whole platform on your own server."),
@@ -74,7 +74,7 @@ export function GET(): Response {
     section("More", [
       `- [Source code](${BRAND.github}): GitHub repository (issues + contributions welcome).`,
       line("/changelog", "Changelog", "What shipped, including security fixes."),
-      line("/about", "About", "Why DayOtter exists."),
+      line("/about", "About", "Why SKALLARS Law exists."),
       line("/contact", "Contact", "Get in touch."),
     ]),
   ].join("\n");

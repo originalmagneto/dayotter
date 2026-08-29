@@ -63,7 +63,7 @@ function StoreBadge({
       href={href}
       target="_blank"
       rel="noreferrer"
-      aria-label={`Get DayOtter on ${label}`}
+      aria-label={`Get SKALLARS Law on ${label}`}
       className={`${cls} transition-transform hover:-translate-y-0.5`}
     >
       {inner}
@@ -91,7 +91,7 @@ const TABS = [
   { icon: Settings, active: false },
 ];
 
-/** A phone-framed mockup of the DayOtter mobile app. */
+/** A phone-framed mockup of the SKALLARS Law mobile app. */
 function PhoneMock() {
   return (
     <div className="relative mx-auto w-[264px]">
@@ -177,9 +177,9 @@ export function MobileApps() {
             Your calendar, <em className="text-[var(--color-accent)]">in your pocket.</em>
           </h2>
           <p className="mt-5 max-w-md text-lg leading-relaxed text-[var(--color-muted)]">
-            The DayOtter Android app is live on Google Play - the same calm scheduling, built for
-            the moments you're on the move. Push reminders, one-tap booking, and your whole team's
-            availability, wherever you are. iPhone is on the way.
+            The SKALLARS Law Android app is live on Google Play - the same calm scheduling, built
+            for the moments you're on the move. Push reminders, one-tap booking, and your whole
+            team's availability, wherever you are. iPhone is on the way.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <StoreBadge

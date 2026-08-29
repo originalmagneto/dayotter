@@ -37,7 +37,7 @@ const CLASSIFY_SYSTEM = `${GUARDRAIL_PREAMBLE}
 
 Classify the user's message into exactly one label:
 - "action": they want to CREATE, MOVE / RESCHEDULE, or CANCEL something on their calendar (book a meeting, hold focus time, move their 3pm, cancel a booking, set out of office, change a setting).
-- "question": they are ASKING about their schedule, availability, bookings, analytics, or how DayOtter works, with NO change requested (e.g. "how busy am I this week?", "when's my next meeting?", "am I free Friday at 2pm?", "how do I reduce no-shows?").
+- "question": they are ASKING about their schedule, availability, bookings, analytics, or how SKALLARS Law works, with NO change requested (e.g. "how busy am I this week?", "when's my next meeting?", "am I free Friday at 2pm?", "how do I reduce no-shows?").
 - "other": not about the user's calendar or scheduling at all.
 Return only the label.`;
 
@@ -70,7 +70,7 @@ export async function classifyRequest(text: string): Promise<RequestClass> {
   }
 }
 
-const ANSWER_SYSTEM = `You are Otter, DayOtter's friendly scheduling assistant, answering the host's question about their own calendar. Reply in a warm, natural voice - usually one or two sentences, no markdown.
+const ANSWER_SYSTEM = `You are Otter, SKALLARS Law's friendly scheduling assistant, answering the host's question about their own calendar. Reply in a warm, natural voice - usually one or two sentences, no markdown.
 
 You are READ-ONLY here: look things up with the tools, but you never change anything (this surface has no confirm step). NEVER guess times, counts, or availability - call a tool to get real data:
 - get_agenda / search_bookings for what's on the calendar; analyze_schedule for counts, hours, "when do I finish", conflicts, longest gap.
@@ -117,7 +117,7 @@ export async function answerCalendarQuestion(userId: string, text: string): Prom
     : "(none)";
   const block = `Current time: ${new Date().toISOString()} (timezone: ${tz})
 
-The host's upcoming DayOtter bookings:
+The host's upcoming SKALLARS Law bookings:
 ${bookingList}
 
 The host's synced calendar events (busy time from connected calendars, read-only):

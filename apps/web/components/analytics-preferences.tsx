@@ -53,7 +53,7 @@ export function AnalyticsPreferences() {
     <Card className="mt-6">
       <CardHeader
         title="Analytics & privacy"
-        description="Anonymous product usage that helps improve DayOtter."
+        description="Anonymous product usage that helps improve SKALLARS Law."
       />
       <CardBody>
         {analyticsConfigured ? (
@@ -71,7 +71,7 @@ export function AnalyticsPreferences() {
           </div>
         ) : (
           <p className="text-sm text-[var(--color-muted)]">
-            Analytics isn't enabled on this DayOtter instance - nothing is being collected. A
+            Analytics isn't enabled on this SKALLARS Law instance - nothing is being collected. A
             deployer can turn it on by setting a provider key (Mixpanel, Google Analytics, or
             PostHog).
           </p>

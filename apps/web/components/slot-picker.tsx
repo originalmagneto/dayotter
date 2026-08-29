@@ -149,7 +149,7 @@ export function SlotPicker({
     if (embed && typeof window !== "undefined" && window.parent !== window) {
       window.parent.postMessage({ type: "dayotter:booking", uid: data.uid, url: data.url }, "*");
     }
-    // Honor a host-configured redirect (external URL) over the DayOtter confirmation.
+    // Honor a host-configured redirect (external URL) over the SKALLARS Law confirmation.
     if (typeof data.redirectUrl === "string" && /^https?:\/\//.test(data.redirectUrl)) {
       window.location.href = data.redirectUrl;
       return;

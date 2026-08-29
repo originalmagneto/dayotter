@@ -55,7 +55,7 @@ export function ogImage({
           }}
         />
         <div style={{ fontSize: 30, fontWeight: 700, color: TEXT, letterSpacing: -0.5 }}>
-          DayOtter
+          SKALLARS Law
         </div>
       </div>
 

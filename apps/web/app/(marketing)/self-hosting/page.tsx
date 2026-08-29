@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Self-hosting",
   alternates: { canonical: "/self-hosting" },
-  description: "Run DayOtter on your own infrastructure. Every feature, free forever.",
+  description: "Run SKALLARS Law on your own infrastructure. Every feature, free forever.",
 };
 
 export default function SelfHostingPage() {
@@ -13,7 +13,7 @@ export default function SelfHostingPage() {
     <>
       <MarketingHeader
         eyebrow="Open source"
-        title="Self-host DayOtter"
+        title="Self-host SKALLARS Law"
         subtitle="Your data, your servers, every feature unlocked - free forever under AGPLv3."
       />
       <Prose>

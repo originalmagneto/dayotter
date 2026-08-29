@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   alternates: { canonical: "/contact" },
-  description: "Get in touch with the DayOtter team.",
+  description: "Get in touch with the SKALLARS Law team.",
 };
 
 export default function ContactPage() {
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <Item
             icon={MessageSquare}
             title="Sales & teams"
-            body="Rolling DayOtter out to your team? We'll help."
+            body="Rolling SKALLARS Law out to your team? We'll help."
             href={`mailto:${BRAND.email}`}
           />
         </div>

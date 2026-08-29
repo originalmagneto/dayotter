@@ -2,7 +2,7 @@
  * The Otter knowledge catalogue - a small, curated set of reference documents
  * the assistant can retrieve to ground how-to and best-practice answers.
  *
- * This is DayOtter-specific product knowledge written for grounding, not
+ * This is SKALLARS Law-specific product knowledge written for grounding, not
  * marketing: how a capability actually works and how to get the best out of it.
  * Otter reaches it through the `search_knowledge` tool - when a host asks "how
  * do I..." or "what's the best way to...", the model pulls the matching
@@ -35,7 +35,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "concentration",
       "busy",
     ],
-    body: `DayOtter can hold focus time so nobody books over it. Ask for what you need ("block 4 hours before Friday", "protect my mornings") and Otter finds concrete open blocks that are already clear of meetings and synced-calendar busy time, then holds them as focus blocks. Held focus blocks count as busy in your availability, so booking pages stop offering those slots. For recurring protection, set a weekly automation rule. Best practice: protect focus in the morning before meetings pile up, and keep blocks to 60-120 minutes so they're easy to place.`,
+    body: `SKALLARS Law can hold focus time so nobody books over it. Ask for what you need ("block 4 hours before Friday", "protect my mornings") and Otter finds concrete open blocks that are already clear of meetings and synced-calendar busy time, then holds them as focus blocks. Held focus blocks count as busy in your availability, so booking pages stop offering those slots. For recurring protection, set a weekly automation rule. Best practice: protect focus in the morning before meetings pile up, and keep blocks to 60-120 minutes so they're easy to place.`,
   },
   {
     id: "no-shows",
@@ -59,7 +59,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "time off",
       "holiday",
     ],
-    body: `Your default availability is a weekly grid of working hours in your timezone. Change it with a request like "set my hours to 9-5, Monday to Friday". For one-off changes (a single day off, or extra hours on a specific date) use a date override rather than editing the weekly grid. For a stretch of days away, set an out-of-office period with a start and end date; while you're away DayOtter shows an "away" banner on your booking page and, if you name a delegate you share a team with, redirects new bookings to them. Out-of-office and date overrides both block bookable time automatically.`,
+    body: `Your default availability is a weekly grid of working hours in your timezone. Change it with a request like "set my hours to 9-5, Monday to Friday". For one-off changes (a single day off, or extra hours on a specific date) use a date override rather than editing the weekly grid. For a stretch of days away, set an out-of-office period with a start and end date; while you're away SKALLARS Law shows an "away" banner on your booking page and, if you name a delegate you share a team with, redirects new bookings to them. Out-of-office and date overrides both block bookable time automatically.`,
   },
   {
     id: "booking-types",
@@ -111,7 +111,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "connect",
       "two-way",
     ],
-    body: "Connect Google, Microsoft/Outlook, or Apple (CalDAV) calendars so DayOtter sees your real commitments. Each connected calendar can be toggled for conflict checking - busy events on those calendars block bookable slots, so you never get double-booked across tools. Confirmed DayOtter bookings are written back to your primary calendar (two-way), and mirrored events are de-duplicated so a booking never shows up twice. Connecting more than one calendar is the core advantage: DayOtter treats all of them as one combined schedule.",
+    body: "Connect Google, Microsoft/Outlook, or Apple (CalDAV) calendars so SKALLARS Law sees your real commitments. Each connected calendar can be toggled for conflict checking - busy events on those calendars block bookable slots, so you never get double-booked across tools. Confirmed SKALLARS Law bookings are written back to your primary calendar (two-way), and mirrored events are de-duplicated so a booking never shows up twice. Connecting more than one calendar is the core advantage: SKALLARS Law treats all of them as one combined schedule.",
   },
   {
     id: "teams",
@@ -126,7 +126,7 @@ export const KNOWLEDGE_ARTICLES: KnowledgeArticle[] = [
       "assign",
       "distribute",
     ],
-    body: `Create a team and add members (they need a DayOtter account). Team booking types can distribute meetings round-robin across members based on availability and priority, so load spreads evenly. Collective types require several members to be free at once. Delegates matter for time off: when you set an out-of-office period you can redirect new bookings to a teammate you share a team with, so coverage continues while you're away.`,
+    body: `Create a team and add members (they need a SKALLARS Law account). Team booking types can distribute meetings round-robin across members based on availability and priority, so load spreads evenly. Collective types require several members to be free at once. Delegates matter for time off: when you set an out-of-office period you can redirect new bookings to a teammate you share a team with, so coverage continues while you're away.`,
   },
 ];
 

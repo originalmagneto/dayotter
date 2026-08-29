@@ -21,12 +21,12 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Chat or talk to Otter and it books, moves, blocks, and rearranges your week - but only ever with your say-so. Here’s what your calendar’s new copilot can do.",
     date: "2026-07-12",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 4,
     body: [
       {
         paragraphs: [
-          "Scheduling is death by a thousand tiny chores: find a slot, block the prep time, move the thing that clashes, remember to tell the attendees. Otter - the assistant built into your DayOtter dashboard - does those chores for you. You just chat with it, or talk to it.",
+          "Scheduling is death by a thousand tiny chores: find a slot, block the prep time, move the thing that clashes, remember to tell the attendees. Otter - the assistant built into your SKALLARS Law dashboard - does those chores for you. You just chat with it, or talk to it.",
         ],
       },
       {
@@ -39,7 +39,7 @@ export const POSTS: BlogPost[] = [
       {
         heading: "It actually does things",
         paragraphs: [
-          "Otter goes beyond answering questions. It can create a new booking type, hold focus time, adjust your working hours, change your timezone, set up reminder channels, and manage your automations - the things that normally take five screens of clicking. Anything you can do in DayOtter, Otter can do; it’s just faster.",
+          "Otter goes beyond answering questions. It can create a new booking type, hold focus time, adjust your working hours, change your timezone, set up reminder channels, and manage your automations - the things that normally take five screens of clicking. Anything you can do in SKALLARS Law, Otter can do; it’s just faster.",
         ],
       },
       {
@@ -55,9 +55,9 @@ export const POSTS: BlogPost[] = [
     slug: "one-link-no-back-and-forth",
     title: "One link, and the back-and-forth is over",
     excerpt:
-      "“Does Tuesday work? How about Thursday at 2 - oh, my 2 just moved.” Share one DayOtter link instead and let people pick a time you’re actually free.",
+      "“Does Tuesday work? How about Thursday at 2 - oh, my 2 just moved.” Share one SKALLARS Law link instead and let people pick a time you’re actually free.",
     date: "2026-07-10",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
@@ -68,7 +68,7 @@ export const POSTS: BlogPost[] = [
       {
         heading: "Share a link, not your week",
         paragraphs: [
-          "Send one DayOtter link. The other person opens your page, sees only the times you’re genuinely open, and picks one. It lands on both calendars with a video link attached - no accounts, no reply thread, no “actually, that just filled up.”",
+          "Send one SKALLARS Law link. The other person opens your page, sees only the times you’re genuinely open, and picks one. It lands on both calendars with a video link attached - no accounts, no reply thread, no “actually, that just filled up.”",
         ],
       },
       {
@@ -84,9 +84,9 @@ export const POSTS: BlogPost[] = [
     slug: "confirm-first-ai",
     title: "AI that proposes, never disposes",
     excerpt:
-      "Calendar AI has a trust problem: it moves your meetings without asking. DayOtter takes a different stance - confirm-first, always.",
+      "Calendar AI has a trust problem: it moves your meetings without asking. SKALLARS Law takes a different stance - confirm-first, always.",
     date: "2026-07-06",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
@@ -97,7 +97,7 @@ export const POSTS: BlogPost[] = [
       {
         heading: "Propose, then confirm",
         paragraphs: [
-          "DayOtter’s AI is confirm-first. Ask it to move your 3pm to tomorrow, or to defend two hours of deep work, and it drafts an editable proposal. Nothing touches your calendar until you say so.",
+          "SKALLARS Law’s AI is confirm-first. Ask it to move your 3pm to tomorrow, or to defend two hours of deep work, and it drafts an editable proposal. Nothing touches your calendar until you say so.",
           "It stays strictly in scope, too - scheduling only. It won’t wander off to summarize your inbox or draft your strategy deck. It does one job, and it asks before it acts.",
         ],
       },
@@ -113,26 +113,26 @@ export const POSTS: BlogPost[] = [
     slug: "every-calendar-one-truth",
     title: "Every calendar, one source of truth",
     excerpt:
-      "Work Google, personal iCloud, a shared Outlook - DayOtter reads them all, so you’re never offered a time you’re secretly busy.",
+      "Work Google, personal iCloud, a shared Outlook - SKALLARS Law reads them all, so you’re never offered a time you’re secretly busy.",
     date: "2026-07-04",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
         paragraphs: [
-          "Most double-bookings come from the calendar you forgot to check. The work one knows about the standup; the personal one knows about the dentist; neither knows about the other. DayOtter is the layer that does.",
+          "Most double-bookings come from the calendar you forgot to check. The work one knows about the standup; the personal one knows about the dentist; neither knows about the other. SKALLARS Law is the layer that does.",
         ],
       },
       {
         heading: "Connect once, stay honest",
         paragraphs: [
-          "Link Google, Outlook, and iCloud - plus any read-only calendar feed. Before DayOtter ever offers a slot, it checks every connected calendar for a conflict. If you’re busy anywhere, that time simply isn’t on the table.",
+          "Link Google, Outlook, and iCloud - plus any read-only calendar feed. Before SKALLARS Law ever offers a slot, it checks every connected calendar for a conflict. If you’re busy anywhere, that time simply isn’t on the table.",
         ],
       },
       {
         heading: "Busy, not private",
         paragraphs: [
-          "DayOtter sees that you’re busy, never why. The details of your meetings stay on your own calendars; only free/busy shapes your availability. Connection tokens are encrypted at rest, and nothing you put in is ever sold.",
+          "SKALLARS Law sees that you’re busy, never why. The details of your meetings stay on your own calendars; only free/busy shapes your availability. Connection tokens are encrypted at rest, and nothing you put in is ever sold.",
         ],
       },
       {
@@ -149,7 +149,7 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Back-to-back is not a badge of honor. Adaptive availability quietly protects your worst days - here’s how.",
     date: "2026-07-02",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
@@ -160,8 +160,8 @@ export const POSTS: BlogPost[] = [
       {
         heading: "A cap that thinks for you",
         paragraphs: [
-          "Adaptive availability sets a ceiling on meetings per day. Once a day hits your cap - counting both DayOtter bookings and events on your connected calendars - DayOtter simply stops offering slots that day. No awkward decline emails, no manual blocking.",
-          "Pair it with travel-time buffers and automated focus blocks, and your calendar starts defending itself. You set the rules once; DayOtter enforces them every time someone tries to book.",
+          "Adaptive availability sets a ceiling on meetings per day. Once a day hits your cap - counting both SKALLARS Law bookings and events on your connected calendars - SKALLARS Law simply stops offering slots that day. No awkward decline emails, no manual blocking.",
+          "Pair it with travel-time buffers and automated focus blocks, and your calendar starts defending itself. You set the rules once; SKALLARS Law enforces them every time someone tries to book.",
         ],
       },
     ],
@@ -170,9 +170,9 @@ export const POSTS: BlogPost[] = [
     slug: "reminders-that-land",
     title: "Reminders that actually get there",
     excerpt:
-      "The best reminder is the one someone reads. DayOtter sends them where people already are - email, SMS, WhatsApp, and push.",
+      "The best reminder is the one someone reads. SKALLARS Law sends them where people already are - email, SMS, WhatsApp, and push.",
     date: "2026-06-27",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
@@ -200,18 +200,18 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Prep blocks, buffers, follow-ups, focus time - the routine calendar admin you keep meaning to do, handled automatically.",
     date: "2026-06-20",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 4,
     body: [
       {
         paragraphs: [
-          "The meeting itself is the easy part. It’s the scaffolding around it - the prep, the buffer, the follow-up, the focus time you meant to protect - that quietly eats your week. DayOtter builds that scaffolding for you.",
+          "The meeting itself is the easy part. It’s the scaffolding around it - the prep, the buffer, the follow-up, the focus time you meant to protect - that quietly eats your week. SKALLARS Law builds that scaffolding for you.",
         ],
       },
       {
         heading: "Automations",
         paragraphs: [
-          "Set rules that fire on their own: add a prep block before every sales call, a buffer after long meetings, or a weekly focus window you never have to remember to book. Configure it once; DayOtter applies it every time.",
+          "Set rules that fire on their own: add a prep block before every sales call, a buffer after long meetings, or a weekly focus window you never have to remember to book. Configure it once; SKALLARS Law applies it every time.",
         ],
       },
       {
@@ -234,18 +234,18 @@ export const POSTS: BlogPost[] = [
     excerpt:
       "Round-robin the sales team, find a time everyone’s free, or share one raft of availability - without the shared-calendar headache.",
     date: "2026-06-14",
-    author: "The DayOtter team",
+    author: "The SKALLARS Law team",
     readMinutes: 3,
     body: [
       {
         paragraphs: [
-          "Scheduling for one person is a solved problem. Scheduling across a team is where most tools fall back on a spreadsheet and a group chat. DayOtter keeps it to a single link.",
+          "Scheduling for one person is a solved problem. Scheduling across a team is where most tools fall back on a spreadsheet and a group chat. SKALLARS Law keeps it to a single link.",
         ],
       },
       {
         heading: "Collective and round-robin",
         paragraphs: [
-          "A collective booking type finds a slot when everyone required is free. A round-robin type spreads incoming bookings across the team so no one person carries them all. One link either way - DayOtter picks the right host and the right time.",
+          "A collective booking type finds a slot when everyone required is free. A round-robin type spreads incoming bookings across the team so no one person carries them all. One link either way - SKALLARS Law picks the right host and the right time.",
         ],
       },
       {

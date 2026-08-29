@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { type CalcomExport, mapCalcomExport, mapEventType, mapLocation } from "./calcom";
 
 describe("mapLocation", () => {
-  it("maps Cal.com integration location types to DayOtter types", () => {
+  it("maps Cal.com integration location types to SKALLARS Law types", () => {
     expect(mapLocation({ type: "integrations:google:meet" }).location).toBe("google_meet");
     expect(mapLocation({ type: "integrations:office365_video" }).location).toBe("ms_teams");
     expect(mapLocation({ type: "integrations:zoom", link: "https://zoom.us/j/1" })).toEqual({

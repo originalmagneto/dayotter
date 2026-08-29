@@ -7,12 +7,12 @@ const BADGES = [
   { img: "/brand/illustrations/badge-track.png", label: "Never double-booked" },
 ];
 
-/** A playful badge strip - the otter's take on "why DayOtter". */
+/** A playful badge strip - the otter's take on "why SKALLARS Law". */
 export function WhyOtter() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="eyebrow">Why DayOtter</span>
+        <span className="eyebrow">Why SKALLARS Law</span>
         <h2 className="font-display mt-4 text-4xl leading-tight tracking-[-0.02em] sm:text-5xl">
           Scheduling that keeps you calm.
         </h2>

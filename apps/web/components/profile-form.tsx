@@ -21,7 +21,7 @@ function timezones(): string[] {
   }
 }
 
-/** Preset booking-page accent colours (hex). `null` = the default DayOtter theme. */
+/** Preset booking-page accent colours (hex). `null` = the default SKALLARS Law theme. */
 const BRAND_PRESETS = ["#6743e6", "#0ea5e9", "#10b981", "#f59e0b", "#ef6a52", "#ec4899"];
 
 export function ProfileForm({

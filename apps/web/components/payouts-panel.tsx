@@ -84,7 +84,10 @@ export function PayoutsPanel({
               ? "Your payout account still needs a few details before Stripe can enable charges and payouts."
               : "You'll be taken to Stripe to add your bank details. It takes a couple of minutes."}
             {feePercent > 0 ? (
-              <> DayOtter keeps a {feePercent}% platform fee on each payment; the rest is yours.</>
+              <>
+                {" "}
+                SKALLARS Law keeps a {feePercent}% platform fee on each payment; the rest is yours.
+              </>
             ) : null}
           </p>
           {/* Plain <a>: this 302s to Stripe onboarding (full navigation, like calendar connect). */}
@@ -106,7 +109,7 @@ export function PayoutsPanel({
         }
         description={
           feePercent > 0
-            ? `Payments land in your Stripe account minus DayOtter's ${feePercent}% fee.`
+            ? `Payments land in your Stripe account minus SKALLARS Law's ${feePercent}% fee.`
             : "Payments land straight in your Stripe account."
         }
       />

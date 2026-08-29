@@ -4,13 +4,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Changelog",
   alternates: { canonical: "/changelog" },
-  description: "What's new in DayOtter.",
+  description: "What's new in SKALLARS Law.",
 };
 
 const ENTRIES = [
   {
     date: "July 2026",
-    title: "DayOtter for Android is live on Google Play",
+    title: "SKALLARS Law for Android is live on Google Play",
     items: [
       "The Android app is now on Google Play - the full host workflow in your pocket, with push reminders and voice input for Otter. iOS is on the way.",
       "Import from Calendly: bring your event types and weekly availability across in one step.",

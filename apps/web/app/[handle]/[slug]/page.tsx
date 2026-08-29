@@ -1,4 +1,5 @@
 import { BookingPixels } from "@/components/booking-pixels";
+import { BrandMark } from "@/components/brand-mark";
 import { HostAvatar } from "@/components/host-avatar";
 import { LanguagePicker } from "@/components/language-picker";
 import { SlotPicker } from "@/components/slot-picker";
@@ -11,9 +12,9 @@ import { sanitizePixelConfig } from "@/lib/booking/analytics-pixels";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS, offeredLocations } from "@/lib/booking/event-type-input";
 import { chargeFor, formatMoney } from "@/lib/booking/money";
-import { brandingHidden } from "@/lib/ee/white-label";
 import { resolveLocale } from "@/lib/i18n/booking";
 import { LocaleProvider } from "@/lib/i18n/locale-provider";
+import { BRAND } from "@/lib/marketing";
 import { outOfOfficeOn } from "@/lib/out-of-office";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { and, eq, getDb, schema } from "@dayotter/db";
@@ -44,9 +45,6 @@ export default async function PublicBookingPage({
   });
   if (!eventType) notFound();
 
-  // White-label (cloud + Pro): the host can hide the DayOtter mark.
-  const hostEnt = await getEntitlements(host.id);
-  const hideBranding = brandingHidden({ isPro: hostEnt.isPro });
   const branding = await getHostBranding(host.id);
   const locale = resolveLocale((await headers()).get("accept-language"));
 
@@ -188,20 +186,26 @@ export default async function PublicBookingPage({
           </div>
         </Card>
       </LocaleProvider>
-      {hideBranding ? null : (
-        <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
-          <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
-            <img
-              src="/brand/dayotter-icon.svg"
-              alt=""
-              width={21}
-              height={21}
-              className="absolute -left-[3px] -top-[3px] max-w-none"
-            />
-          </span>
-          Powered by <span className="text-[var(--color-muted)]">DayOtter</span>
-        </p>
-      )}
+      {/*
+        "Powered by" makes no sense on the firm's own page - this IS SKALLARS.
+        What belongs here instead is the source offer: the app is a modified
+        AGPLv3 work served over a network, and section 13 requires that the
+        people using it are offered its Corresponding Source. One line, and it
+        is the thing that keeps the rebrand compliant.
+      */}
+      <p className="mt-6 flex items-center justify-center gap-1.5 text-meta text-[var(--color-faint)]">
+        <BrandMark size={12} className="text-[var(--color-faint)]" />
+        {BRAND.name}
+        <span aria-hidden>·</span>
+        <a
+          href={BRAND.github}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="underline hover:text-[var(--color-muted)]"
+        >
+          Source
+        </a>
+      </p>
     </main>
   );
 }

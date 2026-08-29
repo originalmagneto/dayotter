@@ -210,7 +210,7 @@ export function NotificationChannelsForm({
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium">Turn on browser notifications</p>
               <p className="mt-0.5 text-xs text-[var(--color-muted)]">
-                Get a desktop nudge before each meeting - even when DayOtter isn't open. You can
+                Get a desktop nudge before each meeting - even when SKALLARS Law isn't open. You can
                 turn it off anytime.
               </p>
               {pushError ? (
@@ -337,7 +337,7 @@ export function NotificationChannelsForm({
                 placeholder="ExponentPushToken[…]"
               />
               <p className="mt-1 text-xs text-[var(--color-faint)]">
-                The DayOtter mobile app registers this for you automatically.
+                The SKALLARS Law mobile app registers this for you automatically.
               </p>
             </div>
           ) : null}

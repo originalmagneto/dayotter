@@ -6,5 +6,5 @@
  */
 export function jitsiRoomUrl(uid: string): string {
   const base = (process.env.JITSI_BASE_URL || "https://meet.jit.si").replace(/\/+$/, "");
-  return `${base}/DayOtter-${uid}`;
+  return `${base}/SKALLARS Law-${uid}`;
 }

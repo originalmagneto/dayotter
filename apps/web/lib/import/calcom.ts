@@ -1,7 +1,7 @@
 import type { LocationTypeValue } from "../booking/event-type-input";
 
 /**
- * Pure mapping layer: Cal.com API v1 event-type shapes -> the fields DayOtter
+ * Pure mapping layer: Cal.com API v1 event-type shapes -> the fields SKALLARS Law
  * stores. No network / DB access, so it can be exhaustively unit-tested; the
  * client (`calcom-client.ts`) and persistence (`run-import.ts`) wrap it. Only the
  * subset of Cal.com's payload we actually use is typed.
@@ -54,7 +54,7 @@ const LOCATION_TYPES_NEEDING_DETAIL = new Set<LocationTypeValue>([
 ]);
 
 /**
- * Map one Cal.com location entry to a DayOtter location type + optional detail.
+ * Map one Cal.com location entry to a SKALLARS Law location type + optional detail.
  * Cal.com namespaces integration locations (`integrations:<vendor>[:<kind>]`) and
  * uses bare keys for the rest. Anything unrecognized falls back to `custom`.
  */
@@ -115,7 +115,7 @@ export function mapEventType(et: CalcomEventType): MappedEventType | null {
   };
 }
 
-/** Map a full Cal.com export to DayOtter event types, dropping malformed entries. */
+/** Map a full Cal.com export to SKALLARS Law event types, dropping malformed entries. */
 export function mapCalcomExport(data: CalcomExport): MappedEventType[] {
   return (data.event_types ?? []).map(mapEventType).filter((x): x is MappedEventType => x !== null);
 }

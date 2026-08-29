@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   alternates: { canonical: "/privacy" },
-  description: "How DayOtter collects, uses, and protects your data.",
+  description: "How SKALLARS Law collects, uses, and protects your data.",
 };
 
 export default function PrivacyPage() {

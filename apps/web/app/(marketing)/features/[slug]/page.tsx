@@ -22,7 +22,7 @@ export const generateMetadata = makeSlugMetadata(
       `${f.title.toLowerCase()} software`,
       "AI scheduling",
       "open source scheduling",
-      "DayOtter",
+      "SKALLARS Law",
     ],
   }),
   "Features",

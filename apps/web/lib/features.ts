@@ -29,7 +29,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Otter is your AI executive assistant for the calendar. Say what you want in plain words - it drafts the change and waits for your OK. Never books anything on its own.",
     intro: [
-      'Most "AI scheduling" is a chatbot bolted onto a booking link. Otter is built into DayOtter from the ground up: it reads your real availability, understands "book 30 minutes with Priya Thursday" or "hold two hours for deep work," and turns it into a calendar change you confirm.',
+      'Most "AI scheduling" is a chatbot bolted onto a booking link. Otter is built into SKALLARS Law from the ground up: it reads your real availability, understands "book 30 minutes with Priya Thursday" or "hold two hours for deep work," and turns it into a calendar change you confirm.',
       "It works in the app, by voice on mobile, and over WhatsApp and SMS - and it learns your patterns so its suggestions get sharper over time.",
     ],
     points: [
@@ -66,7 +66,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Spread inbound meetings fairly across your team - weight your best closers, pause anyone who's out, and keep it load-balanced automatically.",
     intro: [
-      "Round-robin routing sends each new booking to the next available team member. DayOtter's is weighted: give senior reps a higher share, set someone to zero to pause them, and it stays balanced over time - not just a naive rotation.",
+      "Round-robin routing sends each new booking to the next available team member. SKALLARS Law's is weighted: give senior reps a higher share, set someone to zero to pause them, and it stays balanced over time - not just a naive rotation.",
       "Combine it with routing forms and collective availability to build a real team booking flow, all free to self-host.",
     ],
     points: [
@@ -103,7 +103,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Ask a couple of questions up front, then route each visitor to the right person, team, or event type - so leads never land on the wrong desk.",
     intro: [
-      "A routing form is a short set of questions on your booking page. Based on the answers, DayOtter sends the visitor to the right destination - a specific rep, a round-robin pool, or a particular event type.",
+      "A routing form is a short set of questions on your booking page. Based on the answers, SKALLARS Law sends the visitor to the right destination - a specific rep, a round-robin pool, or a particular event type.",
       "It's how sales teams qualify inbound instantly and route enterprise leads to closers, and how support teams get people to the right specialist - no reply-and-wait.",
     ],
     points: [
@@ -169,7 +169,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Cut no-shows with automatic reminders on the channels people actually check - email, SMS, WhatsApp, Slack, and mobile push.",
     intro: [
-      "Set your lead times once and DayOtter reminds you and your attendees before every meeting. Reminders are durable (backed by a real job queue), multi-channel, and reschedule cleanly when a meeting moves.",
+      "Set your lead times once and SKALLARS Law reminds you and your attendees before every meeting. Reminders are durable (backed by a real job queue), multi-channel, and reschedule cleanly when a meeting moves.",
       "Add before/after-event workflow messages on your own templates for confirmations, prep, and follow-ups.",
     ],
     points: [
@@ -200,9 +200,9 @@ export const FEATURES: Feature[] = [
     blurb: "Google, Outlook, Apple, and ICS - one honest view of your time.",
     title: "Calendar sync",
     subtitle:
-      "Connect Google, Microsoft 365, Apple iCloud, and any ICS feed. DayOtter unifies them into one source of truth for your availability - two-way, real-time.",
+      "Connect Google, Microsoft 365, Apple iCloud, and any ICS feed. SKALLARS Law unifies them into one source of truth for your availability - two-way, real-time.",
     intro: [
-      "DayOtter reads your busy times from every calendar you connect and writes new bookings back - so you're never double-booked and everything lives in the calendar you already check.",
+      "SKALLARS Law reads your busy times from every calendar you connect and writes new bookings back - so you're never double-booked and everything lives in the calendar you already check.",
       "Google and Microsoft sync in real time via provider webhooks; Apple/CalDAV and ICS feeds are kept fresh by polling. Tokens are encrypted at rest.",
     ],
     points: [
@@ -222,7 +222,7 @@ export const FEATURES: Feature[] = [
     faq: [
       {
         q: "Does it work with Apple/iCloud?",
-        a: "Yes - via CalDAV with an app-specific password. Unlike some tools that dropped iCloud support, DayOtter keeps it.",
+        a: "Yes - via CalDAV with an app-specific password. Unlike some tools that dropped iCloud support, SKALLARS Law keeps it.",
       },
     ],
     related: ["booking-pages", "ai-scheduling", "focus-time"],
@@ -249,7 +249,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: "Stripe, secure",
-        body: "Payments run on Stripe Checkout - DayOtter never stores card numbers.",
+        body: "Payments run on Stripe Checkout - SKALLARS Law never stores card numbers.",
       },
     ],
     faq: [
@@ -301,7 +301,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Share one link and let people book you - on a page as calm as it is capable, with intake questions, buffers, and automatic video links.",
     intro: [
-      "Your booking page is a branded, fast, mobile-friendly place for anyone to grab a time that works. Add intake questions, buffers, notice periods, and multiple durations; DayOtter attaches a Google Meet, Zoom, or Teams link automatically.",
+      "Your booking page is a branded, fast, mobile-friendly place for anyone to grab a time that works. Add intake questions, buffers, notice periods, and multiple durations; SKALLARS Law attaches a Google Meet, Zoom, or Teams link automatically.",
       "Unlimited event types on every plan - including free - instead of the one-event-only trap.",
     ],
     points: [
@@ -363,7 +363,7 @@ export const FEATURES: Feature[] = [
     subtitle:
       "Connect Salesforce or HubSpot and every booking becomes a contact + a logged meeting - created on book, updated on reschedule, closed on cancel. No Zapier, no manual logging. (Beta.)",
     intro: [
-      "When someone books, DayOtter finds or creates them as a contact in your CRM and logs the meeting as an activity against them - a Salesforce Event or a HubSpot meeting engagement. Reschedule a booking and the same activity moves with it; cancel it and the activity is closed. Your CRM stays an accurate record of what actually happened, without anyone typing it in.",
+      "When someone books, SKALLARS Law finds or creates them as a contact in your CRM and logs the meeting as an activity against them - a Salesforce Event or a HubSpot meeting engagement. Reschedule a booking and the same activity moves with it; cancel it and the activity is closed. Your CRM stays an accurate record of what actually happened, without anyone typing it in.",
       "It's a native, first-party OAuth connection - not a bridge through a third-party automation tool - so it's one click to connect and there are no API keys to paste. Currently in beta.",
     ],
     points: [
@@ -381,7 +381,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: "Free when you self-host",
-        body: "CRM sync is a Pro feature on the cloud and completely free when you run DayOtter yourself.",
+        body: "CRM sync is a Pro feature on the cloud and completely free when you run SKALLARS Law yourself.",
       },
     ],
     faq: [
@@ -406,15 +406,15 @@ export const FEATURES: Feature[] = [
     blurb: "Availability that flexes with your real load - cap busy days, open up quiet ones.",
     title: "Adaptive availability",
     subtitle:
-      "DayOtter reads how booked you already are and tunes the times you offer - so a heavy day doesn't get piled higher and a quiet week opens up.",
+      "SKALLARS Law reads how booked you already are and tunes the times you offer - so a heavy day doesn't get piled higher and a quiet week opens up.",
     intro: [
       "Fixed working hours don't reflect real life: some days are already full, others wide open. Adaptive availability looks at what's actually on your calendar and adjusts the slots you offer - tightening on busy days, loosening on light ones - without you touching your schedule.",
-      "It stays confirm-first and rule-bound: you set the guardrails (daily meeting caps, buffers) and DayOtter keeps you inside them automatically.",
+      "It stays confirm-first and rule-bound: you set the guardrails (daily meeting caps, buffers) and SKALLARS Law keeps you inside them automatically.",
     ],
     points: [
       {
         title: "Caps your busiest days",
-        body: "Set a max meetings-per-day and DayOtter stops offering new slots once a day hits the limit - no day gets overloaded.",
+        body: "Set a max meetings-per-day and SKALLARS Law stops offering new slots once a day hits the limit - no day gets overloaded.",
       },
       {
         title: "Opens up quiet time",
@@ -440,7 +440,7 @@ export const FEATURES: Feature[] = [
       "Holds travel time around in-person meetings so you're never booked across town with no gap.",
     title: "Travel-aware scheduling",
     subtitle:
-      "For in-person meetings, DayOtter reserves travel time around the booking - so your calendar reflects the trip, not just the meeting.",
+      "For in-person meetings, SKALLARS Law reserves travel time around the booking - so your calendar reflects the trip, not just the meeting.",
     intro: [
       "A 2pm coffee across town isn't a 30-minute commitment - it's the meeting plus travel each way. Travel-aware scheduling adds a configurable buffer before and after in-person bookings and treats it as busy, so nobody books you into a slot you physically can't make.",
       "Combined with buffers and daily caps, it keeps your day realistic instead of a wall of impossible-to-honour slots.",
@@ -456,7 +456,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: "Yours to tune",
-        body: "Set how much travel time to reserve; DayOtter applies it on every in-person booking.",
+        body: "Set how much travel time to reserve; SKALLARS Law applies it on every in-person booking.",
       },
     ],
     faq: [

@@ -1,6 +1,6 @@
 /**
  * Audience ("for X") landing content, rendered at /for/[slug]. Same template
- * for each persona: the pain they feel, how DayOtter fits, how it works, an FAQ.
+ * for each persona: the pain they feel, how SKALLARS Law fits, how it works, an FAQ.
  * Tailor the language to the reader - name their specific problem plainly.
  */
 
@@ -12,7 +12,7 @@ export interface Persona {
   subtitle: string;
   /** Why generic scheduling fails this person - 3 concrete pains. */
   problems: { title: string; body: string }[];
-  /** Why DayOtter fits - 4 tailored capabilities. */
+  /** Why SKALLARS Law fits - 4 tailored capabilities. */
   solutions: { title: string; body: string }[];
   /** Three plain steps. */
   steps: string[];

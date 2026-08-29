@@ -3,7 +3,7 @@ import { OG_CONTENT_TYPE, OG_SIZE, ogClamp, ogImage } from "@/lib/og";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "DayOtter scheduling glossary";
+export const alt = "SKALLARS Law scheduling glossary";
 
 export function generateStaticParams() {
   return GLOSSARY.map((t) => ({ slug: t.slug }));

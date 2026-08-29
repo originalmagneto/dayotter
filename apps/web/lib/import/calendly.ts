@@ -6,7 +6,7 @@ import {
 } from "../booking/event-type-input";
 
 /**
- * Pure mapping layer: Calendly API v2 shapes → the fields DayOtter stores. Kept
+ * Pure mapping layer: Calendly API v2 shapes → the fields SKALLARS Law stores. Kept
  * free of any network / DB access so it can be exhaustively unit-tested; the
  * client (`calendly-client.ts`) and the persistence layer (`run-import.ts`)
  * wrap it. Only the subset of Calendly's payload we actually use is typed.
@@ -74,7 +74,7 @@ export interface CalendlyAvailabilitySchedule {
 }
 
 // ---------------------------------------------------------------------------
-// Mapped (DayOtter-shaped) results
+// Mapped (SKALLARS Law-shaped) results
 // ---------------------------------------------------------------------------
 
 export interface MappedEventType {

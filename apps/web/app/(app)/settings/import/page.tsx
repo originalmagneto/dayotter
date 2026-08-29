@@ -16,7 +16,7 @@ export default async function ImportSettingsPage() {
         <p className="mt-1 text-sm text-[var(--color-muted)]">
           Switching over? Bring your event types across in one step. We read them straight from the
           source with a token/key you paste below - nothing is changed on the other side, and
-          existing DayOtter data is never overwritten.
+          existing SKALLARS Law data is never overwritten.
         </p>
       </div>
 

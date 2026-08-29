@@ -1,7 +1,7 @@
 import { definePlugin } from "@dayotter/plugin-sdk";
 
 /**
- * Notes - a reference DayOtter plugin. It shows the three things most plugins do:
+ * Notes - a reference SKALLARS Law plugin. It shows the three things most plugins do:
  *  1. add Otter tools (a confirm-first "save a note" action + a "list notes" read),
  *  2. react to a booking lifecycle event (create a note stub when a meeting is
  *     booked - the seed of a scribe/recap workflow), and

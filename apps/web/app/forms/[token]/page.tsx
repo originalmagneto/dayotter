@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ token: string }>;
 }): Promise<Metadata> {
   const form = await getFormByToken((await params).token);
-  return { title: form ? `${form.title} - DayOtter` : "DayOtter" };
+  return { title: form ? `${form.title} - SKALLARS Law` : "SKALLARS Law" };
 }
 
 export default async function PublicRoutingFormPage({
@@ -45,7 +45,7 @@ export default async function PublicRoutingFormPage({
       <p className="mt-6 text-center text-xs text-[var(--color-faint)]">
         Powered by{" "}
         <Link href="/" className="hover:text-[var(--color-text)]">
-          DayOtter
+          SKALLARS Law
         </Link>
       </p>
     </main>

@@ -44,7 +44,7 @@ async function rateLimited(userId: string): Promise<boolean> {
 
 /**
  * Inbound WhatsApp/SMS → Otter. Twilio POSTs form-encoded params here; we verify
- * the signature, map the sender's number to a DayOtter user, and let Otter
+ * the signature, map the sender's number to a SKALLARS Law user, and let Otter
  * interpret the message - confirm-first, via a "reply YES" step for any write.
  */
 export async function POST(request: Request): Promise<Response> {
@@ -69,13 +69,13 @@ export async function POST(request: Request): Promise<Response> {
   });
   if (!user || !user.phoneNumberVerified) {
     return twiml(
-      "I don't recognize this number. Add and verify it in DayOtter → Settings to chat with Otter.",
+      "I don't recognize this number. Add and verify it in SKALLARS Law → Settings to chat with Otter.",
     );
   }
 
   if (!aiEnabled || !(await userHasFeature(user.id, "ai"))) {
     return twiml(
-      "Otter isn't available on your plan. Upgrade in DayOtter to chat with your assistant.",
+      "Otter isn't available on your plan. Upgrade in SKALLARS Law to chat with your assistant.",
     );
   }
   if (await rateLimited(user.id)) {

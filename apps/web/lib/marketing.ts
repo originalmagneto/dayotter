@@ -1,19 +1,24 @@
 /** Brand + marketing constants. One place for links, contact, and footer nav. */
 
 export const BRAND = {
-  name: "DayOtter",
-  tagline: "The calm home for your time.",
+  name: "SKALLARS Law",
+  tagline: "Book time with the firm.",
   /** Canonical site origin - drives metadataBase, sitemap, canonical URLs, JSON-LD. */
-  url: process.env.NEXT_PUBLIC_APP_URL ?? "https://dayotter.com",
-  email: "hello@dayotter.com",
-  github: "https://github.com/Dayotter/dayotter",
-  githubLicense: "https://github.com/Dayotter/dayotter/blob/main/LICENSE",
-  githubContributing: "https://github.com/Dayotter/dayotter/blob/main/CONTRIBUTING.md",
-  /** GitHub Discussions - the durable, searchable community home. */
-  discussions: "https://github.com/Dayotter/dayotter/discussions",
-  /** Real-time community chat. Footer + README link to it. */
-  discord: "https://discord.gg/cxwETDsY85",
-  x: "https://x.com/dayotter",
+  url: process.env.NEXT_PUBLIC_APP_URL ?? "https://cal.humanintheloop.sk",
+  email: "info@skallars.com",
+  /**
+   * The fork this instance runs. Not vanity: SKALLARS Law is AGPLv3, and section 13
+   * requires that people who interact with a modified version over a network be
+   * offered its Corresponding Source. The booking footer links here.
+   */
+  github: "https://github.com/originalmagneto/dayotter",
+  githubLicense: "https://github.com/originalmagneto/dayotter/blob/main/LICENSE",
+  githubContributing: "https://github.com/originalmagneto/dayotter/blob/main/CONTRIBUTING.md",
+  discussions: "https://github.com/originalmagneto/dayotter/discussions",
+  /** Upstream project this is built on - credited, not hidden. */
+  upstream: "https://github.com/Dayotter/dayotter",
+  discord: "",
+  x: "",
   copyrightYear: 2026,
 };
 
