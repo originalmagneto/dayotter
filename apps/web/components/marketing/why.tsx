@@ -1,13 +1,15 @@
-const BADGES = [
-  { img: "/brand/illustrations/badge-scheduling.png", label: "One link, done" },
-  { img: "/brand/illustrations/badge-secure.png", label: "Yours to self-host" },
-  { img: "/brand/illustrations/badge-balance.png", label: "Focus, protected" },
-  { img: "/brand/illustrations/badge-timezone.png", label: "Every timezone" },
-  { img: "/brand/illustrations/badge-reminders.png", label: "Reminders that fire" },
-  { img: "/brand/illustrations/badge-track.png", label: "Never double-booked" },
-];
+import { BrandMark } from "@/components/brand-mark";
+import { BellRing, CalendarCheck, Globe2, Link2, ShieldCheck, Sparkles } from "lucide-react";
 
-/** A playful badge strip - the otter's take on "why SKALLARS Law". */
+const BADGES = [
+  { icon: Link2, label: "One link, done" },
+  { icon: ShieldCheck, label: "Yours to self-host" },
+  { icon: Sparkles, label: "Focus, protected" },
+  { icon: Globe2, label: "Every timezone" },
+  { icon: BellRing, label: "Reminders that fire" },
+  { icon: CalendarCheck, label: "Never double-booked" },
+];
+/** The reasons strip - drawn icons on the accent field, no mascot art. */
 export function WhyOtter() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
@@ -20,7 +22,12 @@ export function WhyOtter() {
       <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
         {BADGES.map((b) => (
           <div key={b.label} className="flex flex-col items-center text-center">
-            <img src={b.img} alt="" className="h-24 w-24 sm:h-28 sm:w-28" />
+            <span
+              aria-hidden
+              className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
+            >
+              <b.icon size={26} strokeWidth={1.5} />
+            </span>
             <span className="mt-3 text-sm font-medium">{b.label}</span>
           </div>
         ))}
@@ -29,12 +36,18 @@ export function WhyOtter() {
   );
 }
 
-/** Full-width otter banner - a warm closing note before the final CTA. */
+/**
+ * The closing band before the final CTA. Was a full-bleed mascot banner; it is
+ * now a quiet typographic rule carrying the mark, which is what a firm's page
+ * wants in that slot.
+ */
 export function OtterBand() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-6">
-      <div className="overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border)] shadow-[var(--shadow-card)]">
-        <img src="/brand/illustrations/otter-banner.png" alt="" className="block w-full" />
+      <div className="flex items-center justify-center gap-4 rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-10 shadow-[var(--shadow-card)]">
+        <span className="h-px flex-1 bg-[var(--color-border)]" />
+        <BrandMark size={26} className="text-[var(--color-brand)]" />
+        <span className="h-px flex-1 bg-[var(--color-border)]" />
       </div>
     </div>
   );

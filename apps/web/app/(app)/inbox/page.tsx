@@ -185,7 +185,6 @@ export default async function InboxPage() {
         <EmptyState
           title="You're all caught up"
           description="No sync problems or double-bookings right now. Pending invites and focus suggestions, when there are any, appear above."
-          illustration="/brand/illustrations/otter-relax.png"
         />
       ) : null}
     </>

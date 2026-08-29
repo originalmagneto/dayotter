@@ -1,4 +1,5 @@
 import { AppReveal } from "@/components/app-reveal";
+import { BrandMark } from "@/components/brand-mark";
 import { Eyebrow } from "@/components/section-heading";
 import type { ReactNode } from "react";
 
@@ -37,17 +38,16 @@ export function EmptyState({
   title,
   description,
   action,
-  illustration = "/brand/illustrations/otter-focus.png",
 }: {
   title: string;
   description?: string;
   action?: ReactNode;
-  /** Otter illustration shown above the title; pass another /brand/illustrations/* to vary it. */
-  illustration?: string;
 }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-[var(--radius-lg)] border border-dashed border-[var(--color-border-strong)] px-6 py-14 text-center">
-      <img src={illustration} alt="" className="mb-5 h-28 w-28 object-contain" />
+      {/* A quiet monogram, not a mascot: an empty state should read as
+          composed, not as a missing picture. */}
+      <BrandMark size={40} className="mb-5 text-[var(--color-border-strong)]" />
       <p className="font-display text-xl tracking-tight">{title}</p>
       {description ? (
         <p className="mt-1.5 max-w-sm text-sm text-[var(--color-muted)]">{description}</p>

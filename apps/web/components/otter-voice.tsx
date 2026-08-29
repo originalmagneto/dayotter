@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandMark } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
 import type { ChatAction, ChatToolAction, ChatTurn } from "@/lib/ai/chat";
 import {
@@ -470,11 +471,7 @@ export function OtterVoice({
               <span className="otter-orb-ring otter-orb-ring-1" />
               <span className="otter-orb-ring otter-orb-ring-2" />
               <span className="otter-orb-core">
-                <img
-                  src="/brand/illustrations/otter-focus.png"
-                  alt=""
-                  className="h-full w-full rounded-full object-cover"
-                />
+                <BrandMark size={22} className="text-[var(--color-accent)]" />
               </span>
             </button>
             <p className="text-sm font-medium text-[var(--color-muted)]">{statusLabel}</p>
