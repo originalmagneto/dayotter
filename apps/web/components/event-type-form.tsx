@@ -22,16 +22,10 @@ import {
   QUESTION_TYPE_LABELS,
 } from "@/lib/booking/event-type-input";
 import { CURRENCIES, CURRENCY_SYMBOL } from "@/lib/booking/money";
+import { slugify } from "@/lib/slug";
 import { ChevronDown, Plus, Trash2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-function slugify(v: string) {
-  return v
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 const DURATIONS = [15, 30, 45, 60];
 const NOTICE_OPTIONS = [
@@ -246,7 +240,7 @@ export function EventTypeForm({
     setLoading(true);
     const payload = {
       title,
-      slug: slug || slugify(title),
+      slug: slug || slugify(title, { fallback: "" }),
       durationMinutes: duration,
       description: description || undefined,
       location: primaryLocation.type,
@@ -344,7 +338,7 @@ export function EventTypeForm({
               value={title}
               onChange={(e) => {
                 setTitle(e.target.value);
-                if (!slugTouched) setSlug(slugify(e.target.value));
+                if (!slugTouched) setSlug(slugify(e.target.value, { fallback: "" }));
               }}
               placeholder="Intro call"
             />
@@ -358,7 +352,7 @@ export function EventTypeForm({
               value={slug}
               onChange={(e) => {
                 setSlugTouched(true);
-                setSlug(slugify(e.target.value));
+                setSlug(slugify(e.target.value, { fallback: "" }));
               }}
               placeholder="intro-call"
             />

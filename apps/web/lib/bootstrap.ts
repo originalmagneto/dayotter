@@ -1,23 +1,5 @@
+import { slugify, uniqueSlug } from "@/lib/slug";
 import { and, eq, getDb, schema } from "@dayotter/db";
-
-function slugify(input: string): string {
-  return (
-    input
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 32) || "user"
-  );
-}
-
-async function uniqueValue(base: string, exists: (v: string) => Promise<boolean>): Promise<string> {
-  if (!(await exists(base))) return base;
-  for (let i = 0; i < 20; i++) {
-    const candidate = `${base}-${Math.floor(1000 + Math.random() * 9000)}`;
-    if (!(await exists(candidate))) return candidate;
-  }
-  return `${base}-${Date.now()}`;
-}
 
 /**
  * Ensure a user has the minimum workspace to schedule: a personal organization
@@ -39,8 +21,11 @@ export async function ensureUserWorkspace(userId: string): Promise<{
     where: eq(schema.memberships.userId, userId),
   });
   if (!membership) {
-    const base = slugify(user.name ?? user.email.split("@")[0] ?? "team");
-    const slug = await uniqueValue(base, async (v) =>
+    const base = slugify(user.name ?? user.email.split("@")[0] ?? "", {
+      max: 32,
+      fallback: "team",
+    });
+    const slug = await uniqueSlug(base, async (v) =>
       Boolean(await db.query.organizations.findFirst({ where: eq(schema.organizations.slug, v) })),
     );
     const [org] = await db
@@ -56,8 +41,8 @@ export async function ensureUserWorkspace(userId: string): Promise<{
   // 2. Public handle.
   let handle = user.handle;
   if (!handle) {
-    const base = slugify(user.name ?? user.email.split("@")[0] ?? "me");
-    handle = await uniqueValue(base, async (v) =>
+    const base = slugify(user.name ?? user.email.split("@")[0] ?? "", { max: 32, fallback: "me" });
+    handle = await uniqueSlug(base, async (v) =>
       Boolean(await db.query.users.findFirst({ where: eq(schema.users.handle, v) })),
     );
     await db.update(schema.users).set({ handle }).where(eq(schema.users.id, userId));
