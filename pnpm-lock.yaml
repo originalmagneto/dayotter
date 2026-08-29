@@ -277,6 +277,9 @@ importers:
       '@better-auth/expo':
         specifier: 1.6.23
         version: 1.6.23(7cde6193dc339ba1529bb91e6f3c339d)
+      '@dayotter/core':
+        specifier: workspace:*
+        version: link:../core
       '@dayotter/db':
         specifier: workspace:*
         version: link:../db

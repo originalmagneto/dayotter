@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@better-auth/expo": "1.6.23",
+    "@dayotter/core": "workspace:*",
     "@dayotter/db": "workspace:*",
     "@dayotter/emails": "workspace:*",
     "@dayotter/notifications": "workspace:*",
