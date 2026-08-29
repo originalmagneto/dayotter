@@ -1,72 +1,87 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-29T01:30:00.000Z",
-  "title": "Design System: DayOtter",
+  "generatedAt": "2026-08-29T14:30:00.000Z",
+  "title": "Design System: SKALLARS Law",
   "extensions": {
     "colorMeta": {
-      "otter-violet": {
+      "brand-violet": {
         "role": "primary",
-        "displayName": "Otter Violet",
-        "canonical": "oklch(52.6% 0.231 285.5)",
+        "displayName": "Brand Violet",
+        "canonical": "oklch(49.6% 0.295 282.5)",
         "tonalRamp": [
-          "oklch(15% 0.183 285.5)",
-          "oklch(26% 0.197 285.5)",
-          "oklch(37% 0.211 285.5)",
-          "oklch(48% 0.225 285.5)",
-          "oklch(60% 0.221 285.5)",
-          "oklch(71% 0.207 285.5)",
-          "oklch(83% 0.192 285.5)",
-          "oklch(95% 0.177 285.5)"
+          "oklch(15% 0.239 282.5)",
+          "oklch(26% 0.256 282.5)",
+          "oklch(37% 0.274 282.5)",
+          "oklch(48% 0.292 282.5)",
+          "oklch(60% 0.278 282.5)",
+          "oklch(71% 0.260 282.5)",
+          "oklch(83% 0.241 282.5)",
+          "oklch(95% 0.221 282.5)"
         ]
       },
-      "otter-violet-deep": {
+      "accent": {
         "role": "primary",
-        "displayName": "Otter Violet Deep",
-        "canonical": "oklch(47.9% 0.229 283.5)",
+        "displayName": "Accent",
+        "canonical": "oklch(46.4% 0.244 282.8)",
         "tonalRamp": [
-          "oklch(15% 0.188 283.5)",
-          "oklch(26% 0.201 283.5)",
-          "oklch(37% 0.215 283.5)",
-          "oklch(48% 0.229 283.5)",
-          "oklch(60% 0.214 283.5)",
-          "oklch(71% 0.200 283.5)",
-          "oklch(83% 0.185 283.5)",
-          "oklch(95% 0.170 283.5)"
+          "oklch(15% 0.202 282.8)",
+          "oklch(26% 0.217 282.8)",
+          "oklch(37% 0.232 282.8)",
+          "oklch(48% 0.242 282.8)",
+          "oklch(60% 0.226 282.8)",
+          "oklch(71% 0.211 282.8)",
+          "oklch(83% 0.195 282.8)",
+          "oklch(95% 0.179 282.8)"
+        ]
+      },
+      "accent-deep": {
+        "role": "primary",
+        "displayName": "Accent Deep",
+        "canonical": "oklch(40.9% 0.216 282.8)",
+        "tonalRamp": [
+          "oklch(15% 0.185 282.8)",
+          "oklch(26% 0.198 282.8)",
+          "oklch(37% 0.212 282.8)",
+          "oklch(48% 0.208 282.8)",
+          "oklch(60% 0.194 282.8)",
+          "oklch(71% 0.181 282.8)",
+          "oklch(83% 0.166 282.8)",
+          "oklch(95% 0.152 282.8)"
         ]
       },
       "violet-mist": {
         "role": "primary",
         "displayName": "Violet Mist",
-        "canonical": "oklch(94.7% 0.026 297.9)",
+        "canonical": "oklch(93.9% 0.031 295.8)",
         "tonalRamp": [
-          "oklch(15% 0.015 297.9)",
-          "oklch(26% 0.016 297.9)",
-          "oklch(37% 0.018 297.9)",
-          "oklch(48% 0.019 297.9)",
-          "oklch(60% 0.021 297.9)",
-          "oklch(71% 0.023 297.9)",
-          "oklch(83% 0.024 297.9)",
-          "oklch(95% 0.026 297.9)"
+          "oklch(15% 0.018 295.8)",
+          "oklch(26% 0.020 295.8)",
+          "oklch(37% 0.021 295.8)",
+          "oklch(48% 0.023 295.8)",
+          "oklch(60% 0.025 295.8)",
+          "oklch(71% 0.027 295.8)",
+          "oklch(83% 0.029 295.8)",
+          "oklch(95% 0.031 295.8)"
         ]
       },
-      "warm-ivory": {
+      "paper": {
         "role": "neutral",
-        "displayName": "Warm Ivory",
-        "canonical": "oklch(98.2% 0.004 91.4)",
+        "displayName": "Paper",
+        "canonical": "oklch(97.6% 0.008 293.9)",
         "tonalRamp": [
-          "oklch(15% 0.002 91.4)",
-          "oklch(26% 0.002 91.4)",
-          "oklch(37% 0.003 91.4)",
-          "oklch(48% 0.003 91.4)",
-          "oklch(60% 0.003 91.4)",
-          "oklch(71% 0.003 91.4)",
-          "oklch(83% 0.004 91.4)",
-          "oklch(95% 0.004 91.4)"
+          "oklch(15% 0.004 293.9)",
+          "oklch(26% 0.005 293.9)",
+          "oklch(37% 0.005 293.9)",
+          "oklch(48% 0.006 293.9)",
+          "oklch(60% 0.006 293.9)",
+          "oklch(71% 0.007 293.9)",
+          "oklch(83% 0.007 293.9)",
+          "oklch(95% 0.008 293.9)"
         ]
       },
-      "paper-white": {
+      "surface": {
         "role": "neutral",
-        "displayName": "Paper White",
+        "displayName": "Surface",
         "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
           "oklch(15% 0.000 89.9)",
@@ -79,191 +94,191 @@
           "oklch(95% 0.000 89.9)"
         ]
       },
-      "cool-recess": {
+      "recess": {
         "role": "neutral",
-        "displayName": "Cool Recess",
-        "canonical": "oklch(96.4% 0.008 293.9)",
+        "displayName": "Recess",
+        "canonical": "oklch(94.8% 0.016 293.7)",
         "tonalRamp": [
-          "oklch(15% 0.004 293.9)",
-          "oklch(26% 0.005 293.9)",
-          "oklch(37% 0.005 293.9)",
-          "oklch(48% 0.006 293.9)",
-          "oklch(60% 0.006 293.9)",
-          "oklch(71% 0.007 293.9)",
-          "oklch(83% 0.007 293.9)",
-          "oklch(95% 0.008 293.9)"
+          "oklch(15% 0.009 293.7)",
+          "oklch(26% 0.010 293.7)",
+          "oklch(37% 0.011 293.7)",
+          "oklch(48% 0.012 293.7)",
+          "oklch(60% 0.013 293.7)",
+          "oklch(71% 0.014 293.7)",
+          "oklch(83% 0.015 293.7)",
+          "oklch(95% 0.016 293.7)"
         ]
       },
-      "rich-ink": {
+      "aubergine-ink": {
         "role": "neutral",
-        "displayName": "Rich Ink",
-        "canonical": "oklch(21.1% 0.018 295.0)",
+        "displayName": "Aubergine Ink",
+        "canonical": "oklch(18.5% 0.066 300.3)",
         "tonalRamp": [
-          "oklch(15% 0.017 295.0)",
-          "oklch(26% 0.017 295.0)",
-          "oklch(37% 0.016 295.0)",
-          "oklch(48% 0.015 295.0)",
-          "oklch(60% 0.014 295.0)",
-          "oklch(71% 0.013 295.0)",
-          "oklch(83% 0.012 295.0)",
-          "oklch(95% 0.011 295.0)"
+          "oklch(15% 0.065 300.3)",
+          "oklch(26% 0.063 300.3)",
+          "oklch(37% 0.059 300.3)",
+          "oklch(48% 0.055 300.3)",
+          "oklch(60% 0.051 300.3)",
+          "oklch(71% 0.047 300.3)",
+          "oklch(83% 0.043 300.3)",
+          "oklch(95% 0.038 300.3)"
         ]
       },
       "ink-muted": {
         "role": "neutral",
         "displayName": "Ink Muted",
-        "canonical": "oklch(43.4% 0.012 72.5)",
+        "canonical": "oklch(39.5% 0.054 298.2)",
         "tonalRamp": [
-          "oklch(15% 0.010 72.5)",
-          "oklch(26% 0.011 72.5)",
-          "oklch(37% 0.011 72.5)",
-          "oklch(48% 0.011 72.5)",
-          "oklch(60% 0.011 72.5)",
-          "oklch(71% 0.010 72.5)",
-          "oklch(83% 0.009 72.5)",
-          "oklch(95% 0.008 72.5)"
+          "oklch(15% 0.047 298.2)",
+          "oklch(26% 0.050 298.2)",
+          "oklch(37% 0.054 298.2)",
+          "oklch(48% 0.052 298.2)",
+          "oklch(60% 0.048 298.2)",
+          "oklch(71% 0.045 298.2)",
+          "oklch(83% 0.041 298.2)",
+          "oklch(95% 0.038 298.2)"
         ]
       },
       "ink-faint": {
         "role": "neutral",
         "displayName": "Ink Faint",
-        "canonical": "oklch(59.2% 0.018 82.8)",
+        "canonical": "oklch(55.1% 0.050 297.6)",
         "tonalRamp": [
-          "oklch(15% 0.014 82.8)",
-          "oklch(26% 0.015 82.8)",
-          "oklch(37% 0.016 82.8)",
-          "oklch(48% 0.017 82.8)",
-          "oklch(60% 0.018 82.8)",
-          "oklch(71% 0.017 82.8)",
-          "oklch(83% 0.016 82.8)",
-          "oklch(95% 0.014 82.8)"
+          "oklch(15% 0.039 297.6)",
+          "oklch(26% 0.042 297.6)",
+          "oklch(37% 0.045 297.6)",
+          "oklch(48% 0.048 297.6)",
+          "oklch(60% 0.049 297.6)",
+          "oklch(71% 0.046 297.6)",
+          "oklch(83% 0.042 297.6)",
+          "oklch(95% 0.039 297.6)"
         ]
       },
       "hairline": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "oklch(92.8% 0.012 291.3)",
+        "canonical": "oklch(91.4% 0.024 293.6)",
         "tonalRamp": [
-          "oklch(15% 0.007 291.3)",
-          "oklch(26% 0.008 291.3)",
-          "oklch(37% 0.008 291.3)",
-          "oklch(48% 0.009 291.3)",
-          "oklch(60% 0.010 291.3)",
-          "oklch(71% 0.011 291.3)",
-          "oklch(83% 0.011 291.3)",
-          "oklch(95% 0.012 291.3)"
+          "oklch(15% 0.014 293.6)",
+          "oklch(26% 0.016 293.6)",
+          "oklch(37% 0.017 293.6)",
+          "oklch(48% 0.019 293.6)",
+          "oklch(60% 0.020 293.6)",
+          "oklch(71% 0.022 293.6)",
+          "oklch(83% 0.023 293.6)",
+          "oklch(95% 0.024 293.6)"
         ]
       },
       "hairline-strong": {
         "role": "neutral",
         "displayName": "Hairline Strong",
-        "canonical": "oklch(87.8% 0.016 293.7)",
+        "canonical": "oklch(84.4% 0.043 294.3)",
         "tonalRamp": [
-          "oklch(15% 0.010 293.7)",
-          "oklch(26% 0.011 293.7)",
-          "oklch(37% 0.012 293.7)",
-          "oklch(48% 0.013 293.7)",
-          "oklch(60% 0.014 293.7)",
-          "oklch(71% 0.015 293.7)",
-          "oklch(83% 0.016 293.7)",
-          "oklch(95% 0.016 293.7)"
+          "oklch(15% 0.027 294.3)",
+          "oklch(26% 0.029 294.3)",
+          "oklch(37% 0.032 294.3)",
+          "oklch(48% 0.035 294.3)",
+          "oklch(60% 0.037 294.3)",
+          "oklch(71% 0.040 294.3)",
+          "oklch(83% 0.043 294.3)",
+          "oklch(95% 0.041 294.3)"
         ]
       },
       "mint": {
         "role": "tertiary",
         "displayName": "Mint",
-        "canonical": "oklch(63.2% 0.116 174.5)",
+        "canonical": "oklch(48.0% 0.092 170.4)",
         "tonalRamp": [
-          "oklch(15% 0.085 174.5)",
-          "oklch(26% 0.092 174.5)",
-          "oklch(37% 0.099 174.5)",
-          "oklch(48% 0.106 174.5)",
-          "oklch(60% 0.114 174.5)",
-          "oklch(71% 0.111 174.5)",
-          "oklch(83% 0.103 174.5)",
-          "oklch(95% 0.095 174.5)"
+          "oklch(15% 0.075 170.4)",
+          "oklch(26% 0.081 170.4)",
+          "oklch(37% 0.086 170.4)",
+          "oklch(48% 0.092 170.4)",
+          "oklch(60% 0.086 170.4)",
+          "oklch(71% 0.080 170.4)",
+          "oklch(83% 0.074 170.4)",
+          "oklch(95% 0.068 170.4)"
         ]
       },
       "amber": {
         "role": "tertiary",
         "displayName": "Amber",
-        "canonical": "oklch(69.6% 0.142 64.7)",
+        "canonical": "oklch(51.4% 0.113 62.5)",
         "tonalRamp": [
-          "oklch(15% 0.100 64.7)",
-          "oklch(26% 0.108 64.7)",
-          "oklch(37% 0.117 64.7)",
-          "oklch(48% 0.125 64.7)",
-          "oklch(60% 0.135 64.7)",
-          "oklch(71% 0.141 64.7)",
-          "oklch(83% 0.132 64.7)",
-          "oklch(95% 0.123 64.7)"
+          "oklch(15% 0.091 62.5)",
+          "oklch(26% 0.097 62.5)",
+          "oklch(37% 0.104 62.5)",
+          "oklch(48% 0.111 62.5)",
+          "oklch(60% 0.108 62.5)",
+          "oklch(71% 0.101 62.5)",
+          "oklch(83% 0.094 62.5)",
+          "oklch(95% 0.086 62.5)"
         ]
       },
       "coral": {
         "role": "tertiary",
         "displayName": "Coral",
-        "canonical": "oklch(68.3% 0.169 32.1)",
+        "canonical": "oklch(52.2% 0.153 32.9)",
         "tonalRamp": [
-          "oklch(15% 0.120 32.1)",
-          "oklch(26% 0.130 32.1)",
-          "oklch(37% 0.140 32.1)",
-          "oklch(48% 0.150 32.1)",
-          "oklch(60% 0.162 32.1)",
-          "oklch(71% 0.167 32.1)",
-          "oklch(83% 0.156 32.1)",
-          "oklch(95% 0.144 32.1)"
+          "oklch(15% 0.122 32.9)",
+          "oklch(26% 0.131 32.9)",
+          "oklch(37% 0.140 32.9)",
+          "oklch(48% 0.150 32.9)",
+          "oklch(60% 0.146 32.9)",
+          "oklch(71% 0.137 32.9)",
+          "oklch(83% 0.127 32.9)",
+          "oklch(95% 0.117 32.9)"
         ]
       },
       "sky": {
         "role": "tertiary",
         "displayName": "Sky",
-        "canonical": "oklch(62.3% 0.188 259.8)",
+        "canonical": "oklch(48.8% 0.217 264.4)",
         "tonalRamp": [
-          "oklch(15% 0.139 259.8)",
-          "oklch(26% 0.150 259.8)",
-          "oklch(37% 0.162 259.8)",
-          "oklch(48% 0.173 259.8)",
-          "oklch(60% 0.186 259.8)",
-          "oklch(71% 0.179 259.8)",
-          "oklch(83% 0.167 259.8)",
-          "oklch(95% 0.154 259.8)"
+          "oklch(15% 0.177 264.4)",
+          "oklch(26% 0.190 264.4)",
+          "oklch(37% 0.203 264.4)",
+          "oklch(48% 0.216 264.4)",
+          "oklch(60% 0.204 264.4)",
+          "oklch(71% 0.191 264.4)",
+          "oklch(83% 0.176 264.4)",
+          "oklch(95% 0.162 264.4)"
         ]
       },
       "rose-danger": {
         "role": "tertiary",
         "displayName": "Rose Danger",
-        "canonical": "oklch(58.6% 0.222 17.6)",
+        "canonical": "oklch(50.2% 0.185 15.9)",
         "tonalRamp": [
-          "oklch(15% 0.169 17.6)",
-          "oklch(26% 0.182 17.6)",
-          "oklch(37% 0.196 17.6)",
-          "oklch(48% 0.209 17.6)",
-          "oklch(60% 0.220 17.6)",
-          "oklch(71% 0.207 17.6)",
-          "oklch(83% 0.192 17.6)",
-          "oklch(95% 0.178 17.6)"
+          "oklch(15% 0.150 15.9)",
+          "oklch(26% 0.161 15.9)",
+          "oklch(37% 0.172 15.9)",
+          "oklch(48% 0.183 15.9)",
+          "oklch(60% 0.175 15.9)",
+          "oklch(71% 0.164 15.9)",
+          "oklch(83% 0.152 15.9)",
+          "oklch(95% 0.140 15.9)"
         ]
       }
     },
     "darkPalette": {
-      "note": "Class-based dark theme (.dark on <html>), a genuine second palette rather than an inversion. Keys match the frontmatter colour tokens.",
-      "otter-violet": "#9079f8",
-      "otter-violet-deep": "#a390fa",
-      "violet-mist": "rgba(144, 121, 248, 0.16)",
-      "warm-ivory": "#0b0a10",
-      "paper-white": "#141219",
-      "cool-recess": "#1c1a23",
-      "rich-ink": "#edeae3",
-      "ink-muted": "#9d988f",
-      "ink-faint": "#6b6678",
-      "hairline": "#262330",
-      "hairline-strong": "#332f3e",
-      "mint": "#2dd4a7",
+      "note": "Class-based dark theme (.dark on <html>), a second palette rather than an inversion.",
+      "brand-violet": "#9a66ff",
+      "accent": "#a98bff",
+      "accent-deep": "#bda3ff",
+      "accent-fg": "#18092b",
+      "paper": "#110c19",
+      "surface": "#18092b",
+      "recess": "#1c0f31",
+      "aubergine-ink": "#f7f6fc",
+      "ink-muted": "#b3a8cc",
+      "ink-faint": "#8478a0",
+      "hairline": "#2b1c47",
+      "hairline-strong": "#3d2a5e",
+      "mint": "#38f8b8",
       "amber": "#f0ad4e",
       "coral": "#ff8266",
       "sky": "#60a5fa",
-      "rose-danger": "#fb7185",
-      "rose-danger-soft": "rgba(251, 113, 133, 0.12)"
+      "rose-danger": "#fb7185"
     },
     "typographyMeta": {
       "display": {
@@ -310,22 +325,22 @@
     "shadows": [
       {
         "name": "card",
-        "value": "0 1px 2px rgba(40, 33, 20, 0.04), 0 2px 6px rgba(40, 33, 20, 0.05)",
+        "value": "0 1px 2px rgba(24, 9, 43, 0.04), 0 2px 6px rgba(24, 9, 43, 0.05)",
         "purpose": "Resting state of a card or primary button. Barely there by design."
       },
       {
         "name": "raise",
-        "value": "0 8px 24px rgba(40, 33, 20, 0.08)",
+        "value": "0 8px 24px rgba(24, 9, 43, 0.08)",
         "purpose": "Hover on an interactive card."
       },
       {
         "name": "pop",
-        "value": "0 24px 60px -12px rgba(40, 33, 20, 0.18)",
+        "value": "0 24px 60px -12px rgba(24, 9, 43, 0.18)",
         "purpose": "Popovers, menus, dropdowns."
       },
       {
         "name": "float",
-        "value": "0 40px 80px -24px rgba(30, 24, 60, 0.28)",
+        "value": "0 40px 80px -24px rgba(33, 0, 89, 0.28)",
         "purpose": "Modals and the largest floating layers; note the violet drift in the tint."
       },
       {
@@ -502,12 +517,12 @@
     }
   ],
   "narrative": {
-    "northStar": "The Living Calendar",
+    "northStar": "The Firm’s Calm, On a Calendar",
     "overview": "DayOtter is a scheduling product that refuses to look like scheduling software. The ground is warm ivory rather than the cold grey-white of enterprise SaaS, the text is a near-black that leans warm rather than a flat neutral, and exactly one chromatic voice - otter violet - carries every action worth taking. The result reads closer to a well-set printed agenda than to a database with a calendar view bolted on.\n\nThe \"living\" half is the counterweight. A calendar is not a static document: times arrive, days fill, slots disappear while you look at them. So the system stays quiet at rest and reserves its energy for state. Surfaces sit flat until you touch them, motion exists only where something genuinely changed, and the accent appears sparingly enough that when it does appear you know it means this one.\n\nDensity is generous rather than compressed. This is a product people open to make a decision - pick a time, approve a booking, protect an afternoon - not a console they stare at all day. Whitespace is the default and information is grouped tightly inside it, so a screen reads as a small number of decisions rather than a wall of rows.",
     "keyCharacteristics": [
-      "Warm ivory ground (#faf9f6), never a cold or pure-white page",
-      "One accent voice - otter violet - for actions, selection, and focus; nothing else",
-      "One grotesque (Geist) doing both display and body; Geist Mono only for labels",
+      "Cool violet-tinted ground (#f7f6fc), never a warm or pure-white page",
+      "Two violets: #5d00ff for the mark, a held-back tone for the interface",
+      "One grotesque - General Sans - doing display and body; Geist Mono only for labels",
       "Flat at rest, lifted on state",
       "Tabular figures wherever a time, date, duration, or count appears",
       "A class-based dark theme that is a genuine second palette, not an inversion"
@@ -520,7 +535,7 @@
       },
       {
         "name": "The Never-White-Ground Rule",
-        "body": "The page is #faf9f6 and raised surfaces are #ffffff. Inverting that - a white page with grey cards - collapses the elevation model and erases the system's warmth in one edit.",
+        "body": "The page is #f7f6fc and raised surfaces are #ffffff. Inverting that - a white page with grey cards - collapses the elevation model and erases the system's warmth in one edit.",
         "section": "colors"
       },
       {
@@ -530,7 +545,7 @@
       },
       {
         "name": "The One Family Rule",
-        "body": "Geist Sans does display and body. A serif display face was deliberately removed from this system once already; reintroducing one is a regression, not a refresh.",
+        "body": "General Sans does display and body - the same face the firm’s site and its document templates use. One voice across a letter, a contract and a booking link.",
         "section": "typography"
       },
       {
