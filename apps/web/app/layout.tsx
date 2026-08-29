@@ -1,5 +1,6 @@
 import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { TENANT } from "@/lib/brand/tenants";
 import { BRAND } from "@/lib/marketing";
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
@@ -65,6 +66,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="en"
       className={`${generalSans.variable} ${GeistMono.variable}`}
+      // Tenant palette overrides ride on <html> as inline custom properties, so
+      // every var(--color-*) below inherits them and globals.css stays the
+      // default rather than being forked per firm.
+      style={TENANT.tokens as React.CSSProperties}
       suppressHydrationWarning
     >
       <head>
