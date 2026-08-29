@@ -1,9 +1,10 @@
 import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
-import { TENANT } from "@/lib/brand/tenants";
+import { TENANT, TENANT_ID } from "@/lib/brand/tenants";
 import { BRAND } from "@/lib/marketing";
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -13,6 +14,11 @@ import "./globals.css";
 // a continuation of the brand rather than a different product. One variable file
 // carries every weight; Geist Mono still handles the small uppercase eyebrow
 // labels. Both self-hosted - no runtime network request.
+// Inter is Human in the Loop's face; General Sans is SKALLARS'. Both ship, and
+// the tenant's CSS block points --font-sans at the right one - a few unused KB
+// against a second build pipeline per firm.
+const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
+
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Variable.woff2",
   variable: "--font-general-sans",
@@ -65,11 +71,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${generalSans.variable} ${GeistMono.variable}`}
-      // Tenant palette overrides ride on <html> as inline custom properties, so
-      // every var(--color-*) below inherits them and globals.css stays the
-      // default rather than being forked per firm.
-      style={TENANT.tokens as React.CSSProperties}
+      className={`${generalSans.variable} ${inter.variable} ${GeistMono.variable}`}
+      // Selects the tenant's palette block in globals.css. An attribute rather
+      // than an inline style because inline styles cannot carry a light and a
+      // dark palette at the same time.
+      data-tenant={TENANT_ID}
       suppressHydrationWarning
     >
       <head>
