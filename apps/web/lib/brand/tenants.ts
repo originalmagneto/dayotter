@@ -19,6 +19,12 @@ export interface Tenant {
   /** Which lockup `<BrandLockup>` draws. */
   mark: "skallars" | "wordmark";
   /**
+   * Favicon and the small square used in booking footers and JSON-LD.
+   * A letter tile for firms without a vector mark - it is a placeholder a
+   * firm replaces by uploading its logo, never a stand-in for its identity.
+   */
+  icon: string;
+  /**
    * Languages this firm offers its clients, in picker order.
    *
    * Deliberately narrower than SUPPORTED_LOCALES: offering a language on a
@@ -39,12 +45,14 @@ export const TENANTS: Record<string, Tenant> = {
     tagline: "Book time with the firm.",
     email: "info@skallars.com",
     mark: "skallars",
+    icon: "/brand/skallars-icon.svg",
     locales: ["sk", "en", "de", "zh"],
     locale: "sk",
     defaultTheme: "light",
   },
   hitl: {
     name: "Human in the Loop",
+    icon: "/brand/hitl-icon.svg",
     tagline: "Book a slot.",
     email: "marian.cuprik@icloud.com",
     mark: "wordmark",
@@ -57,6 +65,7 @@ export const TENANTS: Record<string, Tenant> = {
     tagline: "Book a slot.",
     email: "majo@lawoss.app",
     mark: "wordmark",
+    icon: "/brand/lawoss-icon.svg",
     locales: ["en", "sk"],
     locale: "en",
     defaultTheme: "dark",

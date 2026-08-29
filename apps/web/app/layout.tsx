@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   creator: BRAND.name,
   publisher: BRAND.name,
   alternates: { canonical: "/" },
-  icons: { icon: "/brand/skallars-icon.svg", apple: "/brand/skallars-icon.svg" },
+  icons: { icon: "${TENANT.icon}", apple: "${TENANT.icon}" },
   openGraph: {
     type: "website",
     siteName: BRAND.name,

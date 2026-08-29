@@ -48,10 +48,29 @@ function SkallarsLockup({ height = 26, className }: { height?: number; className
 }
 
 /**
- * Just the mark, square - for the favicon-sized slots where the full lockup
- * would be illegible: the mobile nav at rest, avatars, notification chrome.
+ * Just the mark, square - for the slots where the full lockup would be
+ * illegible: empty states, small chrome, the booking footer.
+ *
+ * Returns null for a tenant that has no vector mark. That is deliberate: the
+ * alternative is drawing one firm's symbol on another firm's page, which is
+ * exactly the bug this replaced.
  */
-export function BrandMark({ size = 28, className }: { size?: number; className?: string }) {
+export function BrandMark({
+  size = 28,
+  className,
+  logo,
+}: { size?: number; className?: string; logo?: string | null }) {
+  if (logo) {
+    return (
+      <img
+        src={logo}
+        alt={TENANT.name}
+        style={{ height: size, width: size }}
+        className={cn("shrink-0 rounded-sm object-contain", className)}
+      />
+    );
+  }
+  if (TENANT.mark !== "skallars") return null;
   return (
     <svg
       viewBox="0 -6.5 61 61"

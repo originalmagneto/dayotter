@@ -2,6 +2,7 @@ import { HostAvatar } from "@/components/host-avatar";
 import { Card } from "@/components/ui/card";
 import { brandStyle, getHostBranding } from "@/lib/booking/branding";
 import { LOCATION_LABELS } from "@/lib/booking/event-type-input";
+import { TENANT } from "@/lib/brand/tenants";
 import { BRAND } from "@/lib/marketing";
 import { and, asc, eq, getDb, schema } from "@dayotter/db";
 import { ArrowRight, Clock } from "lucide-react";
@@ -85,7 +86,7 @@ export default async function PublicProfilePage({
       <p className="mt-10 flex items-center justify-center gap-1.5 text-xs text-[var(--color-faint)]">
         <span className="relative inline-block h-3.5 w-3.5 shrink-0 overflow-hidden rounded-[3px]">
           <img
-            src="/brand/skallars-icon.svg"
+            src="${TENANT.icon}"
             alt=""
             width={21}
             height={21}
