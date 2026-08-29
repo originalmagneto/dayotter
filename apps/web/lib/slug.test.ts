@@ -33,3 +33,27 @@ describe("uniqueSlug", () => {
     expect(result.startsWith("intro-")).toBe(true);
   });
 });
+
+describe("slugify - diacritics", () => {
+  it("keeps accented letters instead of dropping them", () => {
+    // These used to lose the accented letter entirely, so a host called
+    // Marián Čuprík got the public booking link /mari-n-upr-k.
+    expect(slugify("Marián Čuprík")).toBe("marian-cuprik");
+    expect(slugify("Žofia Ľuptáková")).toBe("zofia-luptakova");
+    expect(slugify("Ondřej Dvořák")).toBe("ondrej-dvorak");
+    expect(slugify("Jürgen Müller")).toBe("jurgen-muller");
+    expect(slugify("Zoë Adams")).toBe("zoe-adams");
+  });
+
+  it("maps the letters NFD leaves whole", () => {
+    expect(slugify("Straße")).toBe("strasse");
+    expect(slugify("Łukasz")).toBe("lukasz");
+    expect(slugify("Søren Ægir")).toBe("soren-aegir");
+  });
+
+  it("honours an explicit max and fallback", () => {
+    expect(slugify("abcdefgh ijklmnop", { max: 9 })).toBe("abcdefgh");
+    expect(slugify("", { fallback: "user" })).toBe("user");
+    expect(slugify("日本語", { fallback: "" })).toBe("");
+  });
+});
