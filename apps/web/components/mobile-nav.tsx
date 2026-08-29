@@ -33,7 +33,7 @@ export function MobileNav() {
       <header className="fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b border-[var(--color-border)] bg-[var(--color-surface)]/85 px-4 backdrop-blur lg:hidden">
         <Link href="/dashboard" className="flex items-center gap-2">
           <BrandMark size={34} />
-          <span className="font-display text-[17px] tracking-[-0.01em]">DayOtter</span>
+          <span className="font-display text-wordmark tracking-[-0.01em]">DayOtter</span>
         </Link>
         <div className="flex items-center gap-2">
           <ThemeToggle />
@@ -71,7 +71,7 @@ export function MobileNav() {
                   href={href}
                   onClick={() => setMoreOpen(false)}
                   className={cn(
-                    "flex flex-col items-center gap-1.5 rounded-md py-3 text-[11px] font-medium transition-colors",
+                    "flex flex-col items-center gap-1.5 rounded-md py-3 text-meta font-medium transition-colors",
                     isActive(href)
                       ? "bg-[var(--color-accent-soft)] text-[var(--color-accent)]"
                       : "text-[var(--color-muted)] hover:bg-[var(--color-surface-2)]",
@@ -96,7 +96,7 @@ export function MobileNav() {
               href={href}
               onClick={() => setMoreOpen(false)}
               className={cn(
-                "flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors",
+                "flex flex-1 flex-col items-center justify-center gap-1 text-meta font-medium transition-colors",
                 active ? "text-[var(--color-accent)]" : "text-[var(--color-faint)]",
               )}
             >
@@ -111,7 +111,7 @@ export function MobileNav() {
           aria-label="More"
           aria-expanded={moreOpen}
           className={cn(
-            "flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors",
+            "flex flex-1 flex-col items-center justify-center gap-1 text-meta font-medium transition-colors",
             moreActive || moreOpen ? "text-[var(--color-accent)]" : "text-[var(--color-faint)]",
           )}
         >

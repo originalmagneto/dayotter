@@ -180,8 +180,8 @@ export function DateTimeField({
             classNames={{
               month_caption: "flex items-center justify-center h-8 mb-1",
               caption_label: "text-sm font-semibold text-[var(--color-text)]",
-              weekday: "text-[11px] font-medium text-[var(--color-faint)]",
-              day: cn(rdp.day, "text-[13px]"),
+              weekday: "text-meta font-medium text-[var(--color-faint)]",
+              day: cn(rdp.day, "text-caption"),
               // Solid accent circle for the chosen day (v10's default is a border).
               selected:
                 "[&>button]:!bg-[var(--color-accent)] [&>button]:!text-white [&>button]:!font-semibold [&>button]:!border-0",

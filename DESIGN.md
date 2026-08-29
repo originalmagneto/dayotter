@@ -38,11 +38,35 @@ typography:
     fontWeight: 600
     lineHeight: 1.3
     letterSpacing: "-0.01em"
+  subhead:
+    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: "normal"
   body:
     fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
     lineHeight: 1.6
+    letterSpacing: "normal"
+  caption:
+    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
+  meta:
+    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "normal"
+  micro:
+    fontFamily: "Geist Sans, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "0.625rem"
+    fontWeight: 500
+    lineHeight: 1.3
     letterSpacing: "normal"
   label:
     fontFamily: "Geist Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
@@ -223,17 +247,36 @@ metadata", never as a costume for technical-ness.
   app page titles. The `PageHeader` component owns this.
 - **Title** (600, `1.25rem`, tracking tight): section and card headings. Card headers run
   smaller at `15px`/600 because they sit inside an already-bounded surface.
-- **Body** (400, `0.875rem`, line-height 1.6): the app's default size. Marketing lead
-  paragraphs step up to `1.125rem`–`1.25rem` with relaxed leading. Prose measure stays
-  in the 65–75ch band.
+- **Subhead** (600, `0.9375rem` / `text-subhead`): card titles, lead paragraphs under a
+  page header, and the large button. The one step above body.
+- **Body** (400, `0.875rem` / `text-sm`, line-height 1.6): the app's default size.
+  Marketing lead paragraphs step up to `1.125rem`–`1.25rem` with relaxed leading. Prose
+  measure stays in the 65–75ch band.
+- **Caption** (400, `0.8125rem` / `text-caption`): compact list copy and captions — one
+  rung below body, where `text-xs` would be too small.
+- **Meta** (400, `0.6875rem` / `text-meta`): timestamps, per-item counts, dense secondary
+  rows. The most-used step below body.
+- **Micro** (500, `0.625rem` / `text-micro`): the smallest legible label — badge counts
+  and mock chrome. Below this, use an icon.
 - **Label** (Geist Mono, `0.72rem`, tracking `0.14em`, uppercase, `ink-muted`): the
   `.eyebrow` class. Section kickers and small caps-style labels.
+
+Tailwind's own steps (`text-xs` 12, `text-sm` 14, `text-base` 16, `text-lg` 18) stay as
+they are and remain in wide use; the named roles above are the rungs *between* them that
+the product needs. One size sits outside the ladder on purpose: `text-wordmark` (17px) is
+the app-nav lockup, named rather than left arbitrary so nobody reaches for 17px as a body
+size.
 
 ### Named Rules
 
 **The One Family Rule.** Geist Sans does display and body. A serif display face was
 deliberately removed from this system once already; reintroducing one is a regression,
 not a refresh.
+
+**The Named Step Rule.** Type sizes come from the scale — Tailwind's steps or the named
+roles between them. `text-[13px]` is how a scale quietly stops being one; the fifty
+occurrences that existed were replaced with `text-caption` and its siblings at identical
+pixel values.
 
 **The Tabular Figures Rule.** Every time, date, duration, count, and price renders with
 `tabular-nums`. The app shell sets it once at the root rather than leaving each component

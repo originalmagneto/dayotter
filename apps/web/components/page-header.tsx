@@ -23,7 +23,7 @@ export function PageHeader({
         </h1>
         <div className="mt-3 h-px w-16 bg-gradient-to-r from-[var(--color-accent)] to-transparent" />
         {description ? (
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[var(--color-muted)]">
+          <p className="mt-3 max-w-xl text-subhead leading-relaxed text-[var(--color-muted)]">
             {description}
           </p>
         ) : null}

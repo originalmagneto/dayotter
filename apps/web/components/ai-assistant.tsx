@@ -419,7 +419,7 @@ export function AiAssistant({
               <div className="mt-3 space-y-3">
                 {PROMPT_CATEGORIES.map((cat) => (
                   <div key={cat.key}>
-                    <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-[var(--color-faint)]">
+                    <p className="mb-1.5 text-meta font-medium uppercase tracking-wide text-[var(--color-faint)]">
                       {cat.title}
                     </p>
                     <div className="flex flex-wrap gap-2">

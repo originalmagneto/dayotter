@@ -66,7 +66,7 @@ export function CalendarMock({ className }: { className?: string }) {
         <div />
         {DAYS.map((d, i) => (
           <div key={d} className="px-2 py-2 text-center">
-            <div className="text-[11px] text-[var(--color-muted)]">{d}</div>
+            <div className="text-meta text-[var(--color-muted)]">{d}</div>
             <div className={`text-sm font-medium ${i === 2 ? "text-[var(--color-accent)]" : ""}`}>
               {7 + i}
             </div>
@@ -80,7 +80,7 @@ export function CalendarMock({ className }: { className?: string }) {
           {hours.map((h, i) => (
             <div
               key={h}
-              className="absolute right-1.5 text-[10px] text-[var(--color-faint)]"
+              className="absolute right-1.5 text-micro text-[var(--color-faint)]"
               style={{ top: i * ROW - 6 }}
             >
               {h > 12 ? h - 12 : h}
@@ -104,7 +104,7 @@ export function CalendarMock({ className }: { className?: string }) {
             {EVENTS.filter((e) => e.day === day).map((e, idx) => (
               <div
                 key={idx}
-                className="absolute inset-x-1 overflow-hidden rounded-[7px] px-2 py-1 text-[11px] leading-tight"
+                className="absolute inset-x-1 overflow-hidden rounded-[7px] px-2 py-1 text-meta leading-tight"
                 style={{
                   top: (e.start - START_HOUR) * ROW + 1,
                   height: (e.end - e.start) * ROW - 2,
@@ -161,7 +161,7 @@ export function TeamAvailabilityMock({ className }: { className?: string }) {
           <BrandMark size={18} />
           Team availability
         </span>
-        <span className="rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 text-[11px] font-medium text-[var(--color-accent)]">
+        <span className="rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 text-meta font-medium text-[var(--color-accent)]">
           All free · 2:00 PM
         </span>
       </div>
@@ -174,7 +174,7 @@ export function TeamAvailabilityMock({ className }: { className?: string }) {
         {people.map((p) => (
           <div key={p.name} className="flex items-center gap-3">
             <div
-              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold text-white"
+              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-micro font-semibold text-white"
               style={{ background: HUES[p.hue] }}
             >
               {p.name[0]}

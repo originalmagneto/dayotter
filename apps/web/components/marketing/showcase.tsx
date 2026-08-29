@@ -74,7 +74,7 @@ export function DayWithOtter() {
                     className="absolute -left-[22px] top-[6px] h-3 w-3 rounded-full border-2 border-[var(--color-surface)] bg-[var(--color-accent)] sm:-left-[26px]"
                     aria-hidden
                   />
-                  <p className="text-[15px] font-semibold">{m.label}</p>
+                  <p className="text-subhead font-semibold">{m.label}</p>
                   <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">
                     {m.body}
                   </p>

@@ -285,6 +285,26 @@
       "label": {
         "displayName": "Label",
         "purpose": "The .eyebrow class - Geist Mono, uppercase, wide tracking. Metadata and section kickers only."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Card titles, lead paragraphs under a page header, the large button. One step above body."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Compact list copy and captions - one rung below body, where text-xs would be too small."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Timestamps, per-item counts, dense secondary rows. The most-used step below body."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "The smallest legible label - badge counts and mock chrome. Below this, use an icon."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "17px app-nav lockup. Not a text role - named so nobody reaches for 17px as a body size."
       }
     },
     "shadows": [
@@ -511,6 +531,11 @@
       {
         "name": "The One Family Rule",
         "body": "Geist Sans does display and body. A serif display face was deliberately removed from this system once already; reintroducing one is a regression, not a refresh.",
+        "section": "typography"
+      },
+      {
+        "name": "The Named Step Rule",
+        "body": "Type sizes come from the scale - Tailwind’s steps or the named roles between them. text-[13px] is how a scale quietly stops being one; the fifty occurrences that existed were replaced with text-caption and its siblings at identical pixel values.",
         "section": "typography"
       },
       {

@@ -133,7 +133,7 @@ export function TimeBlocks() {
                     <p className="flex items-center gap-2 truncate text-sm font-medium">
                       {b.title}
                       {recurring ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-soft)] px-1.5 py-0.5 text-[10px] font-normal text-[var(--color-accent)]">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-soft)] px-1.5 py-0.5 text-micro font-normal text-[var(--color-accent)]">
                           <Repeat size={10} /> Weekly
                         </span>
                       ) : null}

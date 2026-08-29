@@ -42,7 +42,7 @@ export function MarketingHeader({
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div
-      className="mx-auto max-w-3xl px-6 py-16 text-[15px] leading-7 text-[var(--color-muted)]
+      className="mx-auto max-w-3xl px-6 py-16 text-subhead leading-7 text-[var(--color-muted)]
         [&_a]:text-[var(--color-accent)] [&_a:hover]:underline
         [&_h2]:font-display [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:tracking-[-0.01em] [&_h2]:text-[var(--color-text)]
         [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-[var(--color-text)]
@@ -51,7 +51,7 @@ export function Prose({ children }: { children: ReactNode }) {
         [&_ul]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5
         [&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5
         [&_hr]:my-10 [&_hr]:border-[var(--color-border)]
-        [&_code]:rounded [&_code]:bg-[var(--color-surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[13px] [&_code]:text-[var(--color-text)]"
+        [&_code]:rounded [&_code]:bg-[var(--color-surface-2)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-caption [&_code]:text-[var(--color-text)]"
     >
       {children}
     </div>
