@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
+import { bookingSender } from "@/lib/booking/sender";
 import { consumeCredit } from "@/lib/packages/credits";
-import { env } from "@/lib/server/env";
 import { logger, roundRobinPick, verifyAccessCode } from "@dayotter/core";
 import { and, eq, getDb, gte, inArray, lt, schema, sql } from "@dayotter/db";
 import { bookingRequested, newBookingRequest, sendEmail } from "@dayotter/emails";
@@ -150,6 +150,12 @@ export interface CreateBookingInput {
   /** Redeem one prepaid package credit for the attendee instead of charging.
    * Consumed atomically inside the booking transaction (restored on rollback). */
   redeemCredit?: boolean;
+  /**
+   * The language the booker was using, already validated by the caller. Stored
+   * on the booking so mail sent later - a reminder from the worker, hours after
+   * the request is gone - still reaches them in it.
+   */
+  locale?: string;
 }
 
 export async function createBooking(
@@ -241,7 +247,7 @@ export async function createBooking(
   });
 
   const uid = randomUUID();
-  const appUrl = env.APP_URL;
+  const { appUrl, brandName } = await bookingSender();
   const guests = [
     ...new Set([...(input.guests ?? []).filter((e) => e.includes("@")), ...coHostEmails]),
   ];
@@ -493,6 +499,7 @@ export async function createBooking(
           amountPaid: input.payment?.amountPaid,
           paymentCurrency: input.payment?.currency,
           destinationAccountId: input.payment?.destinationAccountId,
+          ...(input.locale ? { locale: input.locale } : {}),
         })
         .returning();
       if (!row) throw new BookingError("Failed to create booking", 500);
@@ -542,6 +549,8 @@ export async function createBooking(
     try {
       await sendEmail({
         ...bookingRequested({
+          locale: input.locale,
+          brandName,
           eventTitle: eventType.title,
           start,
           end,
@@ -565,6 +574,7 @@ export async function createBooking(
       try {
         await sendEmail({
           ...newBookingRequest({
+            brandName,
             eventTitle: eventType.title,
             start,
             end,
@@ -599,6 +609,7 @@ export async function createBooking(
     guests,
     notes: input.notes,
     appUrl,
+    brandName,
   });
 
   return { uid, redirectUrl: eventType.redirectUrl ?? null };

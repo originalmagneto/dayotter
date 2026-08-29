@@ -1,5 +1,5 @@
 import { randomBytes } from "node:crypto";
-import { env } from "@/lib/server/env";
+import { bookingSender } from "@/lib/booking/sender";
 import { logger } from "@dayotter/core";
 import { and, asc, eq, getDb, schema } from "@dayotter/db";
 import { bookingConfirmation, sendEmail } from "@dayotter/emails";
@@ -214,7 +214,13 @@ export async function finalizePoll(
   }
 
   // Confirm the time to the host + everyone who's coming.
-  const appUrl = env.APP_URL;
+  //
+  // No locale here, deliberately: a poll has no stored language the way a
+  // booking does, and the only request in play is the host finalising it - so
+  // Accept-Language would put everyone in the host's language rather than their
+  // own. English until a poll carries a language per participant. The firm and
+  // the domain are known, though, and those it does get right.
+  const { appUrl, brandName } = await bookingSender();
   const recipients = [
     ...(poll.host?.email
       ? [{ email: poll.host.email, name: poll.host.name ?? "you", tz: poll.host.timezone }]
@@ -234,6 +240,7 @@ export async function finalizePoll(
           location: poll.location ?? undefined,
           meetingUrl,
           manageUrl: `${appUrl}/poll/${poll.token}`,
+          brandName,
         }),
         to: r.email,
       }),

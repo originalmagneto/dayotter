@@ -28,6 +28,8 @@ export interface FinalizeContext {
   guests: string[];
   notes?: string | null;
   appUrl: string;
+  /** The firm this booking belongs to, for the mail footer. */
+  brandName?: string;
 }
 
 /**
@@ -46,7 +48,7 @@ export interface FinalizeContext {
  * an individual step (calendar, email, ...) fails.
  */
 export async function finalizeConfirmedBooking(ctx: FinalizeContext): Promise<void> {
-  const { booking, eventType, host, attendee, guests, notes, appUrl } = ctx;
+  const { booking, eventType, host, attendee, guests, notes, appUrl, brandName } = ctx;
   const db = getDb();
 
   // Multi-location: honour the location the booker chose (persisted on the booking)
@@ -223,6 +225,11 @@ export async function finalizeConfirmedBooking(ctx: FinalizeContext): Promise<vo
           location: eventType.locationDetail ?? undefined,
           meetingUrl,
           manageUrl,
+          // The booker gets their own language; the host's copy stays in the
+          // language the server runs in - they are one known person, not a
+          // client, and their own preference belongs to a separate change.
+          locale: recipient === "attendee" ? booking.locale : undefined,
+          brandName,
         }),
         to,
       });

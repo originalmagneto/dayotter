@@ -43,6 +43,17 @@ export const bookings = pgTable(
     endsAt: timestamp("ends_at", { withTimezone: true }).notNull(),
     /** Booker's timezone as selected on the booking page. */
     timezone: text("timezone").notNull(),
+    /**
+     * The language the booker was using when they booked.
+     *
+     * Stored rather than re-derived, because the emails that matter most are
+     * sent later and from somewhere else: a reminder comes out of the worker,
+     * which has no request and so no Accept-Language, and the booker may have
+     * picked a language by hand rather than inheriting it from their browser.
+     * Rows written before this column existed default to "en", which is what
+     * they were actually sent.
+     */
+    locale: text("locale").notNull().default("en"),
     status: bookingStatus("status").notNull().default("confirmed"),
 
     location: text("location"),

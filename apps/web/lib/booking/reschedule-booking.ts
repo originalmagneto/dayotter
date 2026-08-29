@@ -1,4 +1,4 @@
-import { env } from "@/lib/server/env";
+import { bookingSender } from "@/lib/booking/sender";
 import { logger } from "@dayotter/core";
 import { and, eq, getDb, gte, lt, ne, schema, sql } from "@dayotter/db";
 import { bookingRescheduled, sendEmail } from "@dayotter/emails";
@@ -267,7 +267,7 @@ export async function rescheduleBooking(
   }
 
   // Notify.
-  const appUrl = env.APP_URL;
+  const { appUrl, brandName } = await bookingSender();
   try {
     await Promise.all(
       [
@@ -291,6 +291,8 @@ export async function rescheduleBooking(
             meetingUrl: meetingUrl ?? booking.meetingUrl ?? undefined,
             location: eventType.locationDetail ?? undefined,
             manageUrl: `${appUrl}/booking/${uid}`,
+            locale: booking.locale,
+            brandName,
             reason: reason ?? null,
           }),
           to: r.email,

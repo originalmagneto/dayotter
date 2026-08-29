@@ -119,6 +119,10 @@ export function SlotPicker({
         eventTypeId,
         start: selected.start,
         attendee: { name, email, timezone: zone },
+        // Sent explicitly rather than left to Accept-Language: this is the
+        // language actually on screen, including a pick from the language
+        // switcher. It decides what language the booking's emails arrive in.
+        locale,
         guests: guests.length ? guests : undefined,
         selectedHostIds: teamHosts.length ? selectedHostIds : undefined,
         notes: notes || undefined,
