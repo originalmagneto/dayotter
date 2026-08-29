@@ -1,13 +1,17 @@
 import { MarketingHeader, Prose } from "@/components/marketing/page-shell";
 import { getTenant } from "@/lib/brand/server";
-import { BRAND } from "@/lib/marketing";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  alternates: { canonical: "/privacy" },
-  description: "How SKALLARS Law collects, uses, and protects your data.",
-};
+// Request-scoped: one deployment serves several firms, so the firm's name
+// is only known once the request's Host is.
+export async function generateMetadata(): Promise<Metadata> {
+  const tenant = await getTenant();
+  return {
+    title: "Privacy Policy",
+    alternates: { canonical: "/privacy" },
+    description: `How ${tenant.name} collects, uses, and protects your data.`,
+  };
+}
 
 export default async function PrivacyPage() {
   const tenant = await getTenant();
@@ -121,8 +125,8 @@ export default async function PrivacyPage() {
         <h2>Security</h2>
         <p>
           OAuth tokens, notification secrets, and webhook signing keys are encrypted at rest. API
-          keys are stored only as hashes. Access is scoped per user and organization. See our{" "}
-          <a href="/security">security page</a> for details.
+          keys are stored only as hashes. Access is scoped per user and organization. Write to{" "}
+          <a href={`mailto:${tenant.email}`}>{tenant.email}</a> if you need more detail than this.
         </p>
 
         <h2>Cookies</h2>

@@ -60,22 +60,53 @@ release with marketing changes will conflict, and it will conflict in prose.
 That is a deliberate trade the owner made, not an accident - but it means the
 sync habit has to change:
 
-- **Take upstream selectively.** Pull the app and package changes; be willing to
-  keep our own version of `app/(marketing)/**` wholesale rather than merging line
-  by line. Their marketing copy describes an open-source product and ours
-  describes a law firm; there is no meaningful merge of those two.
+- **Take upstream selectively.** Pull the app and package changes; take theirs
+  wholesale for `app/(marketing)/**`. Those pages are gated off (below), so their
+  content no longer matters here - which turns the widest conflict surface in the
+  fork into a `git checkout --theirs`.
 - **`globals.css` conflicts are ours to win.** Upstream tuning of DayOtter's warm
   palette is not wanted here. Take our side and only port genuinely structural
   changes (a new token, a new layer).
 - **`lib/marketing.ts` is the naming hub.** The product name lives in `BRAND.name`,
   so a future rename is one line - it is the marketing prose around it that costs.
 
-## Known follow-ups
+## The marketing site is gated, not deleted
 
-- The marketing pages still read as an open-source product under a law firm's
-  name: `/pricing`, `/vs`, and the self-hosting pages compare "SKALLARS Law" to
-  Calendly and Cal.com. Either trim those routes or point the marketing root at
-  the booking page.
+`app/(marketing)/layout.tsx` calls `notFound()` unconditionally, so all ~22
+pages under it are 404 on every firm domain. They were selling a scheduling
+product from a law firm's address.
+
+They are gated rather than deleted on purpose: upstream keeps editing those
+files, and a deleted file is a modify/delete conflict on every single rebase.
+One `notFound()` costs nothing and reverts in one line.
+
+Two things had to move out from under it:
+
+- `/privacy` and `/terms` now live in `app/(legal)/`, with their own minimal
+  shell. They are linked from the sign-up form and from booking confirmations,
+  so they must stay reachable - and they could not keep the marketing nav, half
+  of which now 404s.
+- `app/sitemap.ts` and `app/llms.txt/route.ts` were rewritten. Both enumerated
+  the marketing routes; `llms.txt` additionally described the firm as an
+  open-source scheduling platform with a per-seat price.
+
+## Who may create an account
+
+`SIGNUP_ALLOWED_DOMAINS` is checked in `packages/auth/src/signup-gate.ts` from
+Better Auth's `user.create.before` hook - the one point every path to a new
+account passes through, Google sign-in included. **Unset means closed.**
+
+Rules are comma-separated and scoped to a Host, because one deployment serves
+three firms and an @skallars.com address has no business registering on
+cal.lawoss.app:
+
+    SIGNUP_ALLOWED_DOMAINS="cal.skallars.com=skallars.com,cal.lawoss.app=lawoss.app"
+
+A rule's value is an email domain, one exact address (for a person whose address
+is not on a firm domain - an exact address, never a public mail domain), or `*`.
+A rule written without a `host=` prefix applies to every domain on the stack.
+
+## Known follow-ups
 - The AI assistant is still called "Otter" in ~276 places, including four
   component filenames. Renaming it is a separate decision from renaming the
   product.

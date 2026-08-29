@@ -1,5 +1,5 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 /**
@@ -11,7 +11,10 @@ import { describe, expect, it } from "vitest";
  * because a rename wrote a literal where a lookup belonged. The compiler cannot
  * catch it, so this does.
  */
-const ROOTS = ["app", "components"];
+// Resolved from this file, not from cwd: vitest runs the suite from the repo
+// root as well as from apps/web, and a relative root only works in one of them.
+const WEB = resolve(import.meta.dirname, "../..");
+const ROOTS = [join(WEB, "app"), join(WEB, "components"), resolve(WEB, "../../packages/auth/src")];
 const SKIP = ["marketing", "node_modules", ".next"];
 /** Names that must come from the tenant, never from source. */
 const FORBIDDEN = [/\bSKALLARS Law\b/, /\bDayOtter\b/, /Day\{" "\}Otter/, /\bHuman in the Loop\b/];

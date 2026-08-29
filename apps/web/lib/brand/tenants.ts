@@ -2,14 +2,18 @@ import type { Locale } from "@/lib/i18n";
 /**
  * Tenant identities for a shared codebase.
  *
- * One fork, one branch, one upstream sync - and two deployments that look like
- * two different companies. Each Dokploy service picks its identity with
- * NEXT_PUBLIC_TENANT; everything a visitor sees that differs between the firms
- * is a value in here rather than a fork of the code.
+ * One fork, one branch, one upstream sync - and three domains that look like
+ * three different companies. The identity is resolved per request from the
+ * Host header, not from a build-time flag, so one image and one stack serve all
+ * of them; everything a visitor sees that differs between the firms is a value
+ * in here rather than a fork of the code.
  *
- * Data is NOT shared: each deployment has its own database. That is the point
- * of running them as separate stacks rather than theming one by hostname - a
- * law firm's client data and a consultancy's have no business in one table.
+ * Data IS shared. One stack means one Postgres, so all three firms' rows live in
+ * the same tables, separated by organization rather than by database. That was a
+ * deliberate choice (see FORK.md) and it is the thing to remember before writing
+ * a query: anything that reads without scoping to the caller's organization
+ * reads across firms, and one of them is a law firm. Sharing a database with a
+ * law firm's client list is a confidentiality question, not just a schema one.
  */
 export interface Tenant {
   /** Product name, in metadata, emails and chrome. */
