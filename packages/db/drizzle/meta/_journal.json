@@ -442,6 +442,13 @@
       "when": 1788433718026,
       "tag": "0062_fresh_psynapse",
       "breakpoints": true
+    },
+    {
+      "idx": 63,
+      "version": "7",
+      "when": 1789732371780,
+      "tag": "0063_goofy_goblin_queen",
+      "breakpoints": true
     }
   ]
 }
