@@ -7,6 +7,17 @@ const KEY = "dayotter_star_nudge_dismissed";
 const REPO = "https://github.com/Dayotter/dayotter";
 
 /**
+ * Off here. Upstream added this to grow an open-source project's star count;
+ * these deployments are a law firm's booking system, and the people on that
+ * dashboard are the firm's staff, who did not come to promote a repository.
+ * The AGPL credit the fork does owe is in the booking footer, via BRAND.upstream.
+ *
+ * Kept rather than deleted, per FORK.md: upstream edits this file, and a deleted
+ * file is a modify/delete conflict on every rebase. Flip to `true` to restore it.
+ */
+const ENABLED = false;
+
+/**
  * A small, one-time ask to star the repo on GitHub. Stars are the number both
  * developers and automated evaluators weight most for an open-source project, and
  * ours has lagged the signups. Dismissible and remembered per browser, so it never
@@ -16,6 +27,7 @@ export function StarNudge() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    if (!ENABLED) return;
     try {
       if (localStorage.getItem(KEY) !== "1") setShow(true);
     } catch {
@@ -36,7 +48,8 @@ export function StarNudge() {
     <div className="flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/50 px-4 py-3">
       <Star size={18} className="shrink-0 text-[var(--color-amber)]" />
       <p className="flex-1 text-sm text-[var(--color-muted)]">
-        Enjoying DayOtter? A GitHub star genuinely helps others find it, and it's free.
+        Enjoying the open-source project behind this? A GitHub star genuinely helps others find
+        it, and it's free.
       </p>
       <a
         href={REPO}
