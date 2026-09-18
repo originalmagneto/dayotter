@@ -40,15 +40,45 @@ Three classes now, and they age very differently:
 
 - **Deploy-only, permanent.** `docker-compose.dokploy.yml` and this file. Never
   going upstream; zero conflict risk (new files).
-- **Sent upstream.** The build fixes, the i18n crash, the a11y pass and the booking
-  and app craft work are open as PRs #255–#259 against `Dayotter/dayotter`
-  (issues #252–#254). If they merge, those commits drop out of this branch on the
-  next rebase. **Check their state before resolving a conflict in the same files** -
-  a conflict there may mean the change landed upstream and ours can simply be
-  dropped.
+- **Sent upstream, and now landed.** PRs #255–#259 (the build fixes, the i18n
+  crash, the a11y pass, the booking and app craft work) are all merged. In the
+  v0.4.0 sync the two Dockerfile fixes and the i18n fallback dropped out on their
+  own - `git rebase` recognised them as patch-identical - and the a11y and craft
+  commits came back as conflicts because upstream had reworked them. Upstream's
+  version won every time; one commit (`02f2287`) had nothing left after the
+  resolution and was skipped. **Check upstream before resolving a conflict in a
+  file you sent them** - a conflict there usually means the change landed and
+  ours can simply be dropped.
 - **The rebrand, permanent and wide.** SKALLARS Law naming, the palette, General
   Sans, the mark, and the removal of the mascot illustrations. This is the class
   that changes the character of the fork.
+
+## What the v0.4.0 sync learned
+
+Three traps that will not show up as conflicts, so nothing will stop you:
+
+- **Migration numbers collide.** Upstream took `0062` for `lifecycle_emails`
+  while we were using it for `bookings.locale`. Resolve the drizzle meta to
+  upstream wholesale (`--ours` on `_journal.json` and the snapshot), delete our
+  `.sql`, keep the schema change, then `pnpm db:generate` after the rebase and
+  let drizzle re-emit it with a fresh index and a later `when`. Keeping the old
+  timestamp would make a fresh database skip our migration silently. Add
+  `IF NOT EXISTS` by hand: production already ran the old file under a hash that
+  no longer exists, and the migrate service blocks web and worker on failure.
+- **Upstream is centralising on a single origin.** `env.APP_URL` is now the one
+  blessed source of "where are we", which is exactly the assumption this fork
+  exists to break. It conflicted in the four booking files, where `bookingSender()`
+  won - but it will keep spreading, and it will not always conflict. After a sync,
+  check that the `getOrigin()` call sites still outnumber nothing: `app/layout.tsx`,
+  `lib/booking/sender.ts` and `lib/brand/server.ts`. `env.APP_URL` is correct for
+  OAuth redirect registration and for a canonical fallback; it is wrong for
+  anything a client sees.
+- **New upstream features arrive pre-branded and conflict-free.** The star nudge,
+  the lifecycle emails and the Pro preview cards were all new files or new
+  functions, so the rebase took them silently onto a law firm's dashboard.
+  `lib/brand/no-hardcoded-brand.test.ts` is what catches this - run `pnpm test`
+  before believing a sync is done, and treat a failure there as the sync's work,
+  not a flaky test.
 
 ## The rebrand changes what syncing costs
 
