@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { randomBytes } from "node:crypto";
 import { setTimeout as delay } from "node:timers/promises";
 
 // Disposable CI stack, internal network only. No production compose, data or integrations.
@@ -31,7 +32,9 @@ const environment = [
   "-e",
   "AUTH_SECRET=synthetic-runtime-fixture-secret-000000000000",
   "-e",
-  "APP_URL=http://localhost:3000",
+  "APP_URL=https://fixture.example.test",
+  "-e",
+  `ENCRYPTION_KEY=${randomBytes(32).toString("hex")}`,
   "-e",
   "NEXT_TELEMETRY_DISABLED=1",
 ];
