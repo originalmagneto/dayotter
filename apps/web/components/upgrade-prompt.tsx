@@ -69,8 +69,8 @@ function UpgradeOverlay({ feature }: { feature: Feature }) {
         </div>
         <h2 className="text-base font-semibold">This is what {label} looks like</h2>
         <p className="text-sm text-[var(--color-muted)]">
-          It's a Pro feature. Upgrade ($9/seat/mo) to turn on {label.toLowerCase()} and every other
-          {" "}{tenant.name} differentiator.
+          It's a Pro feature. Upgrade ($9/seat/mo) to turn on {label.toLowerCase()} and every other{" "}
+          {tenant.name} differentiator.
         </p>
         <Link href="/settings/billing" className="mt-1">
           <Button size="sm">Upgrade to Pro</Button>

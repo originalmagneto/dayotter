@@ -48,8 +48,8 @@ export function StarNudge() {
     <div className="flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)]/50 px-4 py-3">
       <Star size={18} className="shrink-0 text-[var(--color-amber)]" />
       <p className="flex-1 text-sm text-[var(--color-muted)]">
-        Enjoying the open-source project behind this? A GitHub star genuinely helps others find
-        it, and it's free.
+        Enjoying the open-source project behind this? A GitHub star genuinely helps others find it,
+        and it's free.
       </p>
       <a
         href={REPO}
