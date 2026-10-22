@@ -107,7 +107,7 @@ try {
   assert.equal(migrationRows(), before);
   docker("run", "-d", "--name", worker, "--network", network, ...environment, images.worker);
   docker("run", "-d", "--name", web, "--network", network, ...environment, images.web);
-  const probe = `const a=require('node:assert/strict');(async()=>{const r=await fetch('http://127.0.0.1:3000/api/health');a.equal(r.status,200);const j=await r.json();a.equal(j.db,true);a.equal(j.redis,true);a.equal(j.worker,'alive');const page=await fetch('http://127.0.0.1:3000/');a.equal(page.status,200);const session=await fetch('http://127.0.0.1:3000/api/auth/get-session');a.equal(session.status,200);a.equal(await session.json(),null)})().catch(e=>{console.error(e.message);process.exit(1)});`;
+  const probe = `const a=require('node:assert/strict');(async()=>{const r=await fetch('http://127.0.0.1:3000/api/health');a.equal(r.status,200,'health status');const j=await r.json();a.equal(j.db,true);a.equal(j.redis,true);a.equal(j.worker,'alive');const page=await fetch('http://127.0.0.1:3000/');a.equal(page.status,200,'home status');const session=await fetch('http://127.0.0.1:3000/api/auth/get-session');a.equal(session.status,200,'session status');a.equal(await session.json(),null)})().catch(e=>{console.error(e.message);process.exit(1)});`;
   await until(() => docker("exec", web, "node", "-e", probe));
   // Remove only the disposable heartbeat so stale liveness cannot mask a failed restart.
   docker("stop", worker);
@@ -139,7 +139,7 @@ try {
         name,
         docker("inspect", "--format", "{{.State.Running}} {{.State.ExitCode}}", name),
       );
-      console.error(docker("logs", "--tail", "25", name));
+      execFileSync("docker", ["logs", "--tail", "25", name], { stdio: "inherit" });
     } catch {
       /* Preserve the original failure if startup failed before creation. */
     }
