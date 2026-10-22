@@ -11,15 +11,17 @@ const images = { web: `${prefix}-web`, worker: `${prefix}-worker` };
 const docker = (...args) =>
   execFileSync("docker", args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
 async function until(check) {
+  let lastFailure;
   for (let attempt = 0; attempt < 90; attempt++) {
     try {
       check();
       return;
-    } catch {
+    } catch (error) {
+      lastFailure = error.stderr?.toString().trim() || error.message;
       await delay(1000);
     }
   }
-  throw new Error("disposable_stack_readiness_failed");
+  throw new Error(`disposable_stack_readiness_failed: ${lastFailure}`);
 }
 const environment = [
   "-e",
@@ -105,7 +107,7 @@ try {
   assert.equal(migrationRows(), before);
   docker("run", "-d", "--name", worker, "--network", network, ...environment, images.worker);
   docker("run", "-d", "--name", web, "--network", network, ...environment, images.web);
-  const probe = `const a=require('node:assert/strict');(async()=>{const r=await fetch('http://127.0.0.1:3000/api/health');a.equal(r.status,200);const j=await r.json();a.equal(j.db,true);a.equal(j.redis,true);a.equal(j.worker,'alive');const page=await fetch('http://127.0.0.1:3000/');a.equal(page.status,200);const session=await fetch('http://127.0.0.1:3000/api/auth/get-session');a.equal(session.status,200);a.equal(await session.json(),null)})().catch(()=>process.exit(1));`;
+  const probe = `const a=require('node:assert/strict');(async()=>{const r=await fetch('http://127.0.0.1:3000/api/health');a.equal(r.status,200);const j=await r.json();a.equal(j.db,true);a.equal(j.redis,true);a.equal(j.worker,'alive');const page=await fetch('http://127.0.0.1:3000/');a.equal(page.status,200);const session=await fetch('http://127.0.0.1:3000/api/auth/get-session');a.equal(session.status,200);a.equal(await session.json(),null)})().catch(e=>{console.error(e.message);process.exit(1)});`;
   await until(() => docker("exec", web, "node", "-e", probe));
   // Remove only the disposable heartbeat so stale liveness cannot mask a failed restart.
   docker("stop", worker);
@@ -129,6 +131,20 @@ try {
       productionAccess: false,
     }),
   );
+} catch (error) {
+  // These containers contain only generated CI fixtures, never production data.
+  for (const name of [worker, web]) {
+    try {
+      console.error(
+        name,
+        docker("inspect", "--format", "{{.State.Running}} {{.State.ExitCode}}", name),
+      );
+      console.error(docker("logs", "--tail", "25", name));
+    } catch {
+      /* Preserve the original failure if startup failed before creation. */
+    }
+  }
+  throw error;
 } finally {
   for (const name of names) {
     try {
